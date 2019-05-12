@@ -6,44 +6,46 @@
 package dao;
 
 import conexion.Conexion;
-import dto.BodegasDto;
+import dto.Detalle_GuiaDto;
 import interfaces.DaoInterface;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.ArrayList;
 
 /**
  *
  * @author PabloTnT
  */
-public class BodegasDao implements DaoInterface<BodegasDto> {
+public class Detalle_GuiaDao implements DaoInterface<Detalle_GuiaDto> {
 
-    private static final String SQL_INSERT = "INSERT INTO bodegas (id, direccion, encargado) VALUES (?, ?, ?)";
-    private static final String SQL_DELETE = "DELETE FROM bodegas WHERE id=?";
-    private static final String SQL_UPDATE = "UPDATE bodegas SET direccion=?, encargado=? WHERE id=?";
-    private static final String SQL_SELECT = "SELECT * FROM bodegas WHERE id=?";
-    private static final String SQL_SELECTALL = "SELECT * FROM bodegas";
+    private static final String SQL_INSERT = "INSERT INTO detalle_guia (id, numero_guia, fecha, cantidad) VALUES (?, ?, ?, ?)";
+    private static final String SQL_DELETE = "DELETE FROM detalle_guia WHERE id=?";
+    private static final String SQL_UPDATE = "UPDATE detalle_guia SET numero_guia=?, fecha=?, cantidad=? WHERE id=?";
+    private static final String SQL_SELECT = "SELECT * FROM detalle_guia WHERE id=?";
+    private static final String SQL_SELECTALL = "SELECT * FROM detalle_guia";
 
     private static final Conexion con = Conexion.estadoConexion();
 
     @Override
-    public boolean Create(BodegasDto dto) {
+    public boolean Create(Detalle_GuiaDto dto) {
         PreparedStatement ps;
         try {
             ps = con.getCnn().prepareStatement(SQL_INSERT);
             ps.setInt(1, dto.getId());
-            ps.setString(2, dto.getDireccion());
-            ps.setString(3, dto.getEncargado());
+            ps.setInt(2, dto.getNumero_guia());
+            ps.setDate(3, (Date) dto.getFecha());
+            ps.setInt(4, dto.getCantidad());
 
             if (ps.executeUpdate() > 0) {
                 return true;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(BodegasDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Detalle_GuiaDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             con.cerrarConexion();
         }
@@ -61,7 +63,7 @@ public class BodegasDao implements DaoInterface<BodegasDto> {
                 return true;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(BodegasDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Detalle_GuiaDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             con.cerrarConexion();
         }
@@ -69,70 +71,67 @@ public class BodegasDao implements DaoInterface<BodegasDto> {
     }
 
     @Override
-    public boolean Update(BodegasDto dto) {
+    public boolean Update(Detalle_GuiaDto dto) {
         PreparedStatement ps;
         try {
-
             ps = con.getCnn().prepareStatement(SQL_UPDATE);
-            ps.setString(1, dto.getDireccion());
-            ps.setString(1, dto.getEncargado());
-            ps.setInt(3, dto.getId());
+            ps.setInt(1, dto.getNumero_guia());
+            ps.setDate(2, (Date) dto.getFecha());
+            ps.setInt(3, dto.getCantidad());
+            ps.setInt(4, dto.getId());
 
             if (ps.executeUpdate() > 0) {
                 return true;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(BodegasDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Detalle_GuiaDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             con.cerrarConexion();
         }
         return false;
-
     }
 
     @Override
-    public BodegasDto Select(Object key) {
+    public Detalle_GuiaDto Select(Object key) {
         PreparedStatement ps;
         ResultSet res;
-        BodegasDto bod = null;
+        Detalle_GuiaDto det = null;
         try {
-
             ps = con.getCnn().prepareStatement(SQL_SELECT);
             ps.setString(1, key.toString());
 
             res = ps.executeQuery();
 
             while (res.next()) {
-                bod = new BodegasDto(res.getInt(1), res.getString(2), res.getString(3));
+                det = new Detalle_GuiaDto(res.getInt(1), res.getInt(2), res.getDate(3), res.getInt(4));
             }
-            return bod;
+            return det;
         } catch (SQLException ex) {
-            Logger.getLogger(BodegasDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Detalle_GuiaDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             con.cerrarConexion();
         }
-        return bod;
+        return det;
     }
 
     @Override
-    public List<BodegasDto> SeleccionarTodo() {
+    public List<Detalle_GuiaDto> SeleccionarTodo() {
         PreparedStatement ps;
         ResultSet res;
-        ArrayList<BodegasDto> bodegas = new ArrayList();
+        ArrayList<Detalle_GuiaDto> detalle = new ArrayList();
         try {
-
             ps = con.getCnn().prepareStatement(SQL_SELECTALL);
             res = ps.executeQuery();
-
             while (res.next()) {
-                bodegas.add(new BodegasDto(res.getInt(1), res.getString(2), res.getString(3)));
+                detalle.add(new Detalle_GuiaDto(res.getInt(1), res.getInt(2), res.getDate(3), res.getInt(4)));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(BodegasDao.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
+            Logger.getLogger(Detalle_GuiaDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
             con.cerrarConexion();
         }
-        return bodegas;
+        return detalle;
+
     }
 
 }
