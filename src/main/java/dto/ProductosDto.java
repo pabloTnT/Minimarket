@@ -13,7 +13,7 @@ public class ProductosDto {
 
     private int sku;
     private String nombre;
-    private String precio;
+    private int precio;
 
     public ProductosDto() {
     }
@@ -22,7 +22,7 @@ public class ProductosDto {
         this.sku = sku;
     }
 
-    public ProductosDto(int sku, String nombre, String precio) {
+    public ProductosDto(int sku, String nombre, int precio) {
         this.sku = sku;
         this.nombre = nombre;
         this.precio = precio;
@@ -44,11 +44,11 @@ public class ProductosDto {
         this.nombre = nombre;
     }
 
-    public String getPrecio() {
+    public int getPrecio() {
         return precio;
     }
 
-    public void setPrecio(String precio) {
+    public void setPrecio(int precio) {
         this.precio = precio;
     }
 
