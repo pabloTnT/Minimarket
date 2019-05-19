@@ -14,7 +14,7 @@ public class Funcionario {
     private int mantiza;
     private String nombre;
     private String apellido;
-    private String fechaIngreso;
+    private String fecha_ingreso;
     private int salario;
     private String cargo;
 
@@ -22,16 +22,16 @@ public class Funcionario {
         mantiza = 0;
         nombre = null;
         apellido = null;
-        fechaIngreso = null;
+        fecha_ingreso = null;
         salario = 0;
         cargo = null;
     }
 
-    public Funcionario(int mantiza, String nombre, String apellido, String fechaIngreso, int salario, String cargo) {
+    public Funcionario(int mantiza, String nombre, String apellido, String fecha_ingreso, int salario, String cargo) {
         this.mantiza = mantiza;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.fechaIngreso = fechaIngreso;
+        this.fecha_ingreso = fecha_ingreso;
         this.salario = salario;
         this.cargo = cargo;
     }
@@ -60,12 +60,12 @@ public class Funcionario {
         this.apellido = apellido;
     }
 
-    public String getFechaIngreso() {
-        return fechaIngreso;
+    public String getFecha_ingreso() {
+        return fecha_ingreso;
     }
 
-    public void setFechaIngreso(String fechaIngreso) {
-        this.fechaIngreso = fechaIngreso;
+    public void setFecha_ingreso(String fecha_ingreso) {
+        this.fecha_ingreso = fecha_ingreso;
     }
 
     public int getSalario() {
