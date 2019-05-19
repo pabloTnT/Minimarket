@@ -17,13 +17,13 @@ public class Proveedor {
 
     public Proveedor() {
         mantiza = 0;
-        razonSocial = null;
+        razon_social = null;
         direccion = null;
     }
 
-    public Proveedor(int mantiza, String razonSocial, String direccion) {
+    public Proveedor(int mantiza, String razon_social, String direccion) {
         this.mantiza = mantiza;
-        this.razonSocial = razonSocial;
+        this.razon_social = razon_social;
         this.direccion = direccion;
     }
 
@@ -35,12 +35,12 @@ public class Proveedor {
         this.mantiza = mantiza;
     }
 
-    public String getRazonSocial() {
-        return razonSocial;
+    public String getRazon_social() {
+        return razon_social;
     }
 
-    public void setRazonSocial(String razonSocial) {
-        this.razonSocial = razonSocial;
+    public void setRazon_social(String razon_social) {
+        this.razon_social = razon_social;
     }
 
     public String getDireccion() {
