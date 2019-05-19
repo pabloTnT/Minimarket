@@ -13,18 +13,18 @@ public class Producto_Bodega {
 
     private String sku;
     private int stock;
-    private String ubicacionInterna;
+    private String ubicacion_Interna;
 
     public Producto_Bodega() {
         sku = null;
         stock = 0;
-        ubicacionInterna = null;
+        ubicacion_Interna = null;
     }
 
-    public Producto_Bodega(String sku, int stock, String ubicacionInterna) {
+    public Producto_Bodega(String sku, int stock, String ubicacion_Interna) {
         this.sku = sku;
         this.stock = stock;
-        this.ubicacionInterna = ubicacionInterna;
+        this.ubicacion_Interna = ubicacion_Interna;
     }
 
     public String getSku() {
@@ -43,12 +43,12 @@ public class Producto_Bodega {
         this.stock = stock;
     }
 
-    public String getUbicacionInterna() {
-        return ubicacionInterna;
+    public String getUbicacion_Interna() {
+        return ubicacion_Interna;
     }
 
-    public void setUbicacionInterna(String ubicacionInterna) {
-        this.ubicacionInterna = ubicacionInterna;
+    public void setUbicacion_Interna(String ubicacion_Interna) {
+        this.ubicacion_Interna = ubicacion_Interna;
     }
 
 }
