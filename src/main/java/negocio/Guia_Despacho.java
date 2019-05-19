@@ -11,28 +11,28 @@ package negocio;
  */
 public class Guia_Despacho {
 
-    private int numeroGuia;
+    private int numero_guia;
     private String origen;
-    private String fechaLlegada;
+    private String fecha_llegada;
 
     public Guia_Despacho() {
-        numeroGuia = 0;
+        numero_guia = 0;
         origen = null;
-        fechaLlegada = null;
+        fecha_llegada = null;
     }
 
-    public Guia_Despacho(int numeroGuia, String origen, String fechaLlegada) {
-        this.numeroGuia = numeroGuia;
+    public Guia_Despacho(int numero_guia, String origen, String fecha_llegada) {
+        this.numero_guia = numero_guia;
         this.origen = origen;
-        this.fechaLlegada = fechaLlegada;
+        this.fecha_llegada = fecha_llegada;
     }
 
-    public int getNumeroGuia() {
+    public int getNumero_guia() {
         return numeroGuia;
     }
 
-    public void setNumeroGuia(int numeroGuia) {
-        this.numeroGuia = numeroGuia;
+    public void setNumero_guia(int numero_guia) {
+        this.numero_guia = numero_guia;
     }
 
     public String getOrigen() {
@@ -43,12 +43,12 @@ public class Guia_Despacho {
         this.origen = origen;
     }
 
-    public String getFechaLlegada() {
-        return fechaLlegada;
+    public String getFecha_llegada() {
+        return fecha_llegada;
     }
 
-    public void setFechaLlegada(String fechaLlegada) {
-        this.fechaLlegada = fechaLlegada;
+    public void setFechaLlegada(String fecha_llegada) {
+        this.fecha_llegada = fecha_llegada;
     }
 
 }
