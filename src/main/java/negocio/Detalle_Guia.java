@@ -11,28 +11,28 @@ package negocio;
  */
 public class Detalle_Guia {
 
-    private int numeroGuia;
+    private int numero_guia;
     private String fecha;
     private int cantidad;
 
     public Detalle_Guia() {
-        numeroGuia = 0;
+        numero_guia = 0;
         fecha = null;
         cantidad = 0;
     }
 
-    public Detalle_Guia(int numeroGuia, String fecha, int cantidad) {
-        this.numeroGuia = numeroGuia;
+    public Detalle_Guia(int numero_guia, String fecha, int cantidad) {
+        this.numero_guia = numero_guia;
         this.fecha = fecha;
         this.cantidad = cantidad;
     }
 
-    public int getNumeroGuia() {
-        return numeroGuia;
+    public int getNumero_guia() {
+        return numero_guia;
     }
 
-    public void setNumeroGuia(int numeroGuia) {
-        this.numeroGuia = numeroGuia;
+    public void setNumero_guia(int numero_guia) {
+        this.numero_guia = numero_guia;
     }
 
     public String getFecha() {
