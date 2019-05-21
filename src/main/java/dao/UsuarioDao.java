@@ -22,13 +22,33 @@ import java.util.logging.Logger;
  */
 public class UsuarioDao implements DaoInterface<UsuarioDto> {
 
-    private static final String SQL_INSERT = "INSERT INTO usuario (id, clave, privilegio) VALUES (?, ?, ?)";
+    private static final String SQL_INSERT = "INSERT INTO usuario (id, clave, privilegios) VALUES (?, ?, ?)";
     private static final String SQL_DELETE = "DELETE FROM usuario WHERE id=?";
-    private static final String SQL_UPDATE = "UPDATE usuario SET clave=?, privilegio=? WHERE id=?";
+    private static final String SQL_UPDATE = "UPDATE usuario SET clave=?, privilegios=? WHERE id=?";
     private static final String SQL_SELECT = "SELECT * FROM usuario WHERE id=?";
     private static final String SQL_SELECTALL = "SELECT * FROM usuario";
+    private static final String SQL_USUARIO_CONTRASEÑA = "SELECT * FROM usuario WHERE id=? AND clave=?";
 
     private static final Conexion con = Conexion.estadoConexion();
+
+    public boolean UsuarioContraseña(String usuario, String clave) {
+        PreparedStatement ps;
+        ResultSet res;
+        try {
+            ps = con.getCnn().prepareStatement(SQL_USUARIO_CONTRASEÑA);
+            ps.setString(1, usuario);
+            ps.setString(2, clave);
+            res = ps.executeQuery();
+            if (res.absolute(1)) {
+                return true;
+            } 
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            con.cerrarConexion();
+        }
+        return false;
+    }
 
     @Override
     public boolean Create(UsuarioDto dto) {
@@ -37,7 +57,7 @@ public class UsuarioDao implements DaoInterface<UsuarioDto> {
             ps = con.getCnn().prepareStatement(SQL_INSERT);
             ps.setString(1, dto.getId());
             ps.setString(2, dto.getClave());
-            ps.setString(3, dto.getPrivilegio());
+            ps.setString(3, dto.getPrivilegios());
             if (ps.executeUpdate() > 0) {
                 return true;
             }
@@ -72,7 +92,7 @@ public class UsuarioDao implements DaoInterface<UsuarioDto> {
         try {
             ps = con.getCnn().prepareStatement(SQL_UPDATE);
             ps.setString(1, dto.getClave());
-            ps.setString(2, dto.getPrivilegio());
+            ps.setString(2, dto.getPrivilegios());
             ps.setString(3, dto.getId());
             if (ps.executeUpdate() > 0) {
                 return true;
@@ -112,7 +132,7 @@ public class UsuarioDao implements DaoInterface<UsuarioDto> {
         ResultSet res;
         ArrayList<UsuarioDto> user = new ArrayList();
         try {
-            ps = con.getCnn().prepareStatement(SQL_SELECT);
+            ps = con.getCnn().prepareStatement(SQL_SELECTALL);
             res = ps.executeQuery();
             while (res.next()) {
                 user.add(new UsuarioDto(res.getString(1), res.getString(2), res.getString(3)));
