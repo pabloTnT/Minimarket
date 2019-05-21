@@ -13,7 +13,7 @@ public class UsuarioDto {
 
     private String id;
     private String clave;
-    private String privilegio;
+    private String privilegios;
 
     public UsuarioDto() {
     }
@@ -22,10 +22,10 @@ public class UsuarioDto {
         this.id = id;
     }
 
-    public UsuarioDto(String id, String clave, String privilegio) {
+    public UsuarioDto(String id, String clave, String privilegios) {
         this.id = id;
         this.clave = clave;
-        this.privilegio = privilegio;
+        this.privilegios = privilegios;
     }
 
     public String getId() {
@@ -44,12 +44,12 @@ public class UsuarioDto {
         this.clave = clave;
     }
 
-    public String getPrivilegio() {
-        return privilegio;
+    public String getPrivilegios() {
+        return privilegios;
     }
 
-    public void setPrivilegio(String privilegio) {
-        this.privilegio = privilegio;
+    public void setPrivilegios(String privilegios) {
+        this.privilegios = privilegios;
     }
 
 }

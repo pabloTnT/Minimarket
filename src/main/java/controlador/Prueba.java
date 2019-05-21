@@ -5,19 +5,18 @@
  */
 package controlador;
 
-import dao.BodegasDao;
-import dto.BodegasDto;
+import dao.UsuarioDao;
+import dto.UsuarioDto;
 
 /**
  *
  * @author PabloTnT
  */
 public class Prueba {
+    
     public static void main(String[] args){
-        BodegasDao bod = new BodegasDao();
+        UsuarioDao user = new UsuarioDao();
+        System.err.println(user.UsuarioContraseña("pussy", "12345"));
         
-        BodegasDto bodaBuscar = bod.Select("10");
-        
-        System.out.println(bodaBuscar.getId()+" "+bodaBuscar.getDireccion()+" "+bodaBuscar.getEncargado());
     }
 }
