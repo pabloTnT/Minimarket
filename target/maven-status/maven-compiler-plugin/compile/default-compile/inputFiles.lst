@@ -8,7 +8,6 @@ C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\controlad
 C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\dao\Guia_DespachoDao.java
 C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\dao\ProductosDao.java
 C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\interfaces\DaoInterface.java
-C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\controlador\seleccionModulo.java
 C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\dao\UsuarioDao.java
 C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\dao\Producto_BodegaDao.java
 C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\dto\ProductosDto.java
@@ -18,7 +17,6 @@ C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\dao\Bodeg
 C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\dto\UsuarioDto.java
 C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\dto\FuncionarioDto.java
 C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\dto\Guia_DespachoDto.java
-C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\controlador\InicioSesionController.java
 C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\dao\Detalle_GuiaDao.java
 C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\dao\CategoriaDao.java
 C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\dto\Producto_BodegaDto.java
