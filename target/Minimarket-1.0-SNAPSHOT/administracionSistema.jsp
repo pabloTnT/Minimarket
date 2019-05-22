@@ -56,6 +56,7 @@
                         </td>
                     </tr>
                 </table>
+                <button align="center" style="margin-top: 70px; width: 200px" class="button success outline rounded">Guardar</button>
             </div>
         </div>
         <div align="center">
@@ -84,6 +85,7 @@
                         <td><input class="inputModulos" type="text" name="txt_precioEstimado"></td>
                     </tr>
                 </table>
+                <button align="center" style="margin-top: 70px; width: 200px" class="button success outline rounded">Guardar</button>
             </div>
         </div>
         <div align="center">
@@ -117,6 +119,7 @@
                         <td><input style="margin-left: 50px"type="checkbox" data-role="switch" checked data-material="true"></td>
                     </tr>
                 </table>
+                <button align="center" style="margin-top: 70px; width: 200px" class="button success outline rounded">Guardar</button>
             </div>
         </di</div><div align="center">
         <div style="margin-top: 100px" id="crearProveedor">
@@ -142,6 +145,7 @@
                     <td><input class="inputModulos" type="text" name="txt_telefonoContacto"></td>
                 </tr>
             </table>
+            <button align="center" style="margin-top: 70px; width: 200px" class="button success outline rounded">Guardar</button>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
