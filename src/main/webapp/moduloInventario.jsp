@@ -24,26 +24,26 @@
         </ul> 
         <div style="margin-top: 100px" id="abastecimiento">
             <div class="botonesInventario">
-            <button class="button primary large rounded" style="width: 400px">Generar Orden de Compra</button>
+                <a href="crearOc.jsp"><button class="button primary large rounded" style="width: 400px">Generar Orden de Compra</button></a>
             </div>
             <div class="botonesInventario">
-            <button class="button primary large rounded" style="width: 400px">Generar Orden de Ingreso</button>
+                <button class="button primary large rounded" style="width: 400px">Modificar Ordenes de Compra</button>
             </div>
             <div class="botonesInventario">
-            <button class="button primary large rounded" style="width: 400px">Gestionar Ordenes de Compra</button>
+                <button class="button primary large rounded" style="width: 400px">Generar Orden de Ingreso</button>
             </div>
             <div class="botonesInventario">
                 <button class="button primary large rounded" style="width: 400px" >Recibir Mercaderia</button>
             </div>
         </div>
-            <div style="margin-top: 100px" id="trasladoMercaderia">
-                <div class="botonesInventario">
+        <div style="margin-top: 100px" id="trasladoMercaderia">
+            <div class="botonesInventario">
                 <button class="button primary large rounded" style="width: 400px">Generar Guia de Despacho</button>
-                </div>
-                <div class="botonesInventario">
-                <button class="button primary large rounded" style="width: 400px">Ingresar Productos a Local</button>
-                </div>
             </div>
+            <div class="botonesInventario">
+                <button class="button primary large rounded" style="width: 400px">Ingresar Productos a Local</button>
+            </div>
+        </div>
 
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

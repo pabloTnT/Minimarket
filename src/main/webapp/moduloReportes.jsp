@@ -16,7 +16,7 @@
     </head>
     <body background="imagenes/fondo.png">
         <ul data-role="tabs" data-tabs-type="pills" data-expand="true">
-            <li><a href="index.jsp"<i style="margin-left: 40px;margin-top: 10px;margin-right: 30px; cursor: pointer" class="fas fa-home"></i></a> </li>
+            <li><a href="seleccionModulo.jsp"<i style="margin-left: 40px;margin-top: 10px;margin-right: 30px; cursor: pointer" class="fas fa-home"></i></a> </li>
         </ul> 
         <div style="margin-top: 100px">
             <div align="center">

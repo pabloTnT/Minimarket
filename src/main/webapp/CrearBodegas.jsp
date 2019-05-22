@@ -14,7 +14,7 @@
     <body>
         <%-- 
     Faltan Link para redireccionar a los demas crear(productos, personal proveedores y agregar css)
---%>
+        --%>
         <table>
             <tr>
                 <td>ID:</td>
@@ -25,31 +25,34 @@
                 <td>Nombre</td>
                 <td><input type="text" name="txt_nombreCrearBodegas"></td>
             </tr>
-            
+
             <tr>
                 <td>Comuna</td>
-                <td><select>
+                <td>
+                    <select>
                         <option></option>
                         <option>Comuna 1</option>
                         <option>Comuna 2</option>
                         <option>Comuna 3</option>
                         <option>Comuna 4</option>                        
-                    </select></td>
+                    </select>
+                </td>
             </tr>
             <tr>
                 <td>Dirección</td>
                 <td><input type="text" name="txt_direccionCrearBodegas"></td>
             </tr>
-            
+
             <tr>
                 <td>Encargado</td>
-                <td><select>
+                <td>
+                    <select>
                         <option></option>
                         <option>Encargado 1</option>
                         <option>Encargado 2</option>
                         <option>Encargado 3</option>                   
-                        
-                    </select></td>    
+                    </select>
+                </td>    
             </tr>
             <tr>
                 <td><input type="submit" name="txt_guardarCrearBodegas" value="Guardar"></td>

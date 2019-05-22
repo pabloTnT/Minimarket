@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 C:\Users\leonardoalejandro\Desktop\APP\Minimarket\src\main\java\dao\Guia_DespachoDao.java
 C:\Users\leonardoalejandro\Desktop\APP\Minimarket\src\main\java\dao\CategoriaDao.java
 C:\Users\leonardoalejandro\Desktop\APP\Minimarket\src\main\java\dto\FuncionarioDto.java
@@ -8,7 +7,7 @@ C:\Users\leonardoalejandro\Desktop\APP\Minimarket\src\main\java\dto\CategoriaDto
 C:\Users\leonardoalejandro\Desktop\APP\Minimarket\src\main\java\conexion\Conexion.java
 C:\Users\leonardoalejandro\Desktop\APP\Minimarket\src\main\java\dao\FuncionarioDao.java
 C:\Users\leonardoalejandro\Desktop\APP\Minimarket\src\main\java\dto\Producto_BodegaDto.java
-C:\Users\leonardoalejandro\Desktop\APP\Minimarket\src\main\java\controlador\seleccionModulo.java
+C:\Users\leonardoalejandro\Desktop\APP\Minimarket\src\main\java\controlador\SeleccionModulo.java
 C:\Users\leonardoalejandro\Desktop\APP\Minimarket\src\main\java\dto\UsuarioDto.java
 C:\Users\leonardoalejandro\Desktop\APP\Minimarket\src\main\java\dao\Detalle_GuiaDao.java
 C:\Users\leonardoalejandro\Desktop\APP\Minimarket\src\main\java\dao\ProductosDao.java
@@ -21,29 +20,4 @@ C:\Users\leonardoalejandro\Desktop\APP\Minimarket\src\main\java\dto\Detalle_Guia
 C:\Users\leonardoalejandro\Desktop\APP\Minimarket\src\main\java\dto\ProductosDto.java
 C:\Users\leonardoalejandro\Desktop\APP\Minimarket\src\main\java\controlador\InicioSesion.java
 C:\Users\leonardoalejandro\Desktop\APP\Minimarket\src\main\java\dao\BodegasDao.java
-C:\Users\leonardoalejandro\Desktop\APP\Minimarket\src\main\java\controlador\InicioSesionController.java
 C:\Users\leonardoalejandro\Desktop\APP\Minimarket\src\main\java\controlador\Prueba.java
-=======
-C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\controlador\InicioSesion.java
-C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\conexion\Conexion.java
-C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\dto\BodegasDto.java
-C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\dto\CategoriaDto.java
-C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\dto\Detalle_GuiaDto.java
-C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\dto\ProveedorDto.java
-C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\controlador\Prueba.java
-C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\dao\Guia_DespachoDao.java
-C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\dao\ProductosDao.java
-C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\interfaces\DaoInterface.java
-C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\dao\UsuarioDao.java
-C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\dao\Producto_BodegaDao.java
-C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\dto\ProductosDto.java
-C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\dao\ProveedorDao.java
-C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\dao\FuncionarioDao.java
-C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\dao\BodegasDao.java
-C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\dto\UsuarioDto.java
-C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\dto\FuncionarioDto.java
-C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\dto\Guia_DespachoDto.java
-C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\dao\Detalle_GuiaDao.java
-C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\dao\CategoriaDao.java
-C:\Users\Pablo'TnT\Documents\NetBeansProjects\Minimarket\src\main\java\dto\Producto_BodegaDto.java
->>>>>>> 8c76cbaa08231bdd0c57b56c7075acb92f22ba10
