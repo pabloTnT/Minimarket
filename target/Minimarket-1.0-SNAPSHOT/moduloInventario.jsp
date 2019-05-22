@@ -30,10 +30,7 @@
                 <button class="button primary large rounded" style="width: 400px">Modificar Ordenes de Compra</button>
             </div>
             <div class="botonesInventario">
-                <button class="button primary large rounded" style="width: 400px">Generar Orden de Ingreso</button>
-            </div>
-            <div class="botonesInventario">
-                <button class="button primary large rounded" style="width: 400px" >Recibir Mercaderia</button>
+                <a href="crearOrdenIngreso.jsp"><button class="button primary large rounded" style="width: 400px">Generar Orden de Ingreso</button></a>
             </div>
         </div>
         <div style="margin-top: 100px" id="trasladoMercaderia">
