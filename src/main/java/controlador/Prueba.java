@@ -16,7 +16,7 @@ public class Prueba {
     
     public static void main(String[] args){
         UsuarioDao user = new UsuarioDao();
-        System.err.println(user.UsuarioContraseña("pussy", "12345"));
+        System.err.println(user.UsuarioContraseña("pussy", "123456"));
         
     }
 }

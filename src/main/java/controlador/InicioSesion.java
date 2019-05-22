@@ -6,7 +6,6 @@
 package controlador;
 
 import dao.UsuarioDao;
-import dto.UsuarioDto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -34,18 +33,16 @@ public class InicioSesion extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            if(request.getParameter("btn_enviar")!=null){
-                UsuarioDto usuario = (UsuarioDto)request.getSession().getAttribute("sesion");
-                UsuarioDao usDao = new UsuarioDao();
-                String id = request.getParameter("txt_usuario");
-                String clave = request.getParameter("txt_contraseña");
-                if(usDao.UsuarioContraseña(id, clave)){
-                    response.sendRedirect("seleccionModulo.jsp");
+                if (request.getParameter("btn_enviar") != null) {
+                    UsuarioDao usDao = new UsuarioDao();
+                    String id = request.getParameter("txt_usuario");
+                    String clave = request.getParameter("txt_clave");
+                        if (usDao.UsuarioContraseña(id, clave)) {
+                        response.sendRedirect("seleccionModulo.jsp");
+                    } else {
+                        response.sendRedirect("errorLogin.jsp");
+                    }
                 }
-                else{
-                    response.sendRedirect("errorLogin.jsp");
-                }
-            }
         }
     }
 

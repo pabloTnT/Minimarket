@@ -8,12 +8,14 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet"  href="estilos/estiloPrincipal.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-    <body>
-        <h1>Prueba de datos erroneos!</h1>
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
+    <body background="imagenes/fondo.png">
+        <img style="margin-top: 50px;margin-left:600px"width="300px" height="300px" src="imagenes/ups.png" alt=""/>
+        <h1 align="center">Upss..!</h1>
+        <h3 align="center">Los datos de inicio de sesion no son correctos</h3>
+        <h5 align="center"><a href="index.jsp">Volver a intentar!</a></h5>
     </body>
 </html>
