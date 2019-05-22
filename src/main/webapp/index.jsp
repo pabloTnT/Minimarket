@@ -26,15 +26,10 @@
                 </div>
                 <div class="form-group"> 
                     <label>Contraseña:</label>
-                    <input type="password" placeholder="Ingrese contraseña" name="txt_contraseña"/>
+                    <input type="password" placeholder="Ingrese contraseña" name="txt_clave"/>
                 </div>
                 <div class="form-group">
-                    <input type="checkbox" data-role="checkbox" data-caption="Remember me" >
-                    <small class="text-muted">Recordar datos de acceso</small>
-                </div>
-                <div class="form-group">
-                    <button class="button success" name="btn_enviar">Enviar Datos</button>
-                    <input type="button" class="button" value="Cancelar">
+                    <button class="button success" name="btn_enviar">Iniciar Sesion</button>
                 </div>
             </div>
         </form>

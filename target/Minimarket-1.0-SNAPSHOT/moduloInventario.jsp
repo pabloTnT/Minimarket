@@ -13,12 +13,12 @@
         <link rel="stylesheet"  href="estilos/estiloPrincipal.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
-        <title>JSP Page</title>
+        <title>Bodega/Inventario</title>
 
     </head>
     <body background="imagenes/fondo.png">
         <ul data-role="tabs" data-tabs-type="pills" data-expand="true">
-            <li><a href="index.jsp"<i style="margin-left: 40px;margin-top: 10px;margin-right: 30px; cursor: pointer" class="fas fa-home"></i></a> </li>
+            <li><a href="seleccionModulo.jsp"<i style="margin-left: 40px;margin-top: 10px;margin-right: 30px; cursor: pointer" class="fas fa-home"></i></a> </li>
             <li><a href="#abastecimiento">Abastecimiento</a></li>
             <li><a href="#trasladoMercaderia">Traslado de Mercaderia</a></li>
         </ul> 

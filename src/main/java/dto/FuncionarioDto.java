@@ -90,8 +90,12 @@ public class FuncionarioDto {
         return cargo;
     }
 
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
+    public void setCargo(String cargo) throws Exception{
+        if (cargo.equals("Administrador") || cargo.equals("Encargado de Compras") || cargo.equals("Encargado de Bodega") || cargo.equals("Encargado de Local")) {
+            this.cargo = cargo;
+        } else {
+            throw new Exception("Cargo solo puede ser Administrador, Encargado de Bodega, Encargado de Local o Encargado de Compras");
+        }
     }
 
 }
