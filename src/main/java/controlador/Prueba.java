@@ -5,8 +5,11 @@
  */
 package controlador;
 
+import dao.ProductosDao;
 import dao.UsuarioDao;
+import dto.ProductosDto;
 import dto.UsuarioDto;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,8 +18,14 @@ import dto.UsuarioDto;
 public class Prueba {
     
     public static void main(String[] args){
-        UsuarioDao user = new UsuarioDao();
-        System.err.println(user.UsuarioContraseña("pussy", "123456"));
+        ProductosDao dao = new ProductosDao();
+        for(ProductosDto list : dao.SeleccionarTodo()){
+            System.out.println(list.getNombre());
+            System.out.println(list.getPrecio());
+            System.out.println(list.getSku());
+            System.out.println(list);
+        }
+        
         
     }
 }

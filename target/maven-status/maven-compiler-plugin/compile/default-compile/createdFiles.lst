@@ -1,3 +1,4 @@
+controlador\SeleccionModulo.class
 dto\Guia_DespachoDto.class
 dto\BodegasDto.class
 dao\BodegasDao.class
@@ -5,6 +6,7 @@ controlador\Prueba.class
 dao\Detalle_GuiaDao.class
 dao\ProveedorDao.class
 dto\FuncionarioDto.class
+controlador\InicioSesion.class
 dto\CategoriaDto.class
 dao\Producto_BodegaDao.class
 dto\UsuarioDto.class
