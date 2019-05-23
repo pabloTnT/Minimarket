@@ -12,6 +12,8 @@ package dto;
 public class BodegasDto {
 
     private int id;
+    private String nombre_bodega;
+    private String comuna;
     private String direccion;
     private String encargado;
 
@@ -22,8 +24,10 @@ public class BodegasDto {
         this.id = id;
     }
 
-    public BodegasDto(int id, String direccion, String encargado) {
+    public BodegasDto(int id, String nombre_bodega, String comuna, String direccion, String encargado) {
         this.id = id;
+        this.nombre_bodega = nombre_bodega;
+        this.comuna = comuna;
         this.direccion = direccion;
         this.encargado = encargado;
     }
@@ -51,5 +55,22 @@ public class BodegasDto {
     public void setEncargado(String encargado) {
         this.encargado = encargado;
     }
+
+    public String getNombre_bodega() {
+        return nombre_bodega;
+    }
+
+    public void setNombre_bodega(String nombre_bodega) {
+        this.nombre_bodega = nombre_bodega;
+    }
+
+    public String getComuna() {
+        return comuna;
+    }
+
+    public void setComuna(String comuna) {
+        this.comuna = comuna;
+    }
+    
 
 }
