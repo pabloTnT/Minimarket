@@ -8,6 +8,10 @@
         <servlet-name>SeleccionModulo</servlet-name>
         <servlet-class>controlador.SeleccionModulo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>creacionBodegas</servlet-name>
+        <servlet-class>controlador.creacionBodegas</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InicioSesion</servlet-name>
         <url-pattern>/Inicio_sesion.do</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>SeleccionModulo</servlet-name>
         <url-pattern>/Seleccion_modulo.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>creacionBodegas</servlet-name>
+        <url-pattern>/creacion_bodegas.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

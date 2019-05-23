@@ -19,10 +19,11 @@
     <body background="imagenes/fondo.png">
         <ul data-role="tabs" data-tabs-type="pills" data-expand="true">
             <li><a href="seleccionModulo.jsp"<i style="margin-left: 40px;margin-top: 10px;margin-right: 30px; cursor: pointer" class="fas fa-home"></i></a> </li>
-            <li><a href="#crearBodegas">Crear Bodegas</a></li>
+            <li class="active"><a href="#crearBodegas">Crear Bodegas</a></li>
             <li><a href="#crearProductos">Crear Productos</a></li>
             <li><a href="#crearPersonal">Crear Personal</a></li>
             <li><a href="#crearProveedor">Crear Proveedor</a></li>
+            
         </ul> 
         <div style="margin-top: 100px" id="crearBodegas">
             <div align="center">
@@ -46,7 +47,7 @@
                     <tr>
                         <td>Encargado: </td>
                         <td>
-                            <select style="margin-left: 20px" >
+                            <select name="opt_encargadoBodega" style="margin-left: 20px" >
                                 <option></option>
                                 <option>prueba1</option>
                                 <option>prueba2</option>
@@ -56,7 +57,7 @@
                         </td>
                     </tr>
                 </table>
-                <button align="center" style="margin-top: 70px; width: 200px" class="button success outline rounded">Guardar</button>
+                <button align="center" style="margin-top: 70px; width: 200px" class="button success outline rounded" name="btn_guardarBodega">Guardar</button>
             </div>
         </div>
         <div align="center">
@@ -85,7 +86,7 @@
                         <td><input class="inputModulos" type="text" name="txt_precioEstimado"></td>
                     </tr>
                 </table>
-                <button align="center" style="margin-top: 70px; width: 200px" class="button success outline rounded">Guardar</button>
+                <button align="center" style="margin-top: 70px; width: 200px" class="button success outline rounded" name="btn_guardarProducto">Guardar</button>
             </div>
         </div>
         <div align="center">
@@ -119,7 +120,7 @@
                         <td><input style="margin-left: 50px"type="checkbox" data-role="switch" checked data-material="true"></td>
                     </tr>
                 </table>
-                <button align="center" style="margin-top: 70px; width: 200px" class="button success outline rounded">Guardar</button>
+                <button align="center" style="margin-top: 70px; width: 200px" class="button success outline rounded" name="btn_guardarPersonal">Guardar</button>
             </div>
         </di</div><div align="center">
         <div style="margin-top: 100px" id="crearProveedor">
