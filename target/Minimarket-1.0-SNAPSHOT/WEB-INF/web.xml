@@ -8,6 +8,10 @@
         <servlet-name>SeleccionModulo</servlet-name>
         <servlet-class>controlador.SeleccionModulo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ReporteriaServlet</servlet-name>
+        <servlet-class>servlets.ReporteriaServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InicioSesion</servlet-name>
         <url-pattern>/Inicio_sesion.do</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>SeleccionModulo</servlet-name>
         <url-pattern>/Seleccion_modulo.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReporteriaServlet</servlet-name>
+        <url-pattern>/reporteria_servlet.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

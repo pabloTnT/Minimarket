@@ -23,65 +23,22 @@
             <li><a href="#trasladoMercaderia">Traslado de Mercaderia</a></li>
         </ul> 
         <div style="margin-top: 100px" id="abastecimiento">
-            <div align="center">
-                <table>
-                    <tr>
-                        <td>ID:</td>
-                        <td><input class="inputModulos" type="text" name="txt_idBodega"></td>
-                    </tr>
-                    <tr>
-                        <td>Nombre: </td>
-                        <td><input class="inputModulos" type="text" name="txt_nombreBodega"> </td>
-                    </tr>
-                    <tr>
-                        <td>Comuna: </td>
-                        <td><input class="inputModulos" style="margin-left: 20px" type="text" name="txt_comunaBodega"> </td>
-                    </tr>
-                    <tr>
-                        <td>Dirección: </td>
-                        <td><input class="inputModulos" style="margin-left: 20px" type="text" name="txt_direccionBodega"></td>
-                    </tr>
-                    <tr>
-                        <td>Encargado: </td>
-                        <td>
-                            <select style="margin-left: 20px" >
-                                <option></option>
-                                <option>prueba1</option>
-                                <option>prueba2</option>
-                                <option>prueba3</option>
-                                <option>prueba4</option>
-                            </select>
-                        </td>
-                    </tr>
-                </table>
+            <div class="botonesInventario">
+                <a href="crearOc.jsp"><button class="button primary large rounded" style="width: 400px">Generar Orden de Compra</button></a>
+            </div>
+            <div class="botonesInventario">
+                <button class="button primary large rounded" style="width: 400px">Modificar Ordenes de Compra</button>
+            </div>
+            <div class="botonesInventario">
+                <a href="crearOrdenIngreso.jsp"><button class="button primary large rounded" style="width: 400px">Generar Orden de Ingreso</button></a>
             </div>
         </div>
-        <div align="center">
-            <div style="margin-top: 100px" id="trasladoMercaderia">
-                <table>
-                    <tr>
-                        <td>ID: </td>
-                        <td><input class="inputModulos" type="text" name="txt_idProducto"></td>
-                    </tr>
-                    <tr>
-                        <td>Nombre: </td>
-                        <td><input class="inputModulos" type="text" name="txt_nombreProducto"></td>
-                    </tr>
-                    <tr>
-                        <td>Tipo Producto: </td>
-                        <td>
-                            <select name="opt_tipoProducto">
-                                <option></option>
-                                <option>Ejemplo 1</option>
-                                <option>Ejemplo 2</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Precio Estimado: </td>
-                        <td><input class="inputModulos" type="text" name="txt_precioEstimado"></td>
-                    </tr>
-                </table>
+        <div style="margin-top: 100px" id="trasladoMercaderia">
+            <div class="botonesInventario">
+                <button class="button primary large rounded" style="width: 400px">Generar Guia de Despacho</button>
+            </div>
+            <div class="botonesInventario">
+                <button class="button primary large rounded" style="width: 400px">Ingresar Productos a Local</button>
             </div>
         </div>
 
