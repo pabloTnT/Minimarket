@@ -18,11 +18,17 @@
         <ul data-role="tabs" data-tabs-type="pills" data-expand="true">
             <li><a href="seleccionModulo.jsp"<i style="margin-left: 40px;margin-top: 10px;margin-right: 30px; cursor: pointer" class="fas fa-home"></i></a> </li>
 <<<<<<< HEAD
+             <li class="active"><a href="#reporteStock">Reporte Stock</a></li>
+        </ul>  
+        <div style="margin-top: 100px" id="reporteStock">
+=======
+<<<<<<< HEAD
         </ul> 
 =======
         </ul>  
 >>>>>>> 4270ddf45c0a25c20763a2f750eba908c035dd24
         <div style="margin-top: 100px">
+>>>>>>> 74e178d56405fbfe8f2f0cba72f7629de1c26bc8
             <div align="center">
                 <table>
                     <tr>
@@ -47,7 +53,7 @@
             </div>
         </div>
         <div align="center">
-        <button style="margin-top: 30px" class="button success outline rounded">Generar Reporte</button>
+        <button style="margin-top: 70px; width: 200px" class="button success outline rounded">Generar Reporte</button>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
