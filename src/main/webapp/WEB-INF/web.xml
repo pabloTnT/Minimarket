@@ -9,8 +9,13 @@
         <servlet-class>controlador.SeleccionModulo</servlet-class>
     </servlet>
     <servlet>
+<<<<<<< HEAD
         <servlet-name>creacionBodegas</servlet-name>
         <servlet-class>controlador.creacionBodegas</servlet-class>
+=======
+        <servlet-name>ReporteriaServlet</servlet-name>
+        <servlet-class>servlets.ReporteriaServlet</servlet-class>
+>>>>>>> 74e178d56405fbfe8f2f0cba72f7629de1c26bc8
     </servlet>
     <servlet-mapping>
         <servlet-name>InicioSesion</servlet-name>
@@ -21,8 +26,13 @@
         <url-pattern>/Seleccion_modulo.do</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+<<<<<<< HEAD
         <servlet-name>creacionBodegas</servlet-name>
         <url-pattern>/creacion_bodegas.do</url-pattern>
+=======
+        <servlet-name>ReporteriaServlet</servlet-name>
+        <url-pattern>/reporteria_servlet.do</url-pattern>
+>>>>>>> 74e178d56405fbfe8f2f0cba72f7629de1c26bc8
     </servlet-mapping>
     <session-config>
         <session-timeout>
