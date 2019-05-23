@@ -122,7 +122,7 @@
                 </table>
                 <button align="center" style="margin-top: 70px; width: 200px" class="button success outline rounded" name="btn_guardarPersonal">Guardar</button>
             </div>
-        </di</div><div align="center">
+        </di></div><div align="center">
         <div style="margin-top: 100px" id="crearProveedor">
             <table>
                 <tr>

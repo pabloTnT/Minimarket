@@ -41,12 +41,11 @@
                         <td>Cantidad: </td>
                         <td><input class="inputModulos" type="text" name="txt_cantidad"></td>
                     </tr>
-                    <tr>
-                        <td></td>
-                        <td><input type="submit" style="margin-top: 20px" name="btn_ordenIngreso" value="Generar Orden de Ingreso"</td>
-                    </tr>
                 </table>
+                <button align="center" style="margin-top: 70px; width: 200px" class="button success outline rounded">Generar Orden de Ingreso</button>
             </div>
         </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
     </body>
 </html>
