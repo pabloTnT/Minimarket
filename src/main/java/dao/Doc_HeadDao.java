@@ -6,7 +6,7 @@
 package dao;
 
 import conexion.Conexion;
-import dto.Producto_BodegaDto;
+import dto.Doc_HeadDto;
 import interfaces.DaoInterface;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,30 +20,32 @@ import java.util.logging.Logger;
  *
  * @author PabloTnT
  */
-public class Producto_BodegaDao implements DaoInterface<Producto_BodegaDto> {
+public class Doc_HeadDao implements DaoInterface<Doc_HeadDto>{
 
-    private static final String SQL_INSERT = "INSERT INTO producto_bodega (id, cod_producto, cod_bodega, stock) VALUES (?, ?, ?, ?)";
-    private static final String SQL_DELETE = "DELETE FROM producto_bodega WHERE id=?";
-    private static final String SQL_UPDATE = "UPDATE producto_bodega SET cod_producto=?, cod_bodega=?, stock=? WHERE id=?";
-    private static final String SQL_SELECT = "SELECT * FROM producto_bodega WHERE id=?";
-    private static final String SQL_SELECTALL = "SELECT * FROM producto_bodega";
+    private static final String SQL_INSERT = "INSERT INTO bodegas (id_doc, tipo_doc, num_doc, bod_origen, bod_destino) VALUES (?, ?, ?, ?, ?)";
+    private static final String SQL_DELETE = "DELETE FROM bodegas WHERE id_doc=?";
+    private static final String SQL_UPDATE = "UPDATE bodegas SET tipo_doc=?, num_doc=?, bod_origen=?, bod_destino=? WHERE id_doc=?";
+    private static final String SQL_SELECT = "SELECT * FROM bodegas WHERE id_doc=?";
+    private static final String SQL_SELECTALL = "SELECT * FROM bodegas";
 
     private static final Conexion con = Conexion.estadoConexion();
 
     @Override
-    public boolean Create(Producto_BodegaDto dto) {
+    public boolean Create(Doc_HeadDto dto) {
         PreparedStatement ps;
         try {
             ps = con.getCnn().prepareStatement(SQL_INSERT);
-            ps.setInt(1, dto.getId());
-            ps.setInt(2, dto.getCod_producto());
-            ps.setInt(3, dto.getCod_bodega());
-            ps.setInt(4, dto.getStock());
+            ps.setInt(1, dto.getId_doc());
+            ps.setInt(2, dto.getTipo_doc());
+            ps.setInt(3,dto.getNum_doc());
+            ps.setInt(4, dto.getBod_origen());
+            ps.setInt(5, dto.getBod_destino());
+
             if (ps.executeUpdate() > 0) {
                 return true;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Producto_BodegaDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Doc_HeadDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             con.cerrarConexion();
         }
@@ -52,15 +54,16 @@ public class Producto_BodegaDao implements DaoInterface<Producto_BodegaDto> {
 
     @Override
     public boolean Delete(Object key) {
-        PreparedStatement ps;
+       PreparedStatement ps;
         try {
             ps = con.getCnn().prepareStatement(SQL_DELETE);
-            ps.setString(1, key.toString());
+            ps.setString(1, (key.toString()));
+
             if (ps.executeUpdate() > 0) {
                 return true;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Producto_BodegaDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Doc_HeadDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             con.cerrarConexion();
         }
@@ -68,19 +71,20 @@ public class Producto_BodegaDao implements DaoInterface<Producto_BodegaDto> {
     }
 
     @Override
-    public boolean Update(Producto_BodegaDto dto) {
+    public boolean Update(Doc_HeadDto dto) {
         PreparedStatement ps;
         try {
             ps = con.getCnn().prepareStatement(SQL_UPDATE);
-            ps.setInt(1, dto.getCod_producto());
-            ps.setInt(2, dto.getCod_bodega());
-            ps.setInt(3, dto.getStock());
-            ps.setInt(4, dto.getId());
+            ps.setInt(1, dto.getTipo_doc());
+            ps.setInt(2, dto.getNum_doc());
+            ps.setInt(3, dto.getBod_origen());
+            ps.setInt(4, dto.getBod_destino());
+            ps.setInt(5, dto.getId_doc());
             if (ps.executeUpdate() > 0) {
                 return true;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Producto_BodegaDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Doc_HeadDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             con.cerrarConexion();
         }
@@ -88,43 +92,47 @@ public class Producto_BodegaDao implements DaoInterface<Producto_BodegaDto> {
     }
 
     @Override
-    public Producto_BodegaDto Select(Object key) {
+    public Doc_HeadDto Select(Object key) {
         PreparedStatement ps;
         ResultSet res;
-        Producto_BodegaDto prod = null;
+        Doc_HeadDto docHead = null;
         try {
             ps = con.getCnn().prepareStatement(SQL_SELECT);
             ps.setString(1, key.toString());
+
             res = ps.executeQuery();
+
             while (res.next()) {
-                prod = new Producto_BodegaDto(res.getInt(1), res.getInt(2), res.getInt(3), res.getInt(4));
+                docHead = new Doc_HeadDto(res.getInt(1), res.getInt(2), res.getInt(3), res.getInt(4), res.getInt(5));
             }
-            return prod;
+            return docHead;
         } catch (SQLException ex) {
-            Logger.getLogger(Producto_BodegaDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Doc_HeadDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             con.cerrarConexion();
         }
-        return prod;
+        return docHead;
     }
 
     @Override
-    public List<Producto_BodegaDto> SeleccionarTodo() {
+    public List<Doc_HeadDto> SeleccionarTodo() {
         PreparedStatement ps;
         ResultSet res;
-        ArrayList<Producto_BodegaDto> prod = new ArrayList();
+        ArrayList<Doc_HeadDto> docHead = new ArrayList();
         try {
             ps = con.getCnn().prepareStatement(SQL_SELECTALL);
             res = ps.executeQuery();
+
             while (res.next()) {
-                prod.add(new Producto_BodegaDto(res.getInt(1), res.getInt(2), res.getInt(3), res.getInt(4)));
+                docHead.add(new Doc_HeadDto(res.getInt(1), res.getInt(2), res.getInt(3), res.getInt(4), res.getInt(5)));
             }
+            
         } catch (SQLException ex) {
-            Logger.getLogger(Producto_BodegaDao.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
+            Logger.getLogger(Doc_HeadDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
             con.cerrarConexion();
         }
-        return prod;
+        return docHead;
     }
-
+    
 }

@@ -22,10 +22,10 @@ import java.util.logging.Logger;
  */
 public class ProveedorDao implements DaoInterface<ProveedorDto>{
 
-    private static final String SQL_INSERT = "INSERT INTO ProveedorDto (rut, razon_social, direccion, nombre_contacto, telefono;) VALUES (?, ?, ?, ?, ?)";
+    private static final String SQL_INSERT = "INSERT INTO ProveedorDto (id, rut, razon_social, direccion, nombre_contacto, telefono;) VALUES (?, ?, ?, ?, ?, ?)";
     private static final String SQL_DELETE = "DELETE FROM ProveedorDto WHERE rut=?";
-    private static final String SQL_UPDATE = "UPDATE ProveedorDto SET razon_social=?, direccion=?, nombre_contacto=?, telefono=? WHERE rut=?";
-    private static final String SQL_SELECT = "SELECT * FROM ProveedorDto WHERE sku=?";
+    private static final String SQL_UPDATE = "UPDATE ProveedorDto SET rut=?, razon_social=?, direccion=?, nombre_contacto=?, telefono=? WHERE id=?";
+    private static final String SQL_SELECT = "SELECT * FROM ProveedorDto WHERE id=?";
     private static final String SQL_SELECTALL = "SELECT * FROM ProveedorDto";
 
     private static final Conexion con = Conexion.estadoConexion();
@@ -35,11 +35,12 @@ public class ProveedorDao implements DaoInterface<ProveedorDto>{
         PreparedStatement ps;
         try {
             ps=con.getCnn().prepareStatement(SQL_INSERT);
-            ps.setString(1, dto.getRut());
-            ps.setString(2, dto.getRazon_social());
-            ps.setString(3, dto.getDireccion());
-            ps.setString(4, dto.getNombre_contacto());
-            ps.setInt(5, dto.getTelefono());
+            ps.setInt(1, dto.getId());
+            ps.setString(2, dto.getRut());
+            ps.setString(3, dto.getRazon_social());
+            ps.setString(4, dto.getDireccion());
+            ps.setString(5, dto.getNombre_contacto());
+            ps.setInt(6, dto.getTelefono());
             if(ps.executeUpdate()>0){
                 return true;
             }
@@ -73,14 +74,15 @@ public class ProveedorDao implements DaoInterface<ProveedorDto>{
     PreparedStatement ps;
         try {
             ps=con.getCnn().prepareStatement(SQL_UPDATE);
-            ps.setString(1, dto.getRazon_social());
-            ps.setString(2, dto.getDireccion());
-            ps.setString(3, dto.getNombre_contacto());
-            ps.setInt(4, dto.getTelefono());
-            ps.setString(5, dto.getRut());
+            ps.setString(1, dto.getRut());
+            ps.setString(2, dto.getRazon_social());
+            ps.setString(3, dto.getDireccion());
+            ps.setString(4, dto.getNombre_contacto());
+            ps.setInt(5, dto.getTelefono());
+            ps.setString(6, dto.getRut());
             if(ps.executeUpdate()>0){
                 return true;
-            }
+            }  
         } catch (SQLException ex) {
             Logger.getLogger(ProveedorDao.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
@@ -98,7 +100,7 @@ public class ProveedorDao implements DaoInterface<ProveedorDto>{
             ps=con.getCnn().prepareStatement(SQL_SELECT);
             res=ps.executeQuery();
             while(res.next()){
-                provee = new ProveedorDto(res.getString(1), res.getString(2), res.getString(3), res.getString(4), res.getInt(5));
+                provee = new ProveedorDto(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getInt(6));
             }
             return provee;
         } catch (SQLException ex) {
@@ -115,10 +117,10 @@ public class ProveedorDao implements DaoInterface<ProveedorDto>{
             ResultSet res;
             ArrayList<ProveedorDto> provee = new ArrayList();
         try {
-            ps=con.getCnn().prepareStatement(SQL_SELECT);
+            ps=con.getCnn().prepareStatement(SQL_SELECTALL);
             res=ps.executeQuery();
             while(res.next()){
-                provee.add(new ProveedorDto(res.getString(1), res.getString(2), res.getString(3), res.getString(4), res.getInt(5)));
+                provee.add(new ProveedorDto(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getInt(6)));
                         }   
         } catch (SQLException ex) {
             Logger.getLogger(ProveedorDao.class.getName()).log(Level.SEVERE, null, ex);

@@ -10,29 +10,47 @@ package dto;
  * @author PabloTnT
  */
 public class Producto_BodegaDto {
-    private int sku;
+    private int id;
+    private int cod_producto;
+    private int cod_bodega;
     private int stock;
-    private int ubicacion_interna;
 
     public Producto_BodegaDto() {
     }
 
-    public Producto_BodegaDto(int sku) {
-        this.sku = sku;
+    public Producto_BodegaDto(int id) {
+        this.id = id;
     }
 
-    public Producto_BodegaDto(int sku, int stock, int ubicacion_interna) {
-        this.sku = sku;
+    public Producto_BodegaDto(int id, int cod_producto, int cod_bodega, int stock) {
+        this.id = id;
+        this.cod_producto = cod_producto;
+        this.cod_bodega = cod_bodega;
         this.stock = stock;
-        this.ubicacion_interna = ubicacion_interna;
     }
 
-    public int getSku() {
-        return sku;
+    public int getId() {
+        return id;
     }
 
-    public void setSku(int sku) {
-        this.sku = sku;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getCod_producto() {
+        return cod_producto;
+    }
+
+    public void setCod_producto(int cod_producto) {
+        this.cod_producto = cod_producto;
+    }
+
+    public int getCod_bodega() {
+        return cod_bodega;
+    }
+
+    public void setCod_bodega(int cod_bodega) {
+        this.cod_bodega = cod_bodega;
     }
 
     public int getStock() {
@@ -41,14 +59,6 @@ public class Producto_BodegaDto {
 
     public void setStock(int stock) {
         this.stock = stock;
-    }
-
-    public int getUbicacion_interna() {
-        return ubicacion_interna;
-    }
-
-    public void setUbicacion_interna(int ubicacion_interna) {
-        this.ubicacion_interna = ubicacion_interna;
     }
     
     
