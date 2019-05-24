@@ -1,0 +1,319 @@
+[33mcommit 3604aa781f562a5bfab830dab2a3ef6b2d2c7549[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: pabloTnT <p.sotofl96@gmail.com>
+Date:   Thu May 23 15:53:50 2019 -0400
+
+    commit
+
+[33mcommit f92de1265e54405ba8cf9d34430b2afd72e1408d[m
+Merge: f373521 a17a858
+Author: pabloTnT <50345510+pabloTnT@users.noreply.github.com>
+Date:   Wed May 22 20:59:17 2019 -0400
+
+    Merge pull request #12 from pabloTnT/develop
+    
+    Develop
+
+[33mcommit a17a858d881a4b7313b9bcf6d3705be3e2704a16[m[33m ([m[1;31morigin/develop[m[33m)[m
+Merge: 31502e8 3452fb0
+Author: pabloTnT <p.sotofl96@gmail.com>
+Date:   Wed May 22 20:58:31 2019 -0400
+
+    Merge branch 'develop' of https://github.com/pabloTnT/Minimarket into develop
+
+[33mcommit 31502e89f4361ff936325d43bcf64f51d9b5a242[m
+Merge: 3f09541 74e178d
+Author: pabloTnT <p.sotofl96@gmail.com>
+Date:   Wed May 22 20:58:14 2019 -0400
+
+    commit
+
+[33mcommit f3735213b4fbf18adceaf2085aedf841287c2a58[m
+Merge: c014bb9 3452fb0
+Author: pabloTnT <50345510+pabloTnT@users.noreply.github.com>
+Date:   Wed May 22 20:57:32 2019 -0400
+
+    Merge pull request #11 from pabloTnT/develop
+    
+    Commit de prueba
+
+[33mcommit 3452fb0e4d6099cb569dd7cbc487948f205e1db5[m
+Author: nat-chio <igp.mendez@gmail.com>
+Date:   Wed May 22 20:56:22 2019 -0400
+
+    Commit de prueba
+
+[33mcommit 3f09541ebcb416ab76e7066069f6932fa3cacc1e[m
+Author: pabloTnT <p.sotofl96@gmail.com>
+Date:   Wed May 22 20:51:02 2019 -0400
+
+    corrige vistas
+
+[33mcommit c014bb9dcf53578c27d9573b3e9bada058f70f3a[m
+Merge: 1692885 74e178d
+Author: pabloTnT <50345510+pabloTnT@users.noreply.github.com>
+Date:   Wed May 22 20:50:07 2019 -0400
+
+    Merge pull request #10 from pabloTnT/develop
+    
+    Develop
+
+[33mcommit 74e178d56405fbfe8f2f0cba72f7629de1c26bc8[m
+Merge: 4497950 4270ddf
+Author: nat-chio <igp.mendez@gmail.com>
+Date:   Wed May 22 19:32:44 2019 -0400
+
+    Se ingresan vistas jsp en modulo de inventario
+
+[33mcommit 449795055e8a96ec6c9a7cff868140c5db4c15a8[m
+Author: nat-chio <igp.mendez@gmail.com>
+Date:   Wed May 22 19:31:39 2019 -0400
+
+    Se ingresan vistas jsp en modulo de inventario
+
+[33mcommit 71f499a16283321314e121870d8df59a1a9d8474[m
+Author: nat-chio <igp.mendez@gmail.com>
+Date:   Wed May 22 19:30:16 2019 -0400
+
+    Se ingresan vistat JSP del inventario
+
+[33mcommit 4270ddf45c0a25c20763a2f750eba908c035dd24[m
+Author: pabloTnT <p.sotofl96@gmail.com>
+Date:   Wed May 22 15:25:31 2019 -0400
+
+    commit
+
+[33mcommit ca8bd0d3d19a1660eb5186abc578f139614d9e42[m
+Author: pabloTnT <p.sotofl96@gmail.com>
+Date:   Wed May 22 14:58:30 2019 -0400
+
+    elimina vistas duplicadas
+
+[33mcommit a61c39779bce0a8b42a876c5af03ff549ee7d8fa[m
+Merge: 8a16bcf aa65865
+Author: pabloTnT <p.sotofl96@gmail.com>
+Date:   Wed May 22 14:56:59 2019 -0400
+
+    Merge branch 'develop' of https://github.com/pabloTnT/Minimarket into develop
+
+[33mcommit 8a16bcf97cb6844d1d9622f379eff8abb8ba9644[m
+Author: pabloTnT <p.sotofl96@gmail.com>
+Date:   Wed May 22 14:56:36 2019 -0400
+
+    commit
+
+[33mcommit aa65865fd9ce7e3eee0b63fc25560fd51f79f7e4[m
+Author: mirkoaravena <50345567+mirkoaravena@users.noreply.github.com>
+Date:   Tue May 21 23:26:30 2019 -0400
+
+    Add files via upload
+
+[33mcommit c857ca1833d0c523b213a0ba3aa055a03f620f65[m
+Author: mirkoaravena <50345567+mirkoaravena@users.noreply.github.com>
+Date:   Tue May 21 23:09:32 2019 -0400
+
+    Delete CrearBodegas.jsp
+
+[33mcommit f1e124c6073211c35a9ff43892545aacdf5862c0[m
+Author: mirkoaravena <50345567+mirkoaravena@users.noreply.github.com>
+Date:   Tue May 21 21:26:47 2019 -0400
+
+    Add files via upload
+    
+     Faltan Link para redireccionar a los demas crear(productos, personal proveedores) y agregar css
+
+[33mcommit b41c78d7bcfd20d70c4e57c8ec44d0206a4dc66a[m
+Merge: 3e5ac12 dcb96c9
+Author: pabloTnT <p.sotofl96@gmail.com>
+Date:   Tue May 21 20:40:11 2019 -0400
+
+    Merge branch 'develop' of https://github.com/pabloTnT/Minimarket into develop
+
+[33mcommit 3e5ac1288eb06c305a30005d0c017a145a4fea42[m
+Author: pabloTnT <p.sotofl96@gmail.com>
+Date:   Tue May 21 20:39:39 2019 -0400
+
+    modulo inventario
+
+[33mcommit 1692885ef9aca863e90b80c9e320b7627db43867[m
+Merge: d24be4a dcb96c9
+Author: pabloTnT <50345510+pabloTnT@users.noreply.github.com>
+Date:   Tue May 21 20:38:41 2019 -0400
+
+    Merge pull request #8 from pabloTnT/develop
+    
+    Develop
+
+[33mcommit dcb96c9e89e45f3dd5176a50c05831a5e41f765a[m
+Merge: 1ad367e 8c76cba
+Author: nat-chio <igp.mendez@gmail.com>
+Date:   Tue May 21 20:00:28 2019 -0400
+
+    Agrega vista de reportería
+
+[33mcommit 1ad367e86bfaa7ef9b3de404bd7cf79fb52072e2[m
+Author: nat-chio <igp.mendez@gmail.com>
+Date:   Tue May 21 19:54:59 2019 -0400
+
+    Agrega vista reportería
+
+[33mcommit 8c76cbaa08231bdd0c57b56c7075acb92f22ba10[m
+Author: pabloTnT <p.sotofl96@gmail.com>
+Date:   Tue May 21 18:54:26 2019 -0400
+
+    corrige inicio sesion y agrega vistas
+
+[33mcommit d24be4ae24710e7df1874b792983b24486bd808f[m
+Merge: 11da7b9 cf7ce73
+Author: pabloTnT <50345510+pabloTnT@users.noreply.github.com>
+Date:   Tue May 21 15:45:26 2019 -0400
+
+    Merge pull request #7 from pabloTnT/develop
+    
+    Develop
+
+[33mcommit cf7ce73401d430aebee48f4a575989d94ced61dd[m
+Merge: 16595b2 e509d7b
+Author: pabloTnT <p.sotofl96@gmail.com>
+Date:   Tue May 21 15:43:33 2019 -0400
+
+    Merge branch 'develop' of https://github.com/pabloTnT/Minimarket into develop
+
+[33mcommit 16595b20ac09aa3230169e26414a4c06016cdc46[m
+Author: pabloTnT <p.sotofl96@gmail.com>
+Date:   Tue May 21 15:07:15 2019 -0400
+
+    agrega vistas
+
+[33mcommit e509d7be1b78d228d821390c28e65f15a42452b8[m
+Author: mirkoaravena <50345567+mirkoaravena@users.noreply.github.com>
+Date:   Sun May 19 14:55:24 2019 -0400
+
+    Update Proveedor.java
+
+[33mcommit 620944579a8accd385c0f8b834f72b946f314801[m
+Author: mirkoaravena <50345567+mirkoaravena@users.noreply.github.com>
+Date:   Sun May 19 14:36:17 2019 -0400
+
+    Update Funcionario.java
+
+[33mcommit 865e4b81330f0de29d18061b42768b875d3d8c7a[m
+Author: mirkoaravena <50345567+mirkoaravena@users.noreply.github.com>
+Date:   Sun May 19 14:31:58 2019 -0400
+
+    Update Producto_Bodega.java
+
+[33mcommit 590ed619e15ff48bd0aab1221971ded36866e902[m
+Author: mirkoaravena <50345567+mirkoaravena@users.noreply.github.com>
+Date:   Sun May 19 14:28:56 2019 -0400
+
+    Update Detalle_Guia.java
+
+[33mcommit 92e55096f3f268c34566d0c7415dcfe77cfd0f11[m
+Author: mirkoaravena <50345567+mirkoaravena@users.noreply.github.com>
+Date:   Sun May 19 14:26:26 2019 -0400
+
+    Update Guia_Despacho.java
+
+[33mcommit 30047d2293df9a5f30f898ce635bd98e6e59fdfb[m
+Author: nat-chio <igp.mendez@gmail.com>
+Date:   Sat May 18 16:11:52 2019 -0400
+
+    Se incorporan clases java
+
+[33mcommit b8a96ac6bc812cdaf417ffe5952e04129b17c474[m
+Author: nat-chio <igp.mendez@gmail.com>
+Date:   Sat May 18 16:10:14 2019 -0400
+
+    Se incorporan clases java
+
+[33mcommit 11da7b9dd0d8fc699fd81c4b0b3003804dc8f58a[m
+Merge: 84f97a2 7e6f7d8
+Author: pabloTnT <50345510+pabloTnT@users.noreply.github.com>
+Date:   Wed May 15 15:54:12 2019 -0400
+
+    Merge pull request #5 from pabloTnT/develop
+    
+    Agrega nuevos Daos
+
+[33mcommit 7e6f7d8c172d3d699f6b5d0695dbba3567d7374d[m
+Merge: a7732b1 3bd7869
+Author: pabloTnT <p.sotofl96@gmail.com>
+Date:   Wed May 15 15:50:35 2019 -0400
+
+    Merge branch 'develop' of https://github.com/pabloTnT/Minimarket into develop
+
+[33mcommit a7732b1b4c467959974f8fe49201f6f5ea57c94d[m
+Author: pabloTnT <p.sotofl96@gmail.com>
+Date:   Wed May 15 15:50:05 2019 -0400
+
+    nuevos daos
+
+[33mcommit 3bd786989faff8150b18548c4858afec3f8da44b[m
+Author: Nat_ch1 <50345505+nat-chio@users.noreply.github.com>
+Date:   Tue May 14 22:30:28 2019 -0400
+
+    Delete penecito.java
+
+[33mcommit a47f233a35b4e87fd2a56a48bf0be95e186ddea1[m
+Author: nat-chio <igp.mendez@gmail.com>
+Date:   Tue May 14 22:14:09 2019 -0400
+
+    nueva clase java
+
+[33mcommit 84f97a254de322d45323ebc81f039b36f4ff7cdb[m
+Merge: 9ce9086 190882b
+Author: pabloTnT <50345510+pabloTnT@users.noreply.github.com>
+Date:   Tue May 14 21:45:31 2019 -0400
+
+    Merge pull request #3 from pabloTnT/develop
+    
+    Develop
+
+[33mcommit 190882b1900ca928f61e2ff61db3f793c679a387[m
+Merge: 85bfc72 5434e38
+Author: pabloTnT <p.sotofl96@gmail.com>
+Date:   Tue May 14 17:17:08 2019 -0400
+
+    agrega daos
+
+[33mcommit 85bfc72ef12ad5484e4bab5e0e486ffb9c398010[m
+Author: pabloTnT <p.sotofl96@gmail.com>
+Date:   Tue May 14 17:10:26 2019 -0400
+
+    agrega daos
+
+[33mcommit 9ce90864f9f770a7f7f5202d47aeade9ae822481[m
+Merge: 68ca148 5434e38
+Author: pabloTnT <50345510+pabloTnT@users.noreply.github.com>
+Date:   Tue May 14 09:40:10 2019 -0400
+
+    Merge pull request #2 from pabloTnT/develop
+    
+    Agrega Daos
+
+[33mcommit 5434e389826333be0179d2e7cdfaebaa12c6948b[m
+Author: pablo <p.sotofl96@gmail.com>
+Date:   Mon May 13 15:03:11 2019 -0400
+
+    Agrega Daos
+
+[33mcommit 68ca148a06afe6f35c72febb27ebd68fe3cd0c8b[m
+Merge: 3700660 29de652
+Author: pabloTnT <50345510+pabloTnT@users.noreply.github.com>
+Date:   Sun May 12 17:29:24 2019 -0400
+
+    Merge pull request #1 from pabloTnT/develop
+    
+    agrega avances DAO
+
+[33mcommit 29de652ab64715bf3c38b6ab6426cb6c2a503957[m
+Author: pabloTnT <p.sotofl96@gmail.com>
+Date:   Sun May 12 17:26:26 2019 -0400
+
+    agrega avances DAO
+
+[33mcommit 37006602b8f1756f3bcc1a7532ea25e869dc2155[m
+Author: pabloTnT <p.sotofl96@gmail.com>
+Date:   Sun May 12 03:55:55 2019 -0400
+
+    Agrega Carga Inicial - Dao - Dto - Conexion a BD
