@@ -12,8 +12,19 @@
         <title>Start Page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet"  href="estilos/estiloPrincipal.css">
+
     </head>
     <body background="imagenes/fondo.png" >
+        <button name="btn_creacionUsuario" class="action-button" style="margin-left: 20px;margin-top: 20px"
+                data-role="popover"
+                data-popover-text="This is popover!">Crear Nuevo Usuario
+            <span class="icon"><span class="mif-plus"></span></span>
+        </button>
+        <button class="button"
+                data-role="popover"
+                data-popover-text="This is popover!">
+            Hover Me
+        </button>
         <form action="Inicio_sesion.do" method="post">
             <div style="margin-left: 500px; margin-right: 500px">
                 <div align="center" style="margin-top: 50px">
@@ -33,5 +44,8 @@
                 </div>
             </div>
         </form>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
     </body>
 </html>

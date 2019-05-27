@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 package controlador;
-
+import dao.Doc_DetailDao;
+import dao.Doc_HeadDao;
+import dto.Doc_HeadDto;
+import dto.ProductosDto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -16,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Goma
  */
-public class IngresarProductoLocal {
+public class IngresarProductoLocal extends HttpServlet{
     
      protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

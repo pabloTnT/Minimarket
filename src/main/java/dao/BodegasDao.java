@@ -22,10 +22,10 @@ import java.util.ArrayList;
  */
 public class BodegasDao implements DaoInterface<BodegasDto> {
 
-    private static final String SQL_INSERT = "INSERT INTO bodegas (id, direccion, encargado) VALUES (?, ?, ?)";
-    private static final String SQL_DELETE = "DELETE FROM bodegas WHERE id=?";
-    private static final String SQL_UPDATE = "UPDATE bodegas SET direccion=?, encargado=? WHERE id=?";
-    private static final String SQL_SELECT = "SELECT * FROM bodegas WHERE id=?";
+    private static final String SQL_INSERT = "INSERT INTO bodegas (id_bodega, nombre_bodega, comuna, direccion, encargado) VALUES (?, ?, ?, ?, ?)";
+    private static final String SQL_DELETE = "DELETE FROM bodegas WHERE id_bodega=?";
+    private static final String SQL_UPDATE = "UPDATE bodegas SET nombre_bodega=?, comuna=?, direccion=?, encargado=? WHERE id_bodega=?";
+    private static final String SQL_SELECT = "SELECT * FROM bodegas WHERE id_bodega=?";
     private static final String SQL_SELECTALL = "SELECT * FROM bodegas";
 
     private static final Conexion con = Conexion.estadoConexion();
@@ -35,9 +35,11 @@ public class BodegasDao implements DaoInterface<BodegasDto> {
         PreparedStatement ps;
         try {
             ps = con.getCnn().prepareStatement(SQL_INSERT);
-            ps.setInt(1, dto.getId());
-            ps.setString(2, dto.getDireccion());
-            ps.setString(3, dto.getEncargado());
+            ps.setInt(1, dto.getId_bodega());
+            ps.setString(2, dto.getNombre_bodega());
+            ps.setString(3, dto.getComuna());
+            ps.setString(4, dto.getDireccion());
+            ps.setString(5, dto.getEncargado());
 
             if (ps.executeUpdate() > 0) {
                 return true;
@@ -74,10 +76,12 @@ public class BodegasDao implements DaoInterface<BodegasDto> {
         try {
 
             ps = con.getCnn().prepareStatement(SQL_UPDATE);
-            ps.setString(1, dto.getDireccion());
-            ps.setString(1, dto.getEncargado());
-            ps.setInt(3, dto.getId());
-
+            ps.setString(1, dto.getNombre_bodega());
+            ps.setString(2, dto.getComuna());
+            ps.setString(3, dto.getDireccion());
+            ps.setString(4, dto.getEncargado());
+            ps.setInt(5, dto.getId_bodega());
+            
             if (ps.executeUpdate() > 0) {
                 return true;
             }
@@ -103,7 +107,7 @@ public class BodegasDao implements DaoInterface<BodegasDto> {
             res = ps.executeQuery();
 
             while (res.next()) {
-                bod = new BodegasDto(res.getInt(1), res.getString(2), res.getString(3));
+                bod = new BodegasDto(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5));
             }
             return bod;
         } catch (SQLException ex) {
@@ -125,11 +129,11 @@ public class BodegasDao implements DaoInterface<BodegasDto> {
             res = ps.executeQuery();
 
             while (res.next()) {
-                bodegas.add(new BodegasDto(res.getInt(1), res.getString(2), res.getString(3)));
+                bodegas.add(new BodegasDto(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(BodegasDao.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
+        } finally {
             con.cerrarConexion();
         }
         return bodegas;

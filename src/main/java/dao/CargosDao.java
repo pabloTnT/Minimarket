@@ -6,9 +6,8 @@
 package dao;
 
 import conexion.Conexion;
-import dto.Detalle_GuiaDto;
+import dto.CargosDto;
 import interfaces.DaoInterface;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,31 +20,29 @@ import java.util.logging.Logger;
  *
  * @author PabloTnT
  */
-public class Detalle_GuiaDao implements DaoInterface<Detalle_GuiaDto> {
+public class CargosDao implements DaoInterface<CargosDto>{
 
-    private static final String SQL_INSERT = "INSERT INTO detalle_guia (id, numero_guia, fecha, cantidad) VALUES (?, ?, ?, ?)";
-    private static final String SQL_DELETE = "DELETE FROM detalle_guia WHERE id=?";
-    private static final String SQL_UPDATE = "UPDATE detalle_guia SET numero_guia=?, fecha=?, cantidad=? WHERE id=?";
-    private static final String SQL_SELECT = "SELECT * FROM detalle_guia WHERE id=?";
-    private static final String SQL_SELECTALL = "SELECT * FROM detalle_guia";
+    private static final String SQL_INSERT = "INSERT INTO cargos (id_cargo, nombre_cargo) VALUES (?, ?)";
+    private static final String SQL_DELETE = "DELETE FROM cargos WHERE id_cargo=?";
+    private static final String SQL_UPDATE = "UPDATE cargos SET nombre_cargo=? WHERE id_cargo=?";
+    private static final String SQL_SELECT = "SELECT * FROM cargos WHERE id_cargo=?";
+    private static final String SQL_SELECTALL = "SELECT * FROM cargos";
 
     private static final Conexion con = Conexion.estadoConexion();
-
+    
     @Override
-    public boolean Create(Detalle_GuiaDto dto) {
+    public boolean Create(CargosDto dto) {
         PreparedStatement ps;
         try {
             ps = con.getCnn().prepareStatement(SQL_INSERT);
-            ps.setInt(1, dto.getId());
-            ps.setInt(2, dto.getNumero_guia());
-            ps.setDate(3, (Date) dto.getFecha());
-            ps.setInt(4, dto.getCantidad());
+            ps.setInt(1, dto.getId_cargo());
+            ps.setString(2, dto.getNombre_cargo());
 
             if (ps.executeUpdate() > 0) {
                 return true;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Detalle_GuiaDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CargosDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             con.cerrarConexion();
         }
@@ -57,13 +54,13 @@ public class Detalle_GuiaDao implements DaoInterface<Detalle_GuiaDto> {
         PreparedStatement ps;
         try {
             ps = con.getCnn().prepareStatement(SQL_DELETE);
-            ps.setString(1, key.toString());
+            ps.setString(1, (key.toString()));
 
             if (ps.executeUpdate() > 0) {
                 return true;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Detalle_GuiaDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CargosDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             con.cerrarConexion();
         }
@@ -71,20 +68,18 @@ public class Detalle_GuiaDao implements DaoInterface<Detalle_GuiaDto> {
     }
 
     @Override
-    public boolean Update(Detalle_GuiaDto dto) {
+    public boolean Update(CargosDto dto) {
         PreparedStatement ps;
         try {
             ps = con.getCnn().prepareStatement(SQL_UPDATE);
-            ps.setInt(1, dto.getNumero_guia());
-            ps.setDate(2, (Date) dto.getFecha());
-            ps.setInt(3, dto.getCantidad());
-            ps.setInt(4, dto.getId());
+            ps.setString(1, dto.getNombre_cargo());
+            ps.setInt(2, dto.getId_cargo());
 
             if (ps.executeUpdate() > 0) {
                 return true;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Detalle_GuiaDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CargosDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             con.cerrarConexion();
         }
@@ -92,10 +87,10 @@ public class Detalle_GuiaDao implements DaoInterface<Detalle_GuiaDto> {
     }
 
     @Override
-    public Detalle_GuiaDto Select(Object key) {
+    public CargosDto Select(Object key) {
         PreparedStatement ps;
         ResultSet res;
-        Detalle_GuiaDto det = null;
+        CargosDto car = null;
         try {
             ps = con.getCnn().prepareStatement(SQL_SELECT);
             ps.setString(1, key.toString());
@@ -103,35 +98,35 @@ public class Detalle_GuiaDao implements DaoInterface<Detalle_GuiaDto> {
             res = ps.executeQuery();
 
             while (res.next()) {
-                det = new Detalle_GuiaDto(res.getInt(1), res.getInt(2), res.getDate(3), res.getInt(4));
+                car = new CargosDto(res.getInt(1), res.getString(2));
             }
-            return det;
+            return car;
         } catch (SQLException ex) {
-            Logger.getLogger(Detalle_GuiaDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CargosDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             con.cerrarConexion();
         }
-        return det;
+        return car;
     }
 
     @Override
-    public List<Detalle_GuiaDto> SeleccionarTodo() {
+    public List<CargosDto> SeleccionarTodo() {
         PreparedStatement ps;
         ResultSet res;
-        ArrayList<Detalle_GuiaDto> detalle = new ArrayList();
+        ArrayList<CargosDto> cargos = new ArrayList();
         try {
             ps = con.getCnn().prepareStatement(SQL_SELECTALL);
             res = ps.executeQuery();
+
             while (res.next()) {
-                detalle.add(new Detalle_GuiaDto(res.getInt(1), res.getInt(2), res.getDate(3), res.getInt(4)));
+                cargos.add(new CargosDto(res.getInt(1), res.getString(2)));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Detalle_GuiaDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CargosDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             con.cerrarConexion();
         }
-        return detalle;
-
+        return cargos;
     }
-
+    
 }

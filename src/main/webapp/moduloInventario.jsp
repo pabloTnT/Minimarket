@@ -19,31 +19,28 @@
     <body background="imagenes/fondo.png">
         <ul data-role="tabs" data-tabs-type="pills" data-expand="true">
             <li><a href="seleccionModulo.jsp"<i style="margin-left: 40px;margin-top: 10px;margin-right: 30px; cursor: pointer" class="fas fa-home"></i></a> </li>
-            <li><a href="#abastecimiento">Abastecimiento</a></li>
+            <li class="active"><a href="#abastecimiento">Abastecimiento</a></li>
             <li><a href="#trasladoMercaderia">Traslado de Mercaderia</a></li>
         </ul> 
         <div style="margin-top: 100px" id="abastecimiento">
             <div class="botonesInventario">
-            <button class="button primary large rounded" style="width: 400px">Generar Orden de Compra</button>
+                <a href="crearOc.jsp"><button class="button primary large rounded" style="width: 400px">Generar Orden de Compra</button></a>
             </div>
             <div class="botonesInventario">
-            <button class="button primary large rounded" style="width: 400px">Generar Orden de Ingreso</button>
+                <button class="button primary large rounded" style="width: 400px">Modificar Ordenes de Compra</button>
             </div>
             <div class="botonesInventario">
-            <button class="button primary large rounded" style="width: 400px">Gestionar Ordenes de Compra</button>
-            </div>
-            <div class="botonesInventario">
-                <button class="button primary large rounded" style="width: 400px" >Recibir Mercaderia</button>
+                <a href="crearOrdenIngreso.jsp"><button class="button primary large rounded" style="width: 400px">Generar Orden de Ingreso</button></a>
             </div>
         </div>
-            <div style="margin-top: 100px" id="trasladoMercaderia">
-                <div class="botonesInventario">
+        <div style="margin-top: 100px" id="trasladoMercaderia">
+            <div class="botonesInventario">
                 <button class="button primary large rounded" style="width: 400px">Generar Guia de Despacho</button>
-                </div>
-                <div class="botonesInventario">
-                <button class="button primary large rounded" style="width: 400px">Ingresar Productos a Local</button>
-                </div>
             </div>
+            <div class="botonesInventario">
+                <button class="button primary large rounded" style="width: 400px">Ingresar Productos a Local</button>
+            </div>
+        </div>
 
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

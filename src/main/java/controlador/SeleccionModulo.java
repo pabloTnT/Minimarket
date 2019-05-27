@@ -37,7 +37,7 @@ public class SeleccionModulo extends HttpServlet {
             if(request.getParameter("btn_inventario")!=null){
                 response.sendRedirect("moduloInventario.jsp");
             }
-            if(request.getParameter("btn_repores")!=null){
+            if(request.getParameter("btn_reportes")!=null){
                 response.sendRedirect("moduloReportes.jsp");
             }
         }

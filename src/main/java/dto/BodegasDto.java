@@ -11,31 +11,37 @@ package dto;
  */
 public class BodegasDto {
 
-    private int id;
+    private int id_bodega;
+    private String nombre_bodega;
+    private String comuna;
     private String direccion;
     private String encargado;
 
     public BodegasDto() {
     }
 
-    public BodegasDto(int id) {
-        this.id = id;
+    public BodegasDto(int id_bodega) {
+        this.id_bodega = id_bodega;
     }
 
-    public BodegasDto(int id, String direccion, String encargado) {
-        this.id = id;
+    public BodegasDto(int id_bodega, String nombre_bodega, String comuna, String direccion, String encargado) {
+        this.id_bodega = id_bodega;
+        this.nombre_bodega = nombre_bodega;
+        this.comuna = comuna;
         this.direccion = direccion;
         this.encargado = encargado;
     }
 
-    public int getId() {
-        return id;
+    public int getId_bodega() {
+        return id_bodega;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId_bodega(int id_bodega) {
+        this.id_bodega = id_bodega;
     }
 
+    
+    
     public String getDireccion() {
         return direccion;
     }
@@ -50,6 +56,22 @@ public class BodegasDto {
 
     public void setEncargado(String encargado) {
         this.encargado = encargado;
+    }
+
+    public String getNombre_bodega() {
+        return nombre_bodega;
+    }
+
+    public void setNombre_bodega(String nombre_bodega) {
+        this.nombre_bodega = nombre_bodega;
+    }
+
+    public String getComuna() {
+        return comuna;
+    }
+
+    public void setComuna(String comuna) {
+        this.comuna = comuna;
     }
 
 }

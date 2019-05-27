@@ -14,12 +14,10 @@
         <title>JSP Page</title>
     </head>
     <body background="imagenes/fondo.png">
-        <form action="Seleccion_modulo.do" method="post">
-            <div style="margin-left: 250px;margin-top: 60px">
-                <div data-size="medium" data-role="tile"><img class="menu-principal" src="imagenes/admin.jpg" class="icon"><button style="margin-left: 200px;width: 600px" name="btn_administracion" class="button primary large">Administración de Sistema</button></div>
-                <div data-size="medium" data-role="tile"><img class="menu-principal" src="imagenes/inventario.jpg" class="icon"><button style="margin-left: 200px;width: 600px" name="btn_inventario" class="button primary large">Movimiento de Bodegas / Inventario</button></div>
-                <div data-size="medium" data-role="tile"><img class="menu-principal" src="imagenes/reportes.jpg" class="icon"><button style="margin-left: 200px;width: 600px" name="btn_reportes" class="button primary large">Reportes</button></div>
-            </div>
-        </form>
+        <div style="margin-left: 250px;margin-top: 60px">
+            <div data-size="medium" data-role="tile"><img class="menu-principal" src="imagenes/admin.jpg" class="icon"><a href="administracionSistema.jsp"><button style="margin-left: 200px;width: 600px" name="btn_administracion" class="button primary large">Administración de Sistema</button></a></div>
+            <div data-size="medium" data-role="tile"><img class="menu-principal" src="imagenes/inventario.jpg" class="icon"><a href="moduloInventario.jsp"><button style="margin-left: 200px;width: 600px" name="btn_inventario" class="button primary large">Movimiento de Bodegas / Inventario</button></a></div>
+            <div data-size="medium" data-role="tile"><img class="menu-principal" src="imagenes/reportes.jpg" class="icon"><a href="moduloReportes.jsp"><button style="margin-left: 200px;width: 600px" name="btn_reportes" class="button primary large">Reportes</button></a></div>
+        </div>
     </body>
 </html>

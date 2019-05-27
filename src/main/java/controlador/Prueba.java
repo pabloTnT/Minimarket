@@ -5,8 +5,11 @@
  */
 package controlador;
 
+import dao.ProductosDao;
 import dao.UsuarioDao;
+import dto.ProductosDto;
 import dto.UsuarioDto;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,8 +18,7 @@ import dto.UsuarioDto;
 public class Prueba {
     
     public static void main(String[] args){
-        UsuarioDao user = new UsuarioDao();
-        System.err.println(user.UsuarioContraseña("pussy", "123456"));
         
+    
     }
 }

@@ -22,10 +22,10 @@ import java.util.logging.Logger;
  */
 public class ProductosDao implements DaoInterface<ProductosDto>{
 
-    private static final String SQL_INSERT="INSERT INTO productos (sku, nombre, precio) VALUES (?, ?, ?)";
-    private static final String SQL_DELETE = "DELETE FROM productos WHERE sku=?";
-    private static final String SQL_UPDATE = "UPDATE productos SET nombre=?, precio=? WHERE sku=?";
-    private static final String SQL_SELECT = "SELECT * FROM productos WHERE sku=?";
+    private static final String SQL_INSERT="INSERT INTO productos (id_producto, nombre_producto, tipo_producto, precio_producto) VALUES (?, ?, ?, ?)";
+    private static final String SQL_DELETE = "DELETE FROM productos WHERE id_producto=?";
+    private static final String SQL_UPDATE = "UPDATE productos SET nombre_producto=?, tipo_producto=?, precio_producto=? WHERE id_producto=?";
+    private static final String SQL_SELECT = "SELECT * FROM productos WHERE id_producto=?";
     private static final String SQL_SELECTALL = "SELECT * FROM productos";
     private static final Conexion con = Conexion.estadoConexion();
     
@@ -34,9 +34,10 @@ public class ProductosDao implements DaoInterface<ProductosDto>{
         try {
             PreparedStatement ps;
             ps=con.getCnn().prepareStatement(SQL_INSERT);
-            ps.setInt(1, dto.getSku());
-            ps.setString(2, dto.getNombre());
-            ps.setInt(3, dto.getPrecio());
+            ps.setInt(1, dto.getId_producto());
+            ps.setString(2, dto.getNombre_producto());
+            ps.setInt(3, dto.getTipo_producto());
+            ps.setInt(4, dto.getPrecio_producto());
             if(ps.executeUpdate()>0){
                 return true;
             }
@@ -70,12 +71,13 @@ public class ProductosDao implements DaoInterface<ProductosDto>{
         PreparedStatement ps;
         try {
             ps=con.getCnn().prepareStatement(SQL_UPDATE);
-            ps.setString(1, dto.getNombre());
-            ps.setInt(2, dto.getPrecio());
-            ps.setInt(3, dto.getSku());
+            ps.setString(1, dto.getNombre_producto());
+            ps.setInt(2, dto.getTipo_producto());
+            ps.setInt(3, dto.getPrecio_producto());
+            ps.setInt(4, dto.getId_producto());
             if(ps.executeUpdate()>0){
                 return true;
-            }
+            } 
         } catch (SQLException ex) {
             Logger.getLogger(ProductosDao.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
@@ -94,7 +96,7 @@ public class ProductosDao implements DaoInterface<ProductosDto>{
             ps.setString(1, key.toString());
             res =ps.executeQuery();
             while(res.next()){
-                prod = new ProductosDto(res.getInt(1), res.getString(2), res.getInt(3));
+                prod = new ProductosDto(res.getInt(1), res.getString(2), res.getInt(3), res.getInt(4));
             }
             return prod;
         } catch (SQLException ex) {
@@ -114,7 +116,7 @@ public class ProductosDao implements DaoInterface<ProductosDto>{
             ps=con.getCnn().prepareStatement(SQL_SELECTALL);
             res=ps.executeQuery();
             while(res.next()){
-                prod.add(new ProductosDto(res.getInt(1), res.getString(2), res.getInt(3)));
+                prod.add(new ProductosDto(res.getInt(1), res.getString(2), res.getInt(3), res.getInt(4)));
             }   } catch (SQLException ex) {
             Logger.getLogger(ProductosDao.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
