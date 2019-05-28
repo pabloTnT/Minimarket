@@ -9,6 +9,7 @@ package dto;
  *
  * @author PabloTnT
  */
+/* Clase java, que contiene tributos, constructor, getters y setters, de los privilegios de los usuarios. */
 public class PrivilegiosDto {
     private int id;
     private String nombre_privilegio;
