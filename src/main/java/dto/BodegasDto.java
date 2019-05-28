@@ -6,10 +6,13 @@
 package dto;
 
 /**
- *
  * @author PabloTnT
  */
+/* Clase java, que contiene tributos, constructor, getters y setters, de las bodegas
+*/
+
 public class BodegasDto {
+
 
     private int id_bodega;
     private String nombre_bodega;
