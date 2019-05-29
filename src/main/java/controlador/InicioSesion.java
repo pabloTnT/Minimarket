@@ -34,16 +34,6 @@ public class InicioSesion extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-                if (request.getParameter("btn_enviar") != null) {
-                    UsuarioDao usDao = new UsuarioDao();
-                    String id = request.getParameter("txt_usuario");
-                    String clave = request.getParameter("txt_clave");
-                        if (usDao.UsuarioContraseña(id, clave)&& UsuarioDto.validarRut(request.getParameter("txt_usuario"))==true) {
-                        response.sendRedirect("seleccionModulo.jsp");
-                    } else {
-                        response.sendRedirect("errorLogin.jsp");
-                    }
-                }
         }
     }
 
