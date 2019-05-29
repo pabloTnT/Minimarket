@@ -11,45 +11,57 @@ package dto;
  */
 public class ProductosDto {
 
-    private int sku;
-    private String nombre;
-    private int precio;
+    private int id_producto;
+    private String nombre_producto;
+    private int tipo_producto;
+    private int precio_producto;
 
     public ProductosDto() {
     }
 
-    public ProductosDto(int sku) {
-        this.sku = sku;
+    public ProductosDto(int id_producto) {
+        this.id_producto = id_producto;
     }
 
-    public ProductosDto(int sku, String nombre, int precio) {
-        this.sku = sku;
-        this.nombre = nombre;
-        this.precio = precio;
+    public ProductosDto(int id_producto, String nombre_producto, int tipo_producto, int precio_producto) {
+        this.id_producto = id_producto;
+        this.nombre_producto = nombre_producto;
+        this.tipo_producto = tipo_producto;
+        this.precio_producto = precio_producto;
     }
 
-    public int getSku() {
-        return sku;
+    public int getId_producto() {
+        return id_producto;
     }
 
-    public void setSku(int sku) {
-        this.sku = sku;
+    public void setId_producto(int id_producto) {
+        this.id_producto = id_producto;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombre_producto() {
+        return nombre_producto;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre_producto(String nombre_producto) {
+        this.nombre_producto = nombre_producto;
     }
 
-    public int getPrecio() {
-        return precio;
+    public int getTipo_producto() {
+        return tipo_producto;
     }
 
-    public void setPrecio(int precio) {
-        this.precio = precio;
+    public void setTipo_producto(int tipo_producto) {
+        this.tipo_producto = tipo_producto;
     }
+
+    public int getPrecio_producto() {
+        return precio_producto;
+    }
+
+    public void setPrecio_producto(int precio_producto) {
+        this.precio_producto = precio_producto;
+    }
+    
+    
 
 }

@@ -18,14 +18,7 @@ import java.util.ArrayList;
 public class Prueba {
     
     public static void main(String[] args){
-        ProductosDao dao = new ProductosDao();
-        for(ProductosDto list : dao.SeleccionarTodo()){
-            System.out.println(list.getNombre());
-            System.out.println(list.getPrecio());
-            System.out.println(list.getSku());
-            System.out.println(list);
-        }
         
-        
+    
     }
 }

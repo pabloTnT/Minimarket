@@ -9,11 +9,16 @@ package dto;
  *
  * @author PabloTnT
  */
+/* Clase java, que contiene tributos, constructor, getters y setters, de los usuarios. */
+
 public class UsuarioDto {
 
     private String id;
     private String clave;
     private String privilegios;
+    private String nombre;
+    private String apellidos;
+    private int cargo;
 
     public UsuarioDto() {
     }
@@ -22,10 +27,37 @@ public class UsuarioDto {
         this.id = id;
     }
 
-    public UsuarioDto(String id, String clave, String privilegios) {
+    public UsuarioDto(String id, String clave, String privilegios, String nombre, String apellidos, int cargo) {
         this.id = id;
         this.clave = clave;
         this.privilegios = privilegios;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.cargo = cargo;
+    }
+
+    public int getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(int cargo) {
+        this.cargo = cargo;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
     public String getId() {
@@ -51,5 +83,7 @@ public class UsuarioDto {
     public void setPrivilegios(String privilegios) {
         this.privilegios = privilegios;
     }
+
+    
 
 }

@@ -9,8 +9,11 @@ package dto;
  *
  * @author PabloTnT
  */
+/* Clase java, que contiene tributos, constructor, getters y setters, de los proveedores. */
+
 public class ProveedorDto {
 
+    private int id;
     private String rut;
     private String razon_social;
     private String direccion;
@@ -20,16 +23,25 @@ public class ProveedorDto {
     public ProveedorDto() {
     }
 
-    public ProveedorDto(String rut) {
-        this.rut = rut;
+    public ProveedorDto(int id) {
+        this.id = id;
     }
 
-    public ProveedorDto(String rut, String razon_social, String direccion, String nombre_contacto, int telefono) {
+    public ProveedorDto(int id, String rut, String razon_social, String direccion, String nombre_contacto, int telefono) {
+        this.id = id;
         this.rut = rut;
         this.razon_social = razon_social;
         this.direccion = direccion;
         this.nombre_contacto = nombre_contacto;
         this.telefono = telefono;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getRut() {

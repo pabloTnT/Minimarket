@@ -20,7 +20,7 @@ public class Conexion {
     private Conexion(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            cnn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bd_minimarket?useTimeZone=true&serverTimezone=UTC","root","");
+            cnn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_bazar?useTimeZone=true&serverTimezone=UTC","root","");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

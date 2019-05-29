@@ -8,7 +8,6 @@ package controlador;
 import dao.BodegasDao;
 import dao.ProductosDao;
 import dto.BodegasDto;
-import dto.FuncionarioDto;
 import dto.ProductosDto;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,7 +15,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.websocket.SendResult;
 
 /**
  *
@@ -40,7 +38,7 @@ public class AdmSistemaController extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             if (request.getParameter("btn_guardarBodega") != null) {
                 BodegasDto dto = new BodegasDto();
-                dto.setId(Integer.valueOf(request.getParameter("txt_idBodega")));
+                dto.setId_bodega(Integer.valueOf(request.getParameter("txt_idBodega")));
                 dto.setNombre_bodega(request.getParameter("txt_nombreBodega"));
                 dto.setComuna(request.getParameter("txt_comunaBodega"));
                 dto.setDireccion(request.getParameter("txt_direccionBodega"));
@@ -51,14 +49,14 @@ public class AdmSistemaController extends HttpServlet {
             }
             if(request.getParameter("btn_guardarProducto")!=null){
                 ProductosDto dto = new ProductosDto();
-                dto.setNombre(request.getParameter("txt_nombreProducto"));
-                dto.setPrecio(Integer.valueOf(request.getParameter("txt_precioEstimado")));
-                dto.setSku(Integer.valueOf(request.getParameter("txt_idProducto")));
+                dto.setNombre_producto(request.getParameter("txt_nombreProducto"));
+                dto.setPrecio_producto(Integer.valueOf(request.getParameter("txt_precioEstimado")));
+                dto.setId_producto(Integer.valueOf(request.getParameter("txt_idProducto")));
+                /*ToDo 
+                agregar tipo producto
+                */
                 ProductosDao dao = new ProductosDao();
                 dao.Create(dto);
-            }
-            if(request.getParameter("btn_guardarPersonal")!=null){
-                FuncionarioDto dto = new FuncionarioDto();
             }
         }
     }

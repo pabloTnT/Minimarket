@@ -22,10 +22,10 @@ import java.util.logging.Logger;
  */
 public class Producto_BodegaDao implements DaoInterface<Producto_BodegaDto> {
 
-    private static final String SQL_INSERT = "INSERT INTO producto_bodega (sku, stock, ubicacion_interna) VALUES (?, ?, ?)";
-    private static final String SQL_DELETE = "DELETE FROM producto_bodega WHERE sku=?";
-    private static final String SQL_UPDATE = "UPDATE producto_bodega SET stock=?, ubicacion_interna=? WHERE sku=?";
-    private static final String SQL_SELECT = "SELECT * FROM producto_bodega WHERE sku=?";
+    private static final String SQL_INSERT = "INSERT INTO producto_bodega (id, cod_producto, cod_bodega, stock) VALUES (?, ?, ?, ?)";
+    private static final String SQL_DELETE = "DELETE FROM producto_bodega WHERE id=?";
+    private static final String SQL_UPDATE = "UPDATE producto_bodega SET cod_producto=?, cod_bodega=?, stock=? WHERE id=?";
+    private static final String SQL_SELECT = "SELECT * FROM producto_bodega WHERE id=?";
     private static final String SQL_SELECTALL = "SELECT * FROM producto_bodega";
 
     private static final Conexion con = Conexion.estadoConexion();
@@ -35,9 +35,10 @@ public class Producto_BodegaDao implements DaoInterface<Producto_BodegaDto> {
         PreparedStatement ps;
         try {
             ps = con.getCnn().prepareStatement(SQL_INSERT);
-            ps.setInt(1, dto.getSku());
-            ps.setInt(2, dto.getStock());
-            ps.setInt(3, dto.getUbicacion_interna());
+            ps.setInt(1, dto.getId());
+            ps.setInt(2, dto.getCod_producto());
+            ps.setInt(3, dto.getCod_bodega());
+            ps.setInt(4, dto.getStock());
             if (ps.executeUpdate() > 0) {
                 return true;
             }
@@ -71,9 +72,10 @@ public class Producto_BodegaDao implements DaoInterface<Producto_BodegaDto> {
         PreparedStatement ps;
         try {
             ps = con.getCnn().prepareStatement(SQL_UPDATE);
-            ps.setInt(1, dto.getSku());
-            ps.setInt(2, dto.getUbicacion_interna());
-            ps.setInt(3, dto.getSku());
+            ps.setInt(1, dto.getCod_producto());
+            ps.setInt(2, dto.getCod_bodega());
+            ps.setInt(3, dto.getStock());
+            ps.setInt(4, dto.getId());
             if (ps.executeUpdate() > 0) {
                 return true;
             }
@@ -95,7 +97,7 @@ public class Producto_BodegaDao implements DaoInterface<Producto_BodegaDto> {
             ps.setString(1, key.toString());
             res = ps.executeQuery();
             while (res.next()) {
-                prod = new Producto_BodegaDto(res.getInt(1), res.getInt(2), res.getInt(3));
+                prod = new Producto_BodegaDto(res.getInt(1), res.getInt(2), res.getInt(3), res.getInt(4));
             }
             return prod;
         } catch (SQLException ex) {
@@ -115,7 +117,7 @@ public class Producto_BodegaDao implements DaoInterface<Producto_BodegaDto> {
             ps = con.getCnn().prepareStatement(SQL_SELECTALL);
             res = ps.executeQuery();
             while (res.next()) {
-                prod.add(new Producto_BodegaDto(res.getInt(1), res.getInt(2), res.getInt(3)));
+                prod.add(new Producto_BodegaDto(res.getInt(1), res.getInt(2), res.getInt(3), res.getInt(4)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(Producto_BodegaDao.class.getName()).log(Level.SEVERE, null, ex);
