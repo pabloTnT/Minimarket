@@ -9,6 +9,8 @@ package dto;
  *
  * @author PabloTnT
  */
+/* Clase java, que contiene tributos, constructor, getters y setters, de las categorías, a las cuales pertenecen los proveedores y los productos. */
+
 public class CategoriaDto {
 
     private int id;

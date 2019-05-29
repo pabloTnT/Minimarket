@@ -9,6 +9,8 @@ package dto;
  *
  * @author PabloTnT
  */
+/* Clase java, que contiene tributos, constructor, getters y setters, de los cargos de los funcionarios. */
+
 public class CargosDto {
     private int id_cargo;
     private String nombre_cargo;
