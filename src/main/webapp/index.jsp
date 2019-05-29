@@ -15,16 +15,6 @@
 
     </head>
     <body background="imagenes/fondo.png" >
-        <button name="btn_creacionUsuario" class="action-button" style="margin-left: 20px;margin-top: 20px"
-                data-role="popover"
-                data-popover-text="This is popover!">Crear Nuevo Usuario
-            <span class="icon"><span class="mif-plus"></span></span>
-        </button>
-        <button class="button"
-                data-role="popover"
-                data-popover-text="This is popover!">
-            Hover Me
-        </button>
         <form action="Inicio_sesion.do" method="post">
             <div style="margin-left: 500px; margin-right: 500px">
                 <div align="center" style="margin-top: 50px">

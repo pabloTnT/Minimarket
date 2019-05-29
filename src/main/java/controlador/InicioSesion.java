@@ -6,6 +6,7 @@
 package controlador;
 
 import dao.UsuarioDao;
+import dto.UsuarioDto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -37,7 +38,7 @@ public class InicioSesion extends HttpServlet {
                     UsuarioDao usDao = new UsuarioDao();
                     String id = request.getParameter("txt_usuario");
                     String clave = request.getParameter("txt_clave");
-                        if (usDao.UsuarioContraseña(id, clave)) {
+                        if (usDao.UsuarioContraseña(id, clave)&& UsuarioDto.validarRut(request.getParameter("txt_usuario"))==true) {
                         response.sendRedirect("seleccionModulo.jsp");
                     } else {
                         response.sendRedirect("errorLogin.jsp");

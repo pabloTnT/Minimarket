@@ -9,21 +9,21 @@ package dto;
  *
  * @author PabloTnT
  */
-public class ProductosDto {
+public class ProductoDto {
 
     private int id_producto;
     private String nombre_producto;
     private int tipo_producto;
     private int precio_producto;
 
-    public ProductosDto() {
+    public ProductoDto() {
     }
 
-    public ProductosDto(int id_producto) {
+    public ProductoDto(int id_producto) {
         this.id_producto = id_producto;
     }
 
-    public ProductosDto(int id_producto, String nombre_producto, int tipo_producto, int precio_producto) {
+    public ProductoDto(int id_producto, String nombre_producto, int tipo_producto, int precio_producto) {
         this.id_producto = id_producto;
         this.nombre_producto = nombre_producto;
         this.tipo_producto = tipo_producto;

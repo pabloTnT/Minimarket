@@ -22,11 +22,11 @@ import java.util.logging.Logger;
  */
 public class Tipo_productoDao implements DaoInterface<Tipo_productoDto> {
 
-    private static final String SQL_INSERT = "INSERT INTO productos (id, nombre_tipo) VALUES (?, ?";
-    private static final String SQL_DELETE = "DELETE FROM productos WHERE id=?";
-    private static final String SQL_UPDATE = "UPDATE productos SET  nombre_tipo=? WHERE id=?";
-    private static final String SQL_SELECT = "SELECT * FROM productos WHERE id=?";
-    private static final String SQL_SELECTALL = "SELECT * FROM productos";
+    private static final String SQL_INSERT = "INSERT INTO tipo_producto (id, nombre_tipo) VALUES (?, ?";
+    private static final String SQL_DELETE = "DELETE FROM tipo_producto WHERE id=?";
+    private static final String SQL_UPDATE = "UPDATE tipo_producto SET  nombre_tipo=? WHERE id=?";
+    private static final String SQL_SELECT = "SELECT * FROM tipo_producto WHERE id=?";
+    private static final String SQL_SELECTALL = "SELECT * FROM tipo_producto";
     private static final Conexion con = Conexion.estadoConexion();
 
     @Override

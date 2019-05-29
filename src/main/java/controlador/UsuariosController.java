@@ -5,6 +5,8 @@
  */
 package controlador;
 
+import dao.UsuarioDao;
+import dto.UsuarioDto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -16,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author PabloTnT
  */
-public class SeleccionModulo extends HttpServlet {
+public class UsuariosController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,14 +33,19 @@ public class SeleccionModulo extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            if(request.getParameter("btn_administracion")!=null){
-                response.sendRedirect("admSistema.jsp");
-            }
-            if(request.getParameter("btn_inventario")!=null){
-                response.sendRedirect("moduloInventario.jsp");
-            }
-            if(request.getParameter("btn_reportes")!=null){
-                response.sendRedirect("moduloReportes.jsp");
+            if (request.getParameter("btn_guardarUsuario") != null) {
+                UsuarioDao dao = new UsuarioDao();
+                UsuarioDto dto = new UsuarioDto();
+                if(dto.validarRut(request.getParameter("txt_rutUsuario"))){
+                dto.setRutUsuario(request.getParameter("txt_rutUsuario"));
+                }
+                dto.setNombre(request.getParameter("txt_nombreUsuario"));
+                dto.setApellidos(request.getParameter("txt_apellidosUsuario"));
+                dto.setCargo(Integer.valueOf(request.getParameter("opt_cargoUsuario")));
+                dto.setPrivilegios(request.getParameter("opt_privilegiousuario"));
+                dto.setClave(request.getParameter("txt_contraUsuario"));
+                dao.Create(dto);
+                response.sendRedirect("creacionUsuario.jsp");
             }
         }
     }

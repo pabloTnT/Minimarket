@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import dao.BodegasDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -16,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author PabloTnT
  */
-public class SeleccionModulo extends HttpServlet {
+public class listarBodegasController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,14 +32,14 @@ public class SeleccionModulo extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            if(request.getParameter("btn_administracion")!=null){
-                response.sendRedirect("admSistema.jsp");
-            }
-            if(request.getParameter("btn_inventario")!=null){
-                response.sendRedirect("moduloInventario.jsp");
-            }
-            if(request.getParameter("btn_reportes")!=null){
-                response.sendRedirect("moduloReportes.jsp");
+                if(request.getParameter("btn_eliminarBodega")!=null){
+                    String id = request.getParameter("idBodega");
+                    BodegasDao dao = new BodegasDao();
+                    dao.Delete(id);
+                    response.sendRedirect("listarBodegas.jsp");
+                }
+            if(request.getParameter("btn_editarBodega")!=null){
+                response.sendRedirect("listarBodegas.jsp");
             }
         }
     }

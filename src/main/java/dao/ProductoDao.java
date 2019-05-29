@@ -6,7 +6,7 @@
 package dao;
 
 import conexion.Conexion;
-import dto.ProductosDto;
+import dto.ProductoDto;
 import interfaces.DaoInterface;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,17 +20,17 @@ import java.util.logging.Logger;
  *
  * @author PabloTnT
  */
-public class ProductosDao implements DaoInterface<ProductosDto>{
+public class ProductoDao implements DaoInterface<ProductoDto>{
 
-    private static final String SQL_INSERT="INSERT INTO productos (id_producto, nombre_producto, tipo_producto, precio_producto) VALUES (?, ?, ?, ?)";
-    private static final String SQL_DELETE = "DELETE FROM productos WHERE id_producto=?";
-    private static final String SQL_UPDATE = "UPDATE productos SET nombre_producto=?, tipo_producto=?, precio_producto=? WHERE id_producto=?";
-    private static final String SQL_SELECT = "SELECT * FROM productos WHERE id_producto=?";
-    private static final String SQL_SELECTALL = "SELECT * FROM productos";
+    private static final String SQL_INSERT="INSERT INTO producto (id_producto, nombre_producto, tipo_producto, precio_producto) VALUES (?, ?, ?, ?)";
+    private static final String SQL_DELETE = "DELETE FROM producto WHERE id_producto=?";
+    private static final String SQL_UPDATE = "UPDATE producto SET nombre_producto=?, tipo_producto=?, precio_producto=? WHERE id_producto=?";
+    private static final String SQL_SELECT = "SELECT * FROM producto WHERE id_producto=?";
+    private static final String SQL_SELECTALL = "SELECT * FROM producto";
     private static final Conexion con = Conexion.estadoConexion();
     
     @Override
-    public boolean Create(ProductosDto dto) {
+    public boolean Create(ProductoDto dto) {
         try {
             PreparedStatement ps;
             ps=con.getCnn().prepareStatement(SQL_INSERT);
@@ -42,7 +42,7 @@ public class ProductosDao implements DaoInterface<ProductosDto>{
                 return true;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ProductosDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductoDao.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
             con.cerrarConexion();
         }
@@ -59,7 +59,7 @@ public class ProductosDao implements DaoInterface<ProductosDto>{
                 return true;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ProductosDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductoDao.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
             con.cerrarConexion();
         }
@@ -67,7 +67,7 @@ public class ProductosDao implements DaoInterface<ProductosDto>{
     }
 
     @Override
-    public boolean Update(ProductosDto dto) {
+    public boolean Update(ProductoDto dto) {
         PreparedStatement ps;
         try {
             ps=con.getCnn().prepareStatement(SQL_UPDATE);
@@ -79,7 +79,7 @@ public class ProductosDao implements DaoInterface<ProductosDto>{
                 return true;
             } 
         } catch (SQLException ex) {
-            Logger.getLogger(ProductosDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductoDao.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
             con.cerrarConexion();
         }
@@ -87,20 +87,20 @@ public class ProductosDao implements DaoInterface<ProductosDto>{
     }
 
     @Override
-    public ProductosDto Select(Object key) {
+    public ProductoDto Select(Object key) {
         PreparedStatement ps;
             ResultSet res;
-            ProductosDto prod = null;
+            ProductoDto prod = null;
         try {
             ps=con.getCnn().prepareStatement(SQL_SELECT);
             ps.setString(1, key.toString());
             res =ps.executeQuery();
             while(res.next()){
-                prod = new ProductosDto(res.getInt(1), res.getString(2), res.getInt(3), res.getInt(4));
+                prod = new ProductoDto(res.getInt(1), res.getString(2), res.getInt(3), res.getInt(4));
             }
             return prod;
         } catch (SQLException ex) {
-            Logger.getLogger(ProductosDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductoDao.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
             con.cerrarConexion();
         }
@@ -108,17 +108,17 @@ public class ProductosDao implements DaoInterface<ProductosDto>{
     }
 
     @Override
-    public List<ProductosDto> SeleccionarTodo() {
+    public List<ProductoDto> SeleccionarTodo() {
         PreparedStatement ps;
             ResultSet res;
-            ArrayList<ProductosDto> prod = new ArrayList();
+            ArrayList<ProductoDto> prod = new ArrayList();
         try {
             ps=con.getCnn().prepareStatement(SQL_SELECTALL);
             res=ps.executeQuery();
             while(res.next()){
-                prod.add(new ProductosDto(res.getInt(1), res.getString(2), res.getInt(3), res.getInt(4)));
+                prod.add(new ProductoDto(res.getInt(1), res.getString(2), res.getInt(3), res.getInt(4)));
             }   } catch (SQLException ex) {
-            Logger.getLogger(ProductosDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductoDao.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
             con.cerrarConexion();
         }
