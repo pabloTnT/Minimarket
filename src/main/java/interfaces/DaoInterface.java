@@ -11,6 +11,10 @@ import java.util.List;
  *
  * @author PabloTnT
  */
+/** En esta interface, se declaran todos los métodos para acceder a la base de datos,
+los cuales van hacer implementados por todas las clases, dentro del package dao
+*/
+
 public interface DaoInterface <NombreDto>{
     public boolean Create(NombreDto dto);
     public boolean Delete(Object key);
