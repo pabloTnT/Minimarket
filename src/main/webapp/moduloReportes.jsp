@@ -4,6 +4,8 @@
     Author     : PabloTnT
 --%>
 
+<%@page import="dto.BodegasDto"%>
+<%@page import="dao.BodegasDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,18 +19,13 @@
     <body background="imagenes/fondo.png">
         <ul data-role="tabs" data-tabs-type="pills" data-expand="true">
             <li><a href="seleccionModulo.jsp"<i style="margin-left: 40px;margin-top: 10px;margin-right: 30px; cursor: pointer" class="fas fa-home"></i></a> </li>
-<<<<<<< HEAD
+
              <li class="active"><a href="#reporteStock">Reporte Stock</a></li>
         </ul>  
         <div style="margin-top: 100px" id="reporteStock">
-=======
-<<<<<<< HEAD
         </ul> 
-=======
         </ul>  
->>>>>>> 4270ddf45c0a25c20763a2f750eba908c035dd24
         <div style="margin-top: 100px">
->>>>>>> 74e178d56405fbfe8f2f0cba72f7629de1c26bc8
             <div align="center">
                 <table>
                     <tr>
@@ -36,8 +33,16 @@
                         <td>
                             <select>
                                 <option><---Seleccionar---></option>
-                                <option>Bodega Central</option>
-                                <option>Local</option> 
+                                <%
+                                BodegasDao bod = new BodegasDao();
+                                for(BodegasDto dto : bod.SeleccionarTodo()){
+                                    String nombreBod = dto.getNombre_bodega();
+                                    int codBod = dto.getId_bodega();
+                                %>
+                                <option value="<%=codBod%>"><%=nombreBod%></option>
+                                <%
+                                }
+                                %>
                             </select>
                         </td>
                         <td>Producto: </td>

@@ -32,7 +32,7 @@ public class SeleccionModulo extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             if(request.getParameter("btn_administracion")!=null){
-                response.sendRedirect("administracionSistema.jsp");
+                response.sendRedirect("admSistema.jsp");
             }
             if(request.getParameter("btn_inventario")!=null){
                 response.sendRedirect("moduloInventario.jsp");
@@ -40,6 +40,7 @@ public class SeleccionModulo extends HttpServlet {
             if(request.getParameter("btn_reportes")!=null){
                 response.sendRedirect("moduloReportes.jsp");
             }
+            
         }
     }
 

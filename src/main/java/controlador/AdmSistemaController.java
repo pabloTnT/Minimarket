@@ -6,9 +6,11 @@
 package controlador;
 
 import dao.BodegasDao;
-import dao.ProductosDao;
+import dao.ProductoDao;
+import dao.ProveedorDao;
 import dto.BodegasDto;
-import dto.ProductosDto;
+import dto.ProductoDto;
+import dto.ProveedorDto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -45,18 +47,29 @@ public class AdmSistemaController extends HttpServlet {
                 dto.setEncargado(request.getParameter("opt_encargadoBodega"));
                 BodegasDao dao = new BodegasDao();
                 dao.Create(dto);
-                response.sendRedirect("administracionSistema.jsp");
+                response.sendRedirect("admSistema.jsp");
             }
             if(request.getParameter("btn_guardarProducto")!=null){
-                ProductosDto dto = new ProductosDto();
+                ProductoDto dto = new ProductoDto();
                 dto.setNombre_producto(request.getParameter("txt_nombreProducto"));
                 dto.setPrecio_producto(Integer.valueOf(request.getParameter("txt_precioEstimado")));
                 dto.setId_producto(Integer.valueOf(request.getParameter("txt_idProducto")));
-                /*ToDo 
-                agregar tipo producto
-                */
-                ProductosDao dao = new ProductosDao();
+                dto.setTipo_producto(Integer.valueOf(request.getParameter("opt_tipoProducto")));
+                ProductoDao dao = new ProductoDao();
                 dao.Create(dto);
+                response.sendRedirect("admSistema.jsp");
+            }
+            if(request.getParameter("btn_guardarProveedor")!=null){
+                ProveedorDto dto = new ProveedorDto();
+                dto.setId(Integer.valueOf(request.getParameter("txt_codProveedor")));
+                dto.setRut(request.getParameter("txt_rutProveedor"));
+                dto.setRazon_social(request.getParameter("txt_razonSocial"));
+                dto.setDireccion(request.getParameter("txt_direccionProveedor"));
+                dto.setNombre_contacto(request.getParameter("txt_nombreContacto"));
+                dto.setTelefono(Integer.valueOf(request.getParameter("txt_telefonoContacto")));
+                ProveedorDao dao = new ProveedorDao();
+                dao.Create(dto);
+                response.sendRedirect("admSistema.jsp");
             }
         }
     }

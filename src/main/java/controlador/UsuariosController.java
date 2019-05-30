@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author PabloTnT
  */
-public class InicioSesion extends HttpServlet {
+public class UsuariosController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,20 +33,20 @@ public class InicioSesion extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            if(request.getParameter("btn_nuevoUsuario")!=null){
-                response.sendRedirect("creacionUsuario.jsp");
-            }
-           if (request.getParameter("btn_enviar") != null) {
-                    UsuarioDao usDao = new UsuarioDao();
-                    UsuarioDto usDto = new UsuarioDto();
-                    String id = request.getParameter("txt_usuario");
-                    String clave = request.getParameter("txt_clave");
-                        if (usDao.UsuarioContraseña(id, clave) && usDto.validarRut(id)) {
-                        response.sendRedirect("seleccionModulo.jsp");
-                    } else {
-                            response.sendRedirect("errorLogin.jsp");
-                    }
+            if (request.getParameter("btn_guardarUsuario") != null) {
+                UsuarioDao dao = new UsuarioDao();
+                UsuarioDto dto = new UsuarioDto();
+                if(dto.validarRut(request.getParameter("txt_rutUsuario"))){
+                dto.setRutUsuario(request.getParameter("txt_rutUsuario"));
                 }
+                dto.setNombre(request.getParameter("txt_nombreUsuario"));
+                dto.setApellidos(request.getParameter("txt_apellidosUsuario"));
+                dto.setCargo(Integer.valueOf(request.getParameter("opt_cargoUsuario")));
+                dto.setPrivilegios(request.getParameter("opt_privilegiousuario"));
+                dto.setClave(request.getParameter("txt_contraUsuario"));
+                dao.Create(dto);
+                response.sendRedirect("crearUsuario.jsp");
+            }
         }
     }
 

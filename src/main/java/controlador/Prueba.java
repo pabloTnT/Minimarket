@@ -5,20 +5,17 @@
  */
 package controlador;
 
-import dao.ProductosDao;
 import dao.UsuarioDao;
-import dto.ProductosDto;
-import dto.UsuarioDto;
-import java.util.ArrayList;
 
 /**
  *
  * @author PabloTnT
  */
 public class Prueba {
-    
-    public static void main(String[] args){
-        
-    
+
+    public static void main(String[] args) {
+
+        UsuarioDao userDao = new UsuarioDao();
+        System.out.println(userDao.UsuarioContraseña("psoto", "sk84life"));
     }
 }
