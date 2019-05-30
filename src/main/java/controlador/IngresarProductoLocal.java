@@ -4,10 +4,6 @@
  * and open the template in the editor.
  */
 package controlador;
-import dao.Doc_DetailDao;
-import dao.Doc_HeadDao;
-import dto.Doc_HeadDto;
-import dto.ProductosDto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
