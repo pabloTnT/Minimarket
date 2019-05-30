@@ -44,7 +44,14 @@ Author     : PabloTnT
                     <li><a href="listarProveedores.jsp">Listar Proveedores</a></li>
                 </ul>
             </li>
-        </ul>
+            <li>
+                <a href="#" class="dropdown-toggle">Usuarios</a>
+                <ul class="d-menu" data-role="dropdown">
+                    <li><a href="crearUsuario.jsp">Crear Usuario</a></li>
+                    <li><a href="listarUsuarios.jsp">Listar Usuarios</a></li>
+                </ul>
+            </li>
+        </ul> 
         <form action="AdmSistema_Controller.do" method="post">
         <div align="center">
                 <div style="margin-top: 100px" id="crearProveedor">

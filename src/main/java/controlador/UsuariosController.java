@@ -45,7 +45,7 @@ public class UsuariosController extends HttpServlet {
                 dto.setPrivilegios(request.getParameter("opt_privilegiousuario"));
                 dto.setClave(request.getParameter("txt_contraUsuario"));
                 dao.Create(dto);
-                response.sendRedirect("creacionUsuario.jsp");
+                response.sendRedirect("crearUsuario.jsp");
             }
         }
     }

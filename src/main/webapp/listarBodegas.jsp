@@ -42,7 +42,14 @@
                     <li><a href="listarProveedores.jsp">Listar Proveedores</a></li>
                 </ul>
             </li>
-        </ul>
+            <li>
+                <a href="#" class="dropdown-toggle">Usuarios</a>
+                <ul class="d-menu" data-role="dropdown">
+                    <li><a href="crearUsuario.jsp">Crear Usuario</a></li>
+                    <li><a href="listarUsuarios.jsp">Listar Usuarios</a></li>
+                </ul>
+            </li>
+        </ul> 
         <form action="listarbodegas_controller.do" method="post">
             <div style="margin-left: 200px; margin-right: 200px; margin-top: 100px">
                 <table class="table" data-role="table" data-show-search="false" data-rows="10" data-show-rows-steps="false">

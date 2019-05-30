@@ -4,10 +4,12 @@
     Author     : PabloTnT
 --%>
 
-<%@page import="dao.Tipo_productoDao"%>
-<%@page import="dto.Tipo_productoDto"%>
-<%@page import="dto.ProductoDto"%>
-<%@page import="dao.ProductoDao"%>
+<%@page import="dto.PrivilegiosDto"%>
+<%@page import="dao.PrivilegiosDao"%>
+<%@page import="dto.CargosDto"%>
+<%@page import="dao.CargosDao"%>
+<%@page import="dto.UsuarioDto"%>
+<%@page import="dao.UsuarioDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -55,33 +57,42 @@
                 <thead>
                     <tr>
                         <th data-sortable="true" data-sort-dir="asc">ID</th>
-                        <th data-sortable="true">Nombre Producto</th>
-                        <th data-sortable="true">Tipo Producto</th>
-                        <th data-sortable="true" data-format="money">Precio</th>
+                        <th data-sortable="true">Rut</th>
+                        <th data-sortable="true">Nombre</th>
+                        <th data-sortable="true">Apellidos</th>
+                        <th data-sortable="true">Cargo</th>
+                        <th data-sortable="true">Privilegios</th>
                         <th data-sortable="true">Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <%
-                        ProductoDao prod = new ProductoDao();
-                        for(ProductoDto dto : prod.SeleccionarTodo()){
-                            int idProd = dto.getId_producto();
-                            String nombre = dto.getNombre_producto();
-                            int precioProd = dto.getPrecio_producto();
-                            Tipo_productoDao tipoDao = new Tipo_productoDao();
-                            for(Tipo_productoDto tipoProd : tipoDao.SeleccionarTodo()){
-                                if(dto.getTipo_producto() == tipoProd.getId()){
-                                    String tipoProducto = tipoProd.getNombre_tipo();
-                             
+                        UsuarioDao usDao = new UsuarioDao();
+                        for (UsuarioDto usDto : usDao.SeleccionarTodo()) {
+                            int idUs = usDto.getId();
+                            String rutUs = usDto.getRutUsuario();
+                            String nombre = usDto.getNombre();
+                            String apellidos = usDto.getApellidos();
+                            CargosDao cargDao = new CargosDao();
+                            for (CargosDto cargDto : cargDao.SeleccionarTodo()) {
+                                String nombreCargo = cargDto.getNombre_cargo();
+                                int codigoCargo = cargDto.getId_cargo();
+                                PrivilegiosDao privDao = new PrivilegiosDao();
+                                for (PrivilegiosDto privDto : privDao.SeleccionarTodo()) {
+                                    String nombrePrivilegio = privDto.getNombre_privilegio();
+                                    int codigoPrivilegio = privDto.getId();
+
                     %>
                     <tr>
-                        <td><%=idProd%></td>
+                        <td><%=idUs%></td>
+                        <td><%=rutUs%></td>
                         <td><%=nombre%></td>
-                        <td><%=tipoProducto%></td>
-                        <td><%=precioProd%></td>
+                        <td><%=apellidos%></td>
+                        <td value="<%=codigoCargo%>"><%=nombreCargo%></td>
+                        <td value="<%=codigoPrivilegio%>"><%=nombrePrivilegio%></td>
                         <td>
-                            <button class="button success outline" name="btn_editarProducto"> <i class="fas fa-edit"></i></button>
-                            <button class="button success outline" name="btn_eliminarProducto"><i class="fas fa-trash-alt"></i></button>
+                            <button class="button success outline" name="btn_editarUsuario"> <i class="fas fa-edit"></i></button>
+                            <button class="button success outline" name="btn_eliminarUsuario"><i class="fas fa-trash-alt"></i></button>
                         </td>
                     </tr>
                     <%

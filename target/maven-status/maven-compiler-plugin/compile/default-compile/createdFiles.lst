@@ -4,6 +4,7 @@ dto\BodegasDto.class
 dao\BodegasDao.class
 dao\ProductoDao.class
 dao\Tipo_productoDao.class
+controlador\UsuariosController.class
 dto\CargosDto.class
 dto\Producto_BodegaDto.class
 conexion\Conexion.class
