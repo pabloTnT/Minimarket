@@ -6,6 +6,7 @@
 package controlador;
 
 import dao.BodegasDao;
+import dto.BodegasDto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author PabloTnT
  */
-public class listarBodegasController extends HttpServlet {
+public class BodegasController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,13 +33,30 @@ public class listarBodegasController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-                if(request.getParameter("btn_eliminarBodega")!=null){
-                    String id = request.getParameter("idBodega");
-                    BodegasDao dao = new BodegasDao();
-                    dao.Delete(id);
-                    response.sendRedirect("listarBodegas.jsp");
+            if (request.getParameter("btn_guardarBodega") != null) {
+                BodegasDto dto = new BodegasDto();
+                dto.setId_bodega(Integer.valueOf(request.getParameter("txt_idBodega")));
+                dto.setNombre_bodega(request.getParameter("txt_nombreBodega"));
+                dto.setComuna(request.getParameter("txt_comunaBodega"));
+                dto.setDireccion(request.getParameter("txt_direccionBodega"));
+                dto.setEncargado(request.getParameter("opt_encargadoBodega"));
+                BodegasDao dao = new BodegasDao();
+                dao.Create(dto);
+                String mensaje = null;
+                if(dao.Create(dto)){
+                    mensaje = "Bodega creada";
+                }else{
+                    mensaje = "Hubo un problema al crear la bodega";
                 }
-            if(request.getParameter("btn_editarBodega")!=null){
+                response.sendRedirect("crearBodega.jsp?mensaje="+mensaje);
+            }
+            if (request.getParameter("btn_eliminarBodega") != null) {
+                BodegasDao dao = new BodegasDao();
+                String codBodega = request.getParameter("btn_eliminarBodega");
+                dao.Delete(codBodega);
+                response.sendRedirect("listarBodegas.jsp");
+            }
+            if (request.getParameter("btn_editarBodega") != null) {
                 response.sendRedirect("listarBodegas.jsp");
             }
         }

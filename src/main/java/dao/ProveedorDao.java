@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 public class ProveedorDao implements DaoInterface<ProveedorDto>{
 
     private static final String SQL_INSERT = "INSERT INTO proveedor (id, rut, razon_social, direccion, nombre_contacto, telefono) VALUES (?, ?, ?, ?, ?, ?)";
-    private static final String SQL_DELETE = "DELETE FROM proveedor WHERE rut=?";
+    private static final String SQL_DELETE = "DELETE FROM proveedor WHERE id=?";
     private static final String SQL_UPDATE = "UPDATE proveedor SET rut=?, razon_social=?, direccion=?, nombre_contacto=?, telefono=? WHERE id=?";
     private static final String SQL_SELECT = "SELECT * FROM proveedor WHERE id=?";
     private static final String SQL_SELECTALL = "SELECT * FROM proveedor";

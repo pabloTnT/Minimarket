@@ -16,9 +16,6 @@
     </head>
     <body background="imagenes/fondo.png" >
         <form action="Inicio_sesion.do" method="post">
-            <div style="margin-right: 25px;margin-top: 25px">
-                <button data-role="hint" data-hint-text="Crear Nuevo Usuario" name="btn_nuevoUsuario" data-hint-position="left" data-cls-hint="bg-cyan fg-white" class="button success outline large rounded place-right" ><i class="fas fa-user-plus" style="width: 80px; height: 80px"></i></button>
-            </div>
             <div style="margin-left: 500px; margin-right: 500px">
                 <div align="center" style="margin-top: 50px">
                     <img src="imagenes/icono-iniciar-sesion-png.png" width="250px" height="250px"/>

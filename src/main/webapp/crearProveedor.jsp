@@ -52,7 +52,7 @@ Author     : PabloTnT
                 </ul>
             </li>
         </ul> 
-        <form action="AdmSistema_Controller.do" method="post">
+        <form action="Proveedores_controller.do" method="post">
         <div align="center">
                 <div style="margin-top: 100px" id="crearProveedor">
                     <table>

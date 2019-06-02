@@ -5,8 +5,8 @@
  */
 package controlador;
 
-import dao.UsuarioDao;
-import dto.UsuarioDto;
+import dao.ProductoDao;
+import dto.ProductoDto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author PabloTnT
  */
-public class UsuariosController extends HttpServlet {
+public class ProductosController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,28 +33,22 @@ public class UsuariosController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            UsuarioDao dao = new UsuarioDao();
-            UsuarioDto dto = new UsuarioDto();
-            if (request.getParameter("btn_guardarUsuario") != null) {
-                if (dto.validarRut(request.getParameter("txt_rutUsuario"))) {
-                    dto.setRutUsuario(request.getParameter("txt_rutUsuario"));
-                    dto.setNombre(request.getParameter("txt_nombreUsuario"));
-                    dto.setApellidos(request.getParameter("txt_apellidosUsuario"));
-                    dto.setCargo(Integer.valueOf(request.getParameter("opt_cargoUsuario")));
-                    dto.setPrivilegios(request.getParameter("opt_privilegiousuario"));
-                    dto.setClave(request.getParameter("txt_contraUsuario"));
-                    dao.Create(dto);
-                    response.sendRedirect("crearUsuario.jsp");
-                }
-                
+            ProductoDto dto = new ProductoDto();
+            ProductoDao dao = new ProductoDao();
+            if(request.getParameter("btn_guardarProducto")!=null){
+                dto.setNombre_producto(request.getParameter("txt_nombreProducto"));
+                dto.setPrecio_producto(Integer.valueOf(request.getParameter("txt_precioEstimado")));
+                dto.setId_producto(Integer.valueOf(request.getParameter("txt_idProducto")));
+                dto.setTipo_producto(Integer.valueOf(request.getParameter("opt_tipoProducto")));
+                dao.Create(dto);
+                response.sendRedirect("crearProducto.jsp");
             }
-            if (request.getParameter("btn_eliminarUsuario") != null) {
-                String codUsuario = request.getParameter("btn_eliminarUsuario");
-                dao.Delete(codUsuario);
-                response.sendRedirect("listarUsuarios.jsp");
+            if(request.getParameter("btn_eliminarProducto")!=null){
+                String codProducto = request.getParameter("btn_eliminarProducto");
+                dao.Delete(codProducto);
+                response.sendRedirect("listarProductos.jsp");
             }
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

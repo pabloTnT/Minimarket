@@ -4,6 +4,8 @@ Created on : 26-05-2019, 17:29:55
 Author     : PabloTnT
 --%>
 
+<%@page import="dao.ProductoDao"%>
+<%@page import="dto.ProductoDto"%>
 <%@page import="dto.Tipo_productoDto"%>
 <%@page import="dao.Tipo_productoDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -17,48 +19,24 @@ Author     : PabloTnT
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     </head>
     <body background="imagenes/fondo.png">
-        <ul class="h-menu mega">
-            <li><a href="seleccionModulo.jsp"><i style="margin-right: 15px" class="fas fa-home"></i>Inicio</a></li>
-            <li>
-                <a href="#" class="dropdown-toggle">Bodegas</a>
-                <ul class="d-menu" data-role="dropdown">
-                    <li><a href="crearBodega.jsp">Crear Bodega</a></li>
-                    <li><a href="listarBodegas.jsp">Listar Bodegas</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#" class="dropdown-toggle">Productos</a>
-                <ul class="d-menu" data-role="dropdown">
-                    <li><a href="crearProducto.jsp">Crear Producto</a></li>
-                    <li><a href="listarProductos.jsp">Listar Productos</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#" class="dropdown-toggle">Proveedores</a>
-                <ul class="d-menu" data-role="dropdown">
-                    <li><a href="crearProveedor.jsp">Crear Proveedor</a></li>
-                    <li><a href="listarProveedores.jsp">Listar Proveedores</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#" class="dropdown-toggle">Usuarios</a>
-                <ul class="d-menu" data-role="dropdown">
-                    <li><a href="crearUsuario.jsp">Crear Usuario</a></li>
-                    <li><a href="listarUsuarios.jsp">Listar Usuarios</a></li>
-                </ul>
-            </li>
-        </ul> 
         <form action="Productos_controller.do" method="post">
             <div align="center">
                 <div style="margin-top: 100px" id="crearProductos">
+                    <%
+                        ProductoDao prodDao = new ProductoDao();
+                    ProductoDto prod = prodDao.Select(request.getParameter("idProd"));
+                    int id = prod.getId_producto();
+                    String nombre =  prod.getNombre_producto();
+                    int precio = prod.getPrecio_producto();
+                    %>
                     <table>
                         <tr>
                             <td>ID: </td>
-                            <td><input class="inputModulos" type="text" name="txt_idProducto"></td>
+                            <td><input class="inputModulos" type="text" name="txt_idProducto" value="<%=id%>"></td>
                         </tr>
                         <tr>
                             <td>Nombre: </td>
-                            <td><input class="inputModulos" type="text" name="txt_nombreProducto"></td>
+                            <td><input class="inputModulos" type="text" name="txt_nombreProducto" value="<%=nombre%>"></td>
                         </tr>
                         <tr>
                             <td>Tipo Producto: </td>
@@ -81,7 +59,7 @@ Author     : PabloTnT
                         </tr>
                         <tr>
                             <td>Precio Estimado: </td>
-                            <td><input class="inputModulos" type="text" name="txt_precioEstimado"></td>
+                            <td><input class="inputModulos" type="text" name="txt_precioEstimado" value="<%=precio%>"></td>
                         </tr>
                     </table>
                     <button align="center" style="margin-top: 70px; width: 200px" class="button success outline rounded" name="btn_guardarProducto">Guardar</button>

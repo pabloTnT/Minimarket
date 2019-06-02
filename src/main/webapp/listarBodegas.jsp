@@ -50,7 +50,7 @@
                 </ul>
             </li>
         </ul> 
-        <form action="listarbodegas_controller.do" method="post">
+        <form action="Bodegas_controller.do" method="post">
             <div style="margin-left: 200px; margin-right: 200px; margin-top: 100px">
                 <table class="table" data-role="table" data-show-search="false" data-rows="10" data-show-rows-steps="false">
                     <thead>
@@ -75,25 +75,35 @@
                                 for (UsuarioDto usDto : us.SeleccionarTodo()) {
                                     if (Integer.valueOf(bod.getEncargado()) == usDto.getId()) {
                                         String nombreEncargado = usDto.getNombre() + " " + usDto.getApellidos();
+                                        int idEncargado = usDto.getId();
 
                         %>
                         <tr>
-                            <td name="idBodega"><%=idBodega%></td>
+                            <td name="td_codBodega"> <%=idBodega%></td>
                             <td><%=nombreBodega%></td>
                             <td><%=comunaBodega%></td>
                             <td><%=direccionBodega%></td>
                             <td><%=nombreEncargado%></td>
                             <td>
-                                <button class="button success outline" name="btn_editarBodega"> <i class="fas fa-edit"></i></button>
-                                <button class="button success outline" name="btn_eliminarBodega"><i class="fas fa-trash-alt"></i></button>
+                                <button class="button success outline" data-role="hint"
+                                        data-hint-text="Editar Bodega" onClick="window.open('editarBodega.jsp?idBodega=' +<%=idBodega%> +
+                                                        'idEncargado=' +<%=idEncargado%>, '_blank', 'width=1000,height=600'); return false" 
+                                        name="btn_editarBodega"> 
+                                    <i class="fas fa-edit"></i></button>
+                                <button class="button success outline" data-role="hint"
+                                        data-hint-text="Eliminar Bodega" value="<%=idBodega%>" name="btn_eliminarBodega">
+                                    <i class="fas fa-trash-alt">
+
+                                    </i></button>
                             </td>
                         </tr>
-                        <%
-                                    }
+
+                    </tbody>
+                    <%
                                 }
                             }
-                        %>
-                    </tbody>
+                        }
+                    %>
                 </table>
             </div>
         </form>

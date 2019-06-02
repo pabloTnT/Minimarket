@@ -4,6 +4,8 @@ Created on : 26-05-2019, 17:29:55
 Author     : PabloTnT
 --%>
 
+<%@page import="dao.BodegasDao"%>
+<%@page import="dto.BodegasDto"%>
 <%@page import="dto.UsuarioDto"%>
 <%@page import="dao.UsuarioDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -17,72 +19,53 @@ Author     : PabloTnT
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     </head>
     <body background="imagenes/fondo.png">
-        <ul class="h-menu mega">
-            <li><a href="seleccionModulo.jsp"><i style="margin-right: 15px" class="fas fa-home"></i>Inicio</a></li>
-            <li>
-                <a href="#" class="dropdown-toggle">Bodegas</a>
-                <ul class="d-menu" data-role="dropdown">
-                    <li><a href="crearBodega.jsp">Crear Bodega</a></li>
-                    <li><a href="listarBodegas.jsp">Listar Bodegas</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#" class="dropdown-toggle">Productos</a>
-                <ul class="d-menu" data-role="dropdown">
-                    <li><a href="crearProducto.jsp">Crear Producto</a></li>
-                    <li><a href="listarProductos.jsp">Listar Productos</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#" class="dropdown-toggle">Proveedores</a>
-                <ul class="d-menu" data-role="dropdown">
-                    <li><a href="crearProveedor.jsp">Crear Proveedor</a></li>
-                    <li><a href="listarProveedores.jsp">Listar Proveedores</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#" class="dropdown-toggle">Usuarios</a>
-                <ul class="d-menu" data-role="dropdown">
-                    <li><a href="crearUsuario.jsp">Crear Usuario</a></li>
-                    <li><a href="listarUsuarios.jsp">Listar Usuarios</a></li>
-                </ul>
-            </li>
-        </ul> 
         <form action="Bodegas_controller.do" method="post">
+            <%
+                BodegasDao bodDao = new BodegasDao();
+                BodegasDto bodDto = bodDao.Select(request.getParameter("idBodega"));
+                int codBodega = bodDto.getId_bodega();
+                String nombre_bodega = bodDto.getNombre_bodega();
+                String comuna = bodDto.getComuna();
+                String direccion = bodDto.getDireccion();
+                String encargado = bodDto.getEncargado();
+            %>
             <div style="margin-top: 100px" id="crearBodegas">   
                 <div align="center">
                     <table>
                         <tr>
                             <td>ID:</td>
-                            <td><input class="inputAdministracion" type="text" name="txt_idBodega"></td>
+                            <td><input class="inputAdministracion" type="text" name="txt_idBodega" value="<%=codBodega%>"></td>
                         </tr>
                         <tr>
                             <td>Nombre: </td>
-                            <td><input class="inputAdministracion" type="text" name="txt_nombreBodega"> </td>
+                            <td><input class="inputAdministracion" type="text" name="txt_nombreBodega" value="<%=nombre_bodega%>"></td>
                         </tr>
                         <tr>
                             <td>Comuna: </td>
-                            <td><input class="inputAdministracion" style="margin-left: 20px" type="text" name="txt_comunaBodega"> </td>
+                            <td><input class="inputAdministracion" style="margin-left: 20px" value="<%=comuna%>" type="text" name="txt_comunaBodega"></td>
                         </tr>
                         <tr>
                             <td>Dirección: </td>
-                            <td><input class="inputAdministracion" style="margin-left: 20px" type="text" name="txt_direccionBodega"></td>
+                            <td><input class="inputAdministracion" style="margin-left: 20px" value="<%=direccion%>" type="text" name="txt_direccionBodega"></td>
                         </tr>
                         <tr>
                             <td>Encargado: </td>
                             <td>
-                                <select name="opt_encargadoBodega" style="margin-left: 20px" >
+                                <%
+                                    String idUsuario = request.getParameter("idEncargado");
+                                %>
+                                <select name="opt_encargadoBodega" value="<%=idUsuario%>" style="margin-left: 20px" >
                                     <option><i class="fas fa-angle-down"></i></option>
                                     <%
                                         UsuarioDao userDao = new UsuarioDao();
                                         for (UsuarioDto userDto : userDao.SeleccionarTodo()) {
                                             int codigoUsuario = userDto.getId();
-                                            String nombreUsuario = userDto.getNombre()+" "+ userDto.getApellidos();
+                                            String nombreUsuario = userDto.getNombre() + " " + userDto.getApellidos();
                                     %>
-                                <option value="<%=codigoUsuario%>"><%=nombreUsuario%></option>
-                                    <%
-                                        }
-                                    %>
+                                    <option value="<%=codigoUsuario%>"><%=nombreUsuario%></option>
+                                        <%
+                                            }
+                                        %>
                                 </select>
                             </td>
                         </tr>
