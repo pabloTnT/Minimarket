@@ -82,8 +82,12 @@
                             <td><%=nombreContacto%></td>
                             <td><%=telefonoContacto%></td>
                             <td>
-                                <button class="button success outline" name="btn_editarProveedor"> <i class="fas fa-edit"></i></button>
-                                <button class="button success outline" value="<%=idProv%>" name="btn_eliminarProveedor"><i class="fas fa-trash-alt"></i></button>
+                                <button class="button success outline" name="btn_editarProveedor" data-role="hint"
+                                        data-hint-text="Editar Proveedores" onClick="window.open('editarProveedores.jsp?codigoProv='+<%=idProv%>, '_blank', 'width=1000,height=600');
+                                                return false"> 
+                                    <i class="fas fa-edit"></i></button>
+                                <button class="button success outline" value="<%=idProv%>" data-role="hint"
+                                        data-hint-text="Eliminar Proveedores" name="btn_eliminarProveedor"><i class="fas fa-trash-alt"></i></button>
                             </td>
                         </tr>
                         <%

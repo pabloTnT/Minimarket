@@ -33,9 +33,9 @@ public class ProductosController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            ProductoDto dto = new ProductoDto();
             ProductoDao dao = new ProductoDao();
             if(request.getParameter("btn_guardarProducto")!=null){
+            ProductoDto dto = new ProductoDto();
                 dto.setNombre_producto(request.getParameter("txt_nombreProducto"));
                 dto.setPrecio_producto(Integer.valueOf(request.getParameter("txt_precioEstimado")));
                 dto.setId_producto(Integer.valueOf(request.getParameter("txt_idProducto")));
@@ -47,6 +47,15 @@ public class ProductosController extends HttpServlet {
                 String codProducto = request.getParameter("btn_eliminarProducto");
                 dao.Delete(codProducto);
                 response.sendRedirect("listarProductos.jsp");
+            }
+            if(request.getParameter("btn_guardarCambios")!=null){
+            ProductoDto dto = new ProductoDto();
+                dto.setId_producto(Integer.valueOf(request.getParameter("txt_idProducto")));
+                dto.setNombre_producto(request.getParameter("txt_nombreProducto"));
+                dto.setTipo_producto(Integer.valueOf(request.getParameter("opt_tipoProducto")));
+                dto.setPrecio_producto(Integer.valueOf(request.getParameter("txt_precioEstimado")));
+                dao.Update(dto);
+                response.sendRedirect("editarProductos.jsp?cambio="+"ok");
             }
         }
     }

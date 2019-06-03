@@ -21,20 +21,31 @@ Author     : PabloTnT
     <body background="imagenes/fondo.png">
         <form action="Bodegas_controller.do" method="post">
             <%
-                BodegasDao bodDao = new BodegasDao();
-                BodegasDto bodDto = bodDao.Select(request.getParameter("idBodega"));
-                int codBodega = bodDto.getId_bodega();
-                String nombre_bodega = bodDto.getNombre_bodega();
-                String comuna = bodDto.getComuna();
-                String direccion = bodDto.getDireccion();
-                String encargado = bodDto.getEncargado();
+                if (request.getParameter("cambios") != null) {
+            %>
+            <script>
+                opener.location.reload();
+                window.close();
+            </script>
+            <%
+                }
+            %>
+            <%
+                if (request.getParameter("idBodega") != null) {
+                    BodegasDao bodDao = new BodegasDao();
+                    BodegasDto bodDto = bodDao.Select(request.getParameter("idBodega"));
+                    int codBodega = bodDto.getId_bodega();
+                    String nombre_bodega = bodDto.getNombre_bodega();
+                    String comuna = bodDto.getComuna();
+                    String direccion = bodDto.getDireccion();
+                    String encargado = bodDto.getEncargado();
             %>
             <div style="margin-top: 100px" id="crearBodegas">   
                 <div align="center">
                     <table>
                         <tr>
                             <td>ID:</td>
-                            <td><input class="inputAdministracion" type="text" name="txt_idBodega" value="<%=codBodega%>"></td>
+                            <td><input class="inputAdministracion" type="text" name="txt_idBodega" readonly="readonly" value="<%=codBodega%>"></td>
                         </tr>
                         <tr>
                             <td>Nombre: </td>
@@ -62,18 +73,28 @@ Author     : PabloTnT
                                             int codigoUsuario = userDto.getId();
                                             String nombreUsuario = userDto.getNombre() + " " + userDto.getApellidos();
                                     %>
-                                    <option value="<%=codigoUsuario%>"><%=nombreUsuario%></option>
-                                        <%
+                                    <option value="<%=codigoUsuario%>"
+                                            <%
+                                                if (Integer.valueOf(idUsuario) == codigoUsuario) {
+                                            %>
+                                            selected
+                                            <%        
+                                                }
+                                            %>
+                                            ><%=nombreUsuario%></option>
+                                    <%
                                             }
-                                        %>
+                                        }
+                                    %>
                                 </select>
                             </td>
                         </tr>
                     </table>
-                    <button align="center" style="margin-top: 70px; width: 200px" class="button success outline rounded" name="btn_guardarBodega">Guardar</button>
+                    <button align="center" style="margin-top: 70px; width: 200px" class="button success rounded" name="btn_updateBodega">Guardar Cambios</button>
                     </form>
                 </div>
             </div>
+
             <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
             <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
     </body>

@@ -34,24 +34,36 @@ public class UsuariosController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             UsuarioDao dao = new UsuarioDao();
-            UsuarioDto dto = new UsuarioDto();
             if (request.getParameter("btn_guardarUsuario") != null) {
+                UsuarioDto dto = new UsuarioDto();
                 if (dto.validarRut(request.getParameter("txt_rutUsuario"))) {
                     dto.setRutUsuario(request.getParameter("txt_rutUsuario"));
                     dto.setNombre(request.getParameter("txt_nombreUsuario"));
                     dto.setApellidos(request.getParameter("txt_apellidosUsuario"));
                     dto.setCargo(Integer.valueOf(request.getParameter("opt_cargoUsuario")));
-                    dto.setPrivilegios(request.getParameter("opt_privilegiousuario"));
+                    dto.setPrivilegios(Integer.valueOf(request.getParameter("opt_privilegiousuario")));
                     dto.setClave(request.getParameter("txt_contraUsuario"));
                     dao.Create(dto);
                     response.sendRedirect("crearUsuario.jsp");
                 }
-                
+
             }
             if (request.getParameter("btn_eliminarUsuario") != null) {
                 String codUsuario = request.getParameter("btn_eliminarUsuario");
                 dao.Delete(codUsuario);
                 response.sendRedirect("listarUsuarios.jsp");
+            }
+            if (request.getParameter("btn_updateUsuario") != null) {
+                UsuarioDto dto = new UsuarioDto();
+                dto.setId(Integer.valueOf(request.getParameter("txt_idUsuario")));
+                dto.setRutUsuario(request.getParameter("txt_rutUsuario"));
+                dto.setNombre(request.getParameter("txt_nombreUsuario"));
+                dto.setApellidos(request.getParameter("txt_apellidosUsuario"));
+                dto.setCargo(Integer.valueOf(request.getParameter("opt_cargoUsuario")));
+                dto.setPrivilegios(Integer.valueOf(request.getParameter("opt_privilegiousuario")));
+                dto.setClave(request.getParameter("txt_contraUsuario"));
+                dao.Update(dto);
+                response.sendRedirect("editarUsuarios.jsp?cambio="+"ok");
             }
         }
 

@@ -73,6 +73,7 @@
                                 for (Tipo_productoDto tipoProd : tipoDao.SeleccionarTodo()) {
                                     if (dto.getTipo_producto() == tipoProd.getId()) {
                                         String tipoProducto = tipoProd.getNombre_tipo();
+                                        int codTipoProd = tipoProd.getId();
 
                         %>
                         <tr>
@@ -82,7 +83,7 @@
                             <td><%=precioProd%></td>
                             <td>
                                 <button class="button success outline" name="btn_editarProducto"  data-role="hint"
-                                        data-hint-text="Editar Productos" onClick="window.open('editarProductos.jsp?idProd=' +<%=idProd%>, '_blank', 'width=1000,height=600');
+                                        data-hint-text="Editar Productos" onClick="window.open('editarProductos.jsp?codProducto='+<%=idProd%>+'&tipoProd='+<%=codTipoProd%>, '_blank', 'width=1000,height=600');
                                                 return false"> <i class="fas fa-edit"></i></button>
                                 <button class="button success outline" name="btn_editarProducto"  data-role="hint"
                                         data-hint-text="Eliminar Productos" value="<%=idProd%>" name="btn_eliminarProducto"><i class="fas fa-trash-alt"></i></button>
@@ -97,6 +98,10 @@
                 </table>
             </div>
         </form>
+                    <script>
+                        function actualizar(){location.reload(true);}
+                        setInterval("actualizar()",4000);
+                    </script>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
     </body>

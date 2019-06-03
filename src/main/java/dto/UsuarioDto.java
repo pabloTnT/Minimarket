@@ -16,7 +16,7 @@ public class UsuarioDto {
     private int id;
     private String rutUsuario;
     private String clave;
-    private String privilegios;
+    private int privilegios;
     private String nombre;
     private String apellidos;
     private int cargo;
@@ -28,7 +28,7 @@ public class UsuarioDto {
         this.id = id;
     }
 
-    public UsuarioDto(int id, String rutUsuario, String clave, String privilegios, String nombre, String apellidos, int cargo) {
+    public UsuarioDto(int id, String rutUsuario, String clave, int privilegios, String nombre, String apellidos, int cargo) {
         this.id = id;
         this.rutUsuario = rutUsuario;
         this.clave = clave;
@@ -78,11 +78,7 @@ public class UsuarioDto {
         this.clave = clave;
     }
 
-    public String getPrivilegios() {
-        return privilegios;
-    }
-
-    public void setPrivilegios(String privilegios) {
+    public void intPrivilegios(int privilegios) {
         this.privilegios = privilegios;
     }
 
@@ -94,6 +90,7 @@ public class UsuarioDto {
         this.id = id;
     }
 
+    
     public boolean validarRut(String rutUsuario) {
 
         boolean validacion = false;
@@ -117,6 +114,14 @@ public class UsuarioDto {
         } catch (Exception e) {
         }
         return validacion;
+    }
+
+    public int getPrivilegios() {
+        return privilegios;
+    }
+
+    public void setPrivilegios(int privilegios) {
+        this.privilegios = privilegios;
     }
 
 }

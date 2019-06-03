@@ -34,9 +34,9 @@ public class ProveedoresController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            ProveedorDto dto = new ProveedorDto();
             ProveedorDao dao = new ProveedorDao();
             if (request.getParameter("btn_guardarProveedor") != null) {
+                ProveedorDto dto = new ProveedorDto();
                 UsuarioDto usDto = new UsuarioDto();
                 if (usDto.validarRut(request.getParameter("txt_rutProveedor"))) {
                     dto.setId(Integer.valueOf(request.getParameter("txt_codProveedor")));
@@ -54,6 +54,17 @@ public class ProveedoresController extends HttpServlet {
                 String codProveedor = request.getParameter("btn_eliminarProveedor");
                 dao.Delete(codProveedor);
                 response.sendRedirect("listarProveedores.jsp");
+            }
+            if (request.getParameter("btn_updateProveedor") != null) {
+                ProveedorDto dto = new ProveedorDto();
+                dto.setId(Integer.valueOf(request.getParameter("txt_codProveedor")));
+                dto.setRut(request.getParameter("txt_rutProveedor"));
+                dto.setRazon_social(request.getParameter("txt_razonSocial"));
+                dto.setDireccion(request.getParameter("txt_direccionProveedor"));
+                dto.setNombre_contacto(request.getParameter("txt_nombreContacto"));
+                dto.setTelefono(Integer.valueOf(request.getParameter("txt_telefonoContacto")));
+                dao.Update(dto);
+                response.sendRedirect("editarProveedores.jsp?cambio="+"ok");
             }
         }
     }

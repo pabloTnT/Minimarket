@@ -58,7 +58,7 @@ public class UsuarioDao implements DaoInterface<UsuarioDto> {
             ps.setInt(1, dto.getId());
             ps.setString(2, dto.getRutUsuario());
             ps.setString(3, dto.getClave());
-            ps.setString(4, dto.getPrivilegios());
+            ps.setInt(4, dto.getPrivilegios());
             ps.setString(5, dto.getNombre());
             ps.setString(6, dto.getApellidos());
             ps.setInt(7, dto.getCargo());
@@ -97,7 +97,7 @@ public class UsuarioDao implements DaoInterface<UsuarioDto> {
             ps = con.getCnn().prepareStatement(SQL_UPDATE);
             ps.setString(1, dto.getRutUsuario());
             ps.setString(2, dto.getClave());
-            ps.setString(3, dto.getPrivilegios());
+            ps.setInt(3, dto.getPrivilegios());
             ps.setString(4, dto.getNombre());
             ps.setString(5, dto.getApellidos());
             ps.setInt(6, dto.getCargo());
@@ -120,10 +120,10 @@ public class UsuarioDao implements DaoInterface<UsuarioDto> {
         UsuarioDto user = null;
         try {
             ps = con.getCnn().prepareStatement(SQL_SELECT);
-            res = ps.executeQuery();
             ps.setString(1, key.toString());
+            res = ps.executeQuery();
             while (res.next()) {
-                user = new UsuarioDto(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getInt(7));
+                user = new UsuarioDto(res.getInt(1), res.getString(2), res.getString(3), res.getInt(4), res.getString(5), res.getString(6), res.getInt(7));
             }
             return user;
         } catch (SQLException ex) {
@@ -143,7 +143,7 @@ public class UsuarioDao implements DaoInterface<UsuarioDto> {
             ps = con.getCnn().prepareStatement(SQL_SELECTALL);
             res = ps.executeQuery();
             while (res.next()) {
-                user.add(new UsuarioDto(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getInt(7)));
+                user.add(new UsuarioDto(res.getInt(1), res.getString(2), res.getString(3), res.getInt(4), res.getString(5), res.getString(6), res.getInt(7)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);

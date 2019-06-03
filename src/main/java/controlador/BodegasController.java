@@ -33,6 +33,7 @@ public class BodegasController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+                BodegasDao dao = new BodegasDao();
             if (request.getParameter("btn_guardarBodega") != null) {
                 BodegasDto dto = new BodegasDto();
                 dto.setId_bodega(Integer.valueOf(request.getParameter("txt_idBodega")));
@@ -40,7 +41,6 @@ public class BodegasController extends HttpServlet {
                 dto.setComuna(request.getParameter("txt_comunaBodega"));
                 dto.setDireccion(request.getParameter("txt_direccionBodega"));
                 dto.setEncargado(request.getParameter("opt_encargadoBodega"));
-                BodegasDao dao = new BodegasDao();
                 dao.Create(dto);
                 String mensaje = null;
                 if(dao.Create(dto)){
@@ -51,13 +51,19 @@ public class BodegasController extends HttpServlet {
                 response.sendRedirect("crearBodega.jsp?mensaje="+mensaje);
             }
             if (request.getParameter("btn_eliminarBodega") != null) {
-                BodegasDao dao = new BodegasDao();
                 String codBodega = request.getParameter("btn_eliminarBodega");
                 dao.Delete(codBodega);
                 response.sendRedirect("listarBodegas.jsp");
             }
-            if (request.getParameter("btn_editarBodega") != null) {
-                response.sendRedirect("listarBodegas.jsp");
+            if(request.getParameter("btn_updateBodega")!= null){
+                BodegasDto dto = new BodegasDto();
+                dto.setId_bodega(Integer.valueOf(request.getParameter("txt_idBodega")));
+                dto.setNombre_bodega(request.getParameter("txt_nombreBodega"));
+                dto.setComuna(request.getParameter("txt_comunaBodega"));
+                dto.setDireccion(request.getParameter("txt_direccionBodega"));
+                dto.setEncargado(request.getParameter("opt_encargadoBodega"));
+                dao.Update(dto);
+                response.sendRedirect("editarBodega.jsp?cambios="+"ok");
             }
         }
     }

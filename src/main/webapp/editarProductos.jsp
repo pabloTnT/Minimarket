@@ -19,20 +19,31 @@ Author     : PabloTnT
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     </head>
     <body background="imagenes/fondo.png">
+        <%
+            if (request.getParameter("cambio") != null) {
+        %>
+        <script>
+            opener.location.reload();
+            window.close();
+        </script>
+        <%
+            }
+        %>
         <form action="Productos_controller.do" method="post">
             <div align="center">
                 <div style="margin-top: 100px" id="crearProductos">
                     <%
-                        ProductoDao prodDao = new ProductoDao();
-                    ProductoDto prod = prodDao.Select(request.getParameter("idProd"));
-                    int id = prod.getId_producto();
-                    String nombre =  prod.getNombre_producto();
-                    int precio = prod.getPrecio_producto();
+                        if (request.getParameter("codProducto") != null) {
+                            ProductoDao prodDao = new ProductoDao();
+                            ProductoDto prod = prodDao.Select(request.getParameter("codProducto"));
+                            int id = prod.getId_producto();
+                            String nombre = prod.getNombre_producto();
+                            int precio = prod.getPrecio_producto();
                     %>
                     <table>
                         <tr>
                             <td>ID: </td>
-                            <td><input class="inputModulos" type="text" name="txt_idProducto" value="<%=id%>"></td>
+                            <td><input class="inputModulos" type="text" name="txt_idProducto" readonly="readonly" value="<%=id%>"></td>
                         </tr>
                         <tr>
                             <td>Nombre: </td>
@@ -44,15 +55,22 @@ Author     : PabloTnT
                                 <select name="opt_tipoProducto">
                                     <option></option>
                                     <%
+                                        String codigoTipo = request.getParameter("tipoProd");
                                         Tipo_productoDao tipoProdDao = new Tipo_productoDao();
                                         for (Tipo_productoDto tipoProd : tipoProdDao.SeleccionarTodo()) {
                                             String nombreTipo = tipoProd.getNombre_tipo();
                                             int codTipo = tipoProd.getId();
                                     %>
-                                    <option value="<%=codTipo%>"><%=nombreTipo%></option>
+                                    <option value="<%=codTipo%>"
+                                            <%
+                                                if (Integer.valueOf(codigoTipo) == codTipo) {
+                                            %>
+                                            selected
+                                            <% }%>
+                                            ><%=nombreTipo%></option>
                                     <%
 
-                                        }
+                                            }
                                     %>
                                 </select>
                             </td>
@@ -62,10 +80,13 @@ Author     : PabloTnT
                             <td><input class="inputModulos" type="text" name="txt_precioEstimado" value="<%=precio%>"></td>
                         </tr>
                     </table>
-                    <button align="center" style="margin-top: 70px; width: 200px" class="button success outline rounded" name="btn_guardarProducto">Guardar</button>
+                    <button align="center" style="margin-top: 70px; width: 200px" class="button success rounded" name="btn_guardarCambios">Guardar</button>
                 </div>
             </div>
-            
+            <%
+                }
+            %>
+
         </form>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>

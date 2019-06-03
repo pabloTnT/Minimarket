@@ -87,13 +87,12 @@
                             <td>
                                 <button class="button success outline" data-role="hint"
                                         data-hint-text="Editar Bodega" onClick="window.open('editarBodega.jsp?idBodega=' +<%=idBodega%> +
-                                                        'idEncargado=' +<%=idEncargado%>, '_blank', 'width=1000,height=600'); return false" 
+                                                        '&idEncargado=' +<%=idEncargado%>, '_blank', 'width=1000,height=600'); return false" 
                                         name="btn_editarBodega"> 
                                     <i class="fas fa-edit"></i></button>
                                 <button class="button success outline" data-role="hint"
                                         data-hint-text="Eliminar Bodega" value="<%=idBodega%>" name="btn_eliminarBodega">
                                     <i class="fas fa-trash-alt">
-
                                     </i></button>
                             </td>
                         </tr>

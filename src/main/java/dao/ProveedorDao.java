@@ -79,7 +79,7 @@ public class ProveedorDao implements DaoInterface<ProveedorDto>{
             ps.setString(3, dto.getDireccion());
             ps.setString(4, dto.getNombre_contacto());
             ps.setInt(5, dto.getTelefono());
-            ps.setString(6, dto.getRut());
+            ps.setInt(6, dto.getId());
             if(ps.executeUpdate()>0){
                 return true;
             }  
@@ -98,6 +98,7 @@ public class ProveedorDao implements DaoInterface<ProveedorDto>{
             ProveedorDto provee = null;
         try {
             ps=con.getCnn().prepareStatement(SQL_SELECT);
+            ps.setString(1, key.toString());
             res=ps.executeQuery();
             while(res.next()){
                 provee = new ProveedorDto(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getInt(6));
