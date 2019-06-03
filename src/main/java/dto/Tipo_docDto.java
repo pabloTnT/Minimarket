@@ -9,6 +9,10 @@ package dto;
  *
  * @author PabloTnT
  */
+//   Clase java, que contiene tributos, constructor, getters y setters, de los tipos de documentos.
+
+
+
 public class Tipo_docDto {
     private int id_doc;
     private String doc_nombre;
