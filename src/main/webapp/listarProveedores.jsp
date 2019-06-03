@@ -48,49 +48,55 @@
                 </ul>
             </li>
         </ul> 
-        <div style="margin-left: 200px; margin-right: 200px; margin-top: 100px">
-            <table class="table" data-role="table" data-show-search="false" data-rows="10" data-show-rows-steps="false">
-                <thead>
-                    <tr>
-                        <th data-sortable="true" data-sort-dir="asc">ID</th>
-                        <th data-sortable="true">Rut</th>
-                        <th data-sortable="true">Razon Social</th>
-                        <th data-sortable="true">Dirección</th>
-                        <th data-sortable="true">Nombre Contacto</th>
-                        <th data-sortable="true">Telefono Contacto</th>
-                        <th data-sortable="true">Opciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <%
-                        ProveedorDao provDao = new ProveedorDao();
-                        for (ProveedorDto provDto : provDao.SeleccionarTodo()) {
-                            int idProv = provDto.getId();
-                            String rutProv = provDto.getRut();
-                            String razonSocial = provDto.getRazon_social();
-                            String direccion = provDto.getDireccion();
-                            String nombreContacto = provDto.getNombre_contacto();
-                            int telefonoContacto = provDto.getTelefono();
+        <form action="Proveedores_controller.do" method="post">
+            <div style="margin-left: 200px; margin-right: 200px; margin-top: 100px">
+                <table class="table" data-role="table" data-show-search="false" data-rows="10" data-show-rows-steps="false">
+                    <thead>
+                        <tr>
+                            <th data-sortable="true" data-sort-dir="asc">ID</th>
+                            <th data-sortable="true">Rut</th>
+                            <th data-sortable="true">Razon Social</th>
+                            <th data-sortable="true">Dirección</th>
+                            <th data-sortable="true">Nombre Contacto</th>
+                            <th data-sortable="true">Telefono Contacto</th>
+                            <th data-sortable="true">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%
+                            ProveedorDao provDao = new ProveedorDao();
+                            for (ProveedorDto provDto : provDao.SeleccionarTodo()) {
+                                int idProv = provDto.getId();
+                                String rutProv = provDto.getRut();
+                                String razonSocial = provDto.getRazon_social();
+                                String direccion = provDto.getDireccion();
+                                String nombreContacto = provDto.getNombre_contacto();
+                                int telefonoContacto = provDto.getTelefono();
 
-                    %>
-                    <tr>
-                        <td><%=idProv%></td>
-                        <td><%=rutProv%></td>
-                        <td><%=razonSocial%></td>
-                        <td><%=direccion%></td>
-                        <td><%=nombreContacto%></td>
-                        <td><%=telefonoContacto%></td>
-                        <td>
-                            <button class="button success outline" name="btn_editarProveedor"> <i class="fas fa-edit"></i></button>
-                            <button class="button success outline" name="btn_eliminarProveedor"><i class="fas fa-trash-alt"></i></button>
-                        </td>
-                    </tr>
-                    <%
-                        }
-                    %>
-                </tbody>
-            </table>
-        </div>
+                        %>
+                        <tr>
+                            <td><%=idProv%></td>
+                            <td><%=rutProv%></td>
+                            <td><%=razonSocial%></td>
+                            <td><%=direccion%></td>
+                            <td><%=nombreContacto%></td>
+                            <td><%=telefonoContacto%></td>
+                            <td>
+                                <button class="button success outline" name="btn_editarProveedor" data-role="hint"
+                                        data-hint-text="Editar Proveedores" onClick="window.open('editarProveedores.jsp?codigoProv='+<%=idProv%>, '_blank', 'width=1000,height=600');
+                                                return false"> 
+                                    <i class="fas fa-edit"></i></button>
+                                <button class="button success outline" value="<%=idProv%>" data-role="hint"
+                                        data-hint-text="Eliminar Proveedores" name="btn_eliminarProveedor"><i class="fas fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                        <%
+                            }
+                        %>
+                    </tbody>
+                </table>
+            </div>
+        </form>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
     </body>

@@ -8,7 +8,7 @@
 <%@page import="dao.PrivilegiosDao"%>
 <%@page import="dto.CargosDto"%>
 <%@page import="dao.CargosDao"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page session="true" contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>

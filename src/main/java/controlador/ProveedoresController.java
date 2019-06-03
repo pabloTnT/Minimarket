@@ -5,7 +5,8 @@
  */
 package controlador;
 
-import dao.UsuarioDao;
+import dao.ProveedorDao;
+import dto.ProveedorDto;
 import dto.UsuarioDto;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author PabloTnT
  */
-public class UsuariosController extends HttpServlet {
+public class ProveedoresController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,40 +34,39 @@ public class UsuariosController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            UsuarioDao dao = new UsuarioDao();
-            if (request.getParameter("btn_guardarUsuario") != null) {
-                UsuarioDto dto = new UsuarioDto();
-                if (dto.validarRut(request.getParameter("txt_rutUsuario"))) {
-                    dto.setRutUsuario(request.getParameter("txt_rutUsuario"));
-                    dto.setNombre(request.getParameter("txt_nombreUsuario"));
-                    dto.setApellidos(request.getParameter("txt_apellidosUsuario"));
-                    dto.setCargo(Integer.valueOf(request.getParameter("opt_cargoUsuario")));
-                    dto.setPrivilegios(Integer.valueOf(request.getParameter("opt_privilegiousuario")));
-                    dto.setClave(request.getParameter("txt_contraUsuario"));
+            ProveedorDao dao = new ProveedorDao();
+            if (request.getParameter("btn_guardarProveedor") != null) {
+                ProveedorDto dto = new ProveedorDto();
+                UsuarioDto usDto = new UsuarioDto();
+                if (usDto.validarRut(request.getParameter("txt_rutProveedor"))) {
+                    dto.setId(Integer.valueOf(request.getParameter("txt_codProveedor")));
+                    dto.setRut(request.getParameter("txt_rutProveedor"));
+                    dto.setRazon_social(request.getParameter("txt_razonSocial"));
+                    dto.setDireccion(request.getParameter("txt_direccionProveedor"));
+                    dto.setNombre_contacto(request.getParameter("txt_nombreContacto"));
+                    dto.setTelefono(Integer.valueOf(request.getParameter("txt_telefonoContacto")));
                     dao.Create(dto);
-                    response.sendRedirect("crearUsuario.jsp");
                 }
 
+                response.sendRedirect("crearProveedor.jsp");
             }
-            if (request.getParameter("btn_eliminarUsuario") != null) {
-                String codUsuario = request.getParameter("btn_eliminarUsuario");
-                dao.Delete(codUsuario);
-                response.sendRedirect("listarUsuarios.jsp");
+            if (request.getParameter("btn_eliminarProveedor") != null) {
+                String codProveedor = request.getParameter("btn_eliminarProveedor");
+                dao.Delete(codProveedor);
+                response.sendRedirect("listarProveedores.jsp");
             }
-            if (request.getParameter("btn_updateUsuario") != null) {
-                UsuarioDto dto = new UsuarioDto();
-                dto.setId(Integer.valueOf(request.getParameter("txt_idUsuario")));
-                dto.setRutUsuario(request.getParameter("txt_rutUsuario"));
-                dto.setNombre(request.getParameter("txt_nombreUsuario"));
-                dto.setApellidos(request.getParameter("txt_apellidosUsuario"));
-                dto.setCargo(Integer.valueOf(request.getParameter("opt_cargoUsuario")));
-                dto.setPrivilegios(Integer.valueOf(request.getParameter("opt_privilegiousuario")));
-                dto.setClave(request.getParameter("txt_contraUsuario"));
+            if (request.getParameter("btn_updateProveedor") != null) {
+                ProveedorDto dto = new ProveedorDto();
+                dto.setId(Integer.valueOf(request.getParameter("txt_codProveedor")));
+                dto.setRut(request.getParameter("txt_rutProveedor"));
+                dto.setRazon_social(request.getParameter("txt_razonSocial"));
+                dto.setDireccion(request.getParameter("txt_direccionProveedor"));
+                dto.setNombre_contacto(request.getParameter("txt_nombreContacto"));
+                dto.setTelefono(Integer.valueOf(request.getParameter("txt_telefonoContacto")));
                 dao.Update(dto);
-                response.sendRedirect("editarUsuarios.jsp?cambio="+"ok");
+                response.sendRedirect("editarProveedores.jsp?cambio="+"ok");
             }
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

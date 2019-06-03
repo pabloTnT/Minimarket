@@ -4,12 +4,8 @@ Created on : 26-05-2019, 17:29:55
 Author     : PabloTnT
 --%>
 
-<%@page import="dto.Tipo_productoDto"%>
-<%@page import="dao.Tipo_productoDao"%>
 <%@page import="dto.UsuarioDto"%>
 <%@page import="dao.UsuarioDao"%>
-<%@page import="dto.CargosDto"%>
-<%@page import="dao.CargosDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -52,50 +48,50 @@ Author     : PabloTnT
                 </ul>
             </li>
         </ul> 
-        <form action="AdmSistema_Controller.do" method="post">
-        <div style="margin-top: 100px" id="crearBodegas">   
-            <div align="center">
-                <table>
-                    <tr>
-                        <td>ID:</td>
-                        <td><input class="inputAdministracion" type="text" name="txt_idBodega"></td>
-                    </tr>
-                    <tr>
-                        <td>Nombre: </td>
-                        <td><input class="inputAdministracion" type="text" name="txt_nombreBodega"> </td>
-                    </tr>
-                    <tr>
-                        <td>Comuna: </td>
-                        <td><input class="inputAdministracion" style="margin-left: 20px" type="text" name="txt_comunaBodega"> </td>
-                    </tr>
-                    <tr>
-                        <td>Dirección: </td>
-                        <td><input class="inputAdministracion" style="margin-left: 20px" type="text" name="txt_direccionBodega"></td>
-                    </tr>
-                    <tr>
-                        <td>Encargado: </td>
-                        <td>
-                            <select name="opt_encargadoBodega" style="margin-left: 20px" >
-                                <option><i class="fas fa-angle-down"></i></option>
-                                <%
-                                    UsuarioDao userDao = new UsuarioDao();
-                                    for (UsuarioDto userDto : userDao.SeleccionarTodo()) {
-                                        int codigoUsuario = userDto.getId();
-                                        String nombreUsuario = userDto.getNombre();
-                                %>
+        <form action="Bodegas_controller.do" method="post">
+            <div style="margin-top: 100px" id="crearBodegas">   
+                <div align="center">
+                    <table>
+                        <tr>
+                            <td>ID:</td>
+                            <td><input class="inputAdministracion" type="text" name="txt_idBodega"></td>
+                        </tr>
+                        <tr>
+                            <td>Nombre: </td>
+                            <td><input class="inputAdministracion" type="text" name="txt_nombreBodega"> </td>
+                        </tr>
+                        <tr>
+                            <td>Comuna: </td>
+                            <td><input class="inputAdministracion" style="margin-left: 20px" type="text" name="txt_comunaBodega"> </td>
+                        </tr>
+                        <tr>
+                            <td>Dirección: </td>
+                            <td><input class="inputAdministracion" style="margin-left: 20px" type="text" name="txt_direccionBodega"></td>
+                        </tr>
+                        <tr>
+                            <td>Encargado: </td>
+                            <td>
+                                <select name="opt_encargadoBodega" style="margin-left: 20px" >
+                                    <option><i class="fas fa-angle-down"></i></option>
+                                    <%
+                                        UsuarioDao userDao = new UsuarioDao();
+                                        for (UsuarioDto userDto : userDao.SeleccionarTodo()) {
+                                            int codigoUsuario = userDto.getId();
+                                            String nombreUsuario = userDto.getNombre()+" "+ userDto.getApellidos();
+                                    %>
                                 <option value="<%=codigoUsuario%>"><%=nombreUsuario%></option>
-                                <%
-                                    }
-                                %>
-                            </select>
-                        </td>
-                    </tr>
-                </table>
-                <button align="center" style="margin-top: 70px; width: 200px" class="button success outline rounded" name="btn_guardarBodega">Guardar</button>
-            </form>
+                                    <%
+                                        }
+                                    %>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                    <button align="center" style="margin-top: 70px; width: 200px" class="button success outline rounded" name="btn_guardarBodega">Guardar</button>
+                    </form>
+                </div>
             </div>
-        </div>
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
+            <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+            <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
     </body>
 </html>

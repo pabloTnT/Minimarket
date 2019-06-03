@@ -50,48 +50,58 @@
                 </ul>
             </li>
         </ul> 
-        <div style="margin-left: 200px; margin-right: 200px; margin-top: 100px">
-            <table class="table" data-role="table" data-show-search="false" data-rows="10" data-show-rows-steps="false">
-                <thead>
-                    <tr>
-                        <th data-sortable="true" data-sort-dir="asc">ID</th>
-                        <th data-sortable="true">Nombre Producto</th>
-                        <th data-sortable="true">Tipo Producto</th>
-                        <th data-sortable="true" data-format="money">Precio</th>
-                        <th data-sortable="true">Opciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <%
-                        ProductoDao prod = new ProductoDao();
-                        for(ProductoDto dto : prod.SeleccionarTodo()){
-                            int idProd = dto.getId_producto();
-                            String nombre = dto.getNombre_producto();
-                            int precioProd = dto.getPrecio_producto();
-                            Tipo_productoDao tipoDao = new Tipo_productoDao();
-                            for(Tipo_productoDto tipoProd : tipoDao.SeleccionarTodo()){
-                                if(dto.getTipo_producto() == tipoProd.getId()){
-                                    String tipoProducto = tipoProd.getNombre_tipo();
-                             
-                    %>
-                    <tr>
-                        <td><%=idProd%></td>
-                        <td><%=nombre%></td>
-                        <td><%=tipoProducto%></td>
-                        <td><%=precioProd%></td>
-                        <td>
-                            <button class="button success outline" name="btn_editarProducto"> <i class="fas fa-edit"></i></button>
-                            <button class="button success outline" name="btn_eliminarProducto"><i class="fas fa-trash-alt"></i></button>
-                        </td>
-                    </tr>
-                    <%
+        <form action="Productos_controller.do" method="post">
+            <div style="margin-left: 200px; margin-right: 200px; margin-top: 100px">
+                <table class="table" data-role="table" data-show-search="false" data-rows="10" data-show-rows-steps="false">
+                    <thead>
+                        <tr>
+                            <th data-sortable="true" data-sort-dir="asc">ID</th>
+                            <th data-sortable="true">Nombre Producto</th>
+                            <th data-sortable="true">Tipo Producto</th>
+                            <th data-sortable="true" data-format="money">Precio</th>
+                            <th data-sortable="true">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%
+                            ProductoDao prod = new ProductoDao();
+                            for (ProductoDto dto : prod.SeleccionarTodo()) {
+                                int idProd = dto.getId_producto();
+                                String nombre = dto.getNombre_producto();
+                                int precioProd = dto.getPrecio_producto();
+                                Tipo_productoDao tipoDao = new Tipo_productoDao();
+                                for (Tipo_productoDto tipoProd : tipoDao.SeleccionarTodo()) {
+                                    if (dto.getTipo_producto() == tipoProd.getId()) {
+                                        String tipoProducto = tipoProd.getNombre_tipo();
+                                        int codTipoProd = tipoProd.getId();
+
+                        %>
+                        <tr>
+                            <td><%=idProd%></td>
+                            <td><%=nombre%></td>
+                            <td><%=tipoProducto%></td>
+                            <td><%=precioProd%></td>
+                            <td>
+                                <button class="button success outline" name="btn_editarProducto"  data-role="hint"
+                                        data-hint-text="Editar Productos" onClick="window.open('editarProductos.jsp?codProducto='+<%=idProd%>+'&tipoProd='+<%=codTipoProd%>, '_blank', 'width=1000,height=600');
+                                                return false"> <i class="fas fa-edit"></i></button>
+                                <button class="button success outline" name="btn_editarProducto"  data-role="hint"
+                                        data-hint-text="Eliminar Productos" value="<%=idProd%>" name="btn_eliminarProducto"><i class="fas fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                        <%
+                                    }
                                 }
                             }
-                        }
-                    %>
-                </tbody>
-            </table>
-        </div>
+                        %>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+                    <script>
+                        function actualizar(){location.reload(true);}
+                        setInterval("actualizar()",4000);
+                    </script>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
     </body>

@@ -4,12 +4,6 @@ Created on : 26-05-2019, 17:29:55
 Author     : PabloTnT
 --%>
 
-<%@page import="dto.Tipo_productoDto"%>
-<%@page import="dao.Tipo_productoDao"%>
-<%@page import="dto.UsuarioDto"%>
-<%@page import="dao.UsuarioDao"%>
-<%@page import="dto.CargosDto"%>
-<%@page import="dao.CargosDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -52,7 +46,7 @@ Author     : PabloTnT
                 </ul>
             </li>
         </ul> 
-        <form action="AdmSistema_Controller.do" method="post">
+        <form action="Proveedores_controller.do" method="post">
         <div align="center">
                 <div style="margin-top: 100px" id="crearProveedor">
                     <table>

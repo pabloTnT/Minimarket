@@ -52,57 +52,63 @@
                 </ul>
             </li>
         </ul> 
-        <div style="margin-left: 200px; margin-right: 200px; margin-top: 100px">
-            <table class="table" data-role="table" data-show-search="false" data-rows="10" data-show-rows-steps="false">
-                <thead>
-                    <tr>
-                        <th data-sortable="true" data-sort-dir="asc">ID</th>
-                        <th data-sortable="true">Rut</th>
-                        <th data-sortable="true">Nombre</th>
-                        <th data-sortable="true">Apellidos</th>
-                        <th data-sortable="true">Cargo</th>
-                        <th data-sortable="true">Privilegios</th>
-                        <th data-sortable="true">Opciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <%
-                        UsuarioDao usDao = new UsuarioDao();
-                        for (UsuarioDto usDto : usDao.SeleccionarTodo()) {
-                            int idUs = usDto.getId();
-                            String rutUs = usDto.getRutUsuario();
-                            String nombre = usDto.getNombre();
-                            String apellidos = usDto.getApellidos();
-                            CargosDao cargDao = new CargosDao();
-                            for (CargosDto cargDto : cargDao.SeleccionarTodo()) {
-                                String nombreCargo = cargDto.getNombre_cargo();
-                                int codigoCargo = cargDto.getId_cargo();
-                                PrivilegiosDao privDao = new PrivilegiosDao();
-                                for (PrivilegiosDto privDto : privDao.SeleccionarTodo()) {
-                                    String nombrePrivilegio = privDto.getNombre_privilegio();
-                                    int codigoPrivilegio = privDto.getId();
+        <form action="Usuarios_controller.do" method="post">
+            <div style="margin-left: 200px; margin-right: 200px; margin-top: 100px">
+                <table class="table" data-role="table" data-show-search="false" data-rows="10" data-show-rows-steps="false">
+                    <thead>
+                        <tr>
+                            <th data-sortable="true" data-sort-dir="asc">ID</th>
+                            <th data-sortable="true">Rut</th>
+                            <th data-sortable="true">Nombre</th>
+                            <th data-sortable="true">Apellidos</th>
+                            <th data-sortable="true">Cargo</th>
+                            <th data-sortable="true">Privilegios</th>
+                            <th data-sortable="true">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%
+                            UsuarioDao usDao = new UsuarioDao();
+                            for (UsuarioDto usDto : usDao.SeleccionarTodo()) {
+                                int idUs = usDto.getId();
+                                String rutUs = usDto.getRutUsuario();
+                                String nombre = usDto.getNombre();
+                                String apellidos = usDto.getApellidos();
+                                CargosDao cargDao = new CargosDao();
+                                for (CargosDto cargDto : cargDao.SeleccionarTodo()) {
+                                    String nombreCargo = cargDto.getNombre_cargo();
+                                    int codigoCargo = cargDto.getId_cargo();
+                                    PrivilegiosDao privDao = new PrivilegiosDao();
+                                    for (PrivilegiosDto privDto : privDao.SeleccionarTodo()) {
+                                        String nombrePrivilegio = privDto.getNombre_privilegio();
+                                        int codigoPrivilegio = privDto.getId();
 
-                    %>
-                    <tr>
-                        <td><%=idUs%></td>
-                        <td><%=rutUs%></td>
-                        <td><%=nombre%></td>
-                        <td><%=apellidos%></td>
-                        <td value="<%=codigoCargo%>"><%=nombreCargo%></td>
-                        <td value="<%=codigoPrivilegio%>"><%=nombrePrivilegio%></td>
-                        <td>
-                            <button class="button success outline" name="btn_editarUsuario"> <i class="fas fa-edit"></i></button>
-                            <button class="button success outline" name="btn_eliminarUsuario"><i class="fas fa-trash-alt"></i></button>
-                        </td>
-                    </tr>
-                    <%
+                        %>
+                        <tr>
+                            <td><%=idUs%></td>
+                            <td><%=rutUs%></td>
+                            <td><%=nombre%></td>
+                            <td><%=apellidos%></td>
+                            <td value="<%=codigoCargo%>"><%=nombreCargo%></td>
+                            <td value="<%=codigoPrivilegio%>"><%=nombrePrivilegio%></td>
+                            <td>
+                                <button class="button success outline" data-role="hint"
+                                        data-hint-text="Editar Usuario" onClick="window.open('editarUsuarios.jsp?idUs=' +<%=idUs%> + '&codCargo=' + <%=codigoCargo%> +
+                                                        '&codPriv=' +<%=codigoPrivilegio%>, '_blank', 'width=1000,height=600'); return false" 
+                                        name="btn_editarUsuario"> 
+                                    <i class="fas fa-edit"></i></button>
+                                <button class="button success outline" value="<%=idUs%>" name="btn_eliminarUsuario"><i class="fas fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                        <%
+                                    }
                                 }
                             }
-                        }
-                    %>
-                </tbody>
-            </table>
-        </div>
+                        %>
+                    </tbody>
+                </table>
+            </div>
+        </form>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
     </body>

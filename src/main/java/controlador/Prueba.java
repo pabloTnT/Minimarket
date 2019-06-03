@@ -5,7 +5,12 @@
  */
 package controlador;
 
+import dao.ProductoDao;
+import dao.ProveedorDao;
 import dao.UsuarioDao;
+import dto.ProductoDto;
+import dto.ProveedorDto;
+import dto.UsuarioDto;
 
 /**
  *
@@ -15,7 +20,9 @@ public class Prueba {
 
     public static void main(String[] args) {
 
-        UsuarioDao userDao = new UsuarioDao();
-        System.out.println(userDao.UsuarioContraseña("psoto", "sk84life"));
+        UsuarioDao dao = new UsuarioDao();
+        UsuarioDto dto = new UsuarioDto();
+        UsuarioDto us = dao.Select("1");
+        System.out.print(us.getApellidos());
     }
 }
