@@ -5,8 +5,8 @@
  */
 package controlador;
 
-import dao.UsuarioDao;
-import dto.UsuarioDto;
+import dao.ProductoDao;
+import dto.ProductoDto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author PabloTnT
  */
-public class InicioSesion extends HttpServlet {
+public class ProductosController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,20 +33,30 @@ public class InicioSesion extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            if(request.getParameter("btn_nuevoUsuario")!=null){
-                response.sendRedirect("creacionUsuario.jsp");
+            ProductoDao dao = new ProductoDao();
+            if(request.getParameter("btn_guardarProducto")!=null){
+            ProductoDto dto = new ProductoDto();
+                dto.setNombre_producto(request.getParameter("txt_nombreProducto"));
+                dto.setPrecio_producto(Integer.valueOf(request.getParameter("txt_precioEstimado")));
+                dto.setId_producto(Integer.valueOf(request.getParameter("txt_idProducto")));
+                dto.setTipo_producto(Integer.valueOf(request.getParameter("opt_tipoProducto")));
+                dao.Create(dto);
+                response.sendRedirect("crearProducto.jsp");
             }
-           if (request.getParameter("btn_enviar") != null) {
-                    UsuarioDao usDao = new UsuarioDao();
-                    UsuarioDto usDto = new UsuarioDto();
-                    String id = request.getParameter("txt_usuario");
-                    String clave = request.getParameter("txt_clave");
-                        if (usDao.UsuarioContraseña(id, clave) && usDto.validarRut(id)) {
-                        response.sendRedirect("seleccionModulo.jsp");
-                    } else {
-                            response.sendRedirect("errorLogin.jsp");
-                    }
-                }
+            if(request.getParameter("btn_eliminarProducto")!=null){
+                String codProducto = request.getParameter("btn_eliminarProducto");
+                dao.Delete(codProducto);
+                response.sendRedirect("listarProductos.jsp");
+            }
+            if(request.getParameter("btn_guardarCambios")!=null){
+            ProductoDto dto = new ProductoDto();
+                dto.setId_producto(Integer.valueOf(request.getParameter("txt_idProducto")));
+                dto.setNombre_producto(request.getParameter("txt_nombreProducto"));
+                dto.setTipo_producto(Integer.valueOf(request.getParameter("opt_tipoProducto")));
+                dto.setPrecio_producto(Integer.valueOf(request.getParameter("txt_precioEstimado")));
+                dao.Update(dto);
+                response.sendRedirect("editarProductos.jsp?cambio="+"ok");
+            }
         }
     }
 

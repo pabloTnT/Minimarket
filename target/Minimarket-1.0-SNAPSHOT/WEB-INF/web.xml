@@ -12,6 +12,26 @@
         <servlet-name>AdmSistemaController</servlet-name>
         <servlet-class>controlador.AdmSistemaController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>listarBodegasController</servlet-name>
+        <servlet-class>controlador.listarBodegasController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UsuariosController</servlet-name>
+        <servlet-class>controlador.UsuariosController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BodegasController</servlet-name>
+        <servlet-class>controlador.BodegasController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProductosController</servlet-name>
+        <servlet-class>controlador.ProductosController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProveedoresController</servlet-name>
+        <servlet-class>controlador.ProveedoresController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InicioSesion</servlet-name>
         <url-pattern>/Inicio_sesion.do</url-pattern>
@@ -23,6 +43,26 @@
     <servlet-mapping>
         <servlet-name>AdmSistemaController</servlet-name>
         <url-pattern>/AdmSistema_Controller.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>listarBodegasController</servlet-name>
+        <url-pattern>/listarbodegas_controller.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UsuariosController</servlet-name>
+        <url-pattern>/Usuarios_controller.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BodegasController</servlet-name>
+        <url-pattern>/Bodegas_controller.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductosController</servlet-name>
+        <url-pattern>/Productos_controller.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProveedoresController</servlet-name>
+        <url-pattern>/Proveedores_controller.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

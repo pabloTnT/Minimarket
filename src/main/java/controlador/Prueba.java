@@ -5,20 +5,24 @@
  */
 package controlador;
 
-import dao.ProductosDao;
+import dao.ProductoDao;
+import dao.ProveedorDao;
 import dao.UsuarioDao;
-import dto.ProductosDto;
+import dto.ProductoDto;
+import dto.ProveedorDto;
 import dto.UsuarioDto;
-import java.util.ArrayList;
 
 /**
  *
  * @author PabloTnT
  */
 public class Prueba {
-    
-    public static void main(String[] args){
-        
-    
+
+    public static void main(String[] args) {
+
+        UsuarioDao dao = new UsuarioDao();
+        UsuarioDto dto = new UsuarioDto();
+        UsuarioDto us = dao.Select("1");
+        System.out.print(us.getApellidos());
     }
 }

@@ -5,8 +5,8 @@
  */
 package controlador;
 
-import dao.UsuarioDao;
-import dto.UsuarioDto;
+import dao.BodegasDao;
+import dto.BodegasDto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author PabloTnT
  */
-public class InicioSesion extends HttpServlet {
+public class BodegasController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,20 +33,38 @@ public class InicioSesion extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            if(request.getParameter("btn_nuevoUsuario")!=null){
-                response.sendRedirect("creacionUsuario.jsp");
-            }
-           if (request.getParameter("btn_enviar") != null) {
-                    UsuarioDao usDao = new UsuarioDao();
-                    UsuarioDto usDto = new UsuarioDto();
-                    String id = request.getParameter("txt_usuario");
-                    String clave = request.getParameter("txt_clave");
-                        if (usDao.UsuarioContraseña(id, clave) && usDto.validarRut(id)) {
-                        response.sendRedirect("seleccionModulo.jsp");
-                    } else {
-                            response.sendRedirect("errorLogin.jsp");
-                    }
+                BodegasDao dao = new BodegasDao();
+            if (request.getParameter("btn_guardarBodega") != null) {
+                BodegasDto dto = new BodegasDto();
+                dto.setId_bodega(Integer.valueOf(request.getParameter("txt_idBodega")));
+                dto.setNombre_bodega(request.getParameter("txt_nombreBodega"));
+                dto.setComuna(request.getParameter("txt_comunaBodega"));
+                dto.setDireccion(request.getParameter("txt_direccionBodega"));
+                dto.setEncargado(request.getParameter("opt_encargadoBodega"));
+                dao.Create(dto);
+                String mensaje = null;
+                if(dao.Create(dto)){
+                    mensaje = "Bodega creada";
+                }else{
+                    mensaje = "Hubo un problema al crear la bodega";
                 }
+                response.sendRedirect("crearBodega.jsp?mensaje="+mensaje);
+            }
+            if (request.getParameter("btn_eliminarBodega") != null) {
+                String codBodega = request.getParameter("btn_eliminarBodega");
+                dao.Delete(codBodega);
+                response.sendRedirect("listarBodegas.jsp");
+            }
+            if(request.getParameter("btn_updateBodega")!= null){
+                BodegasDto dto = new BodegasDto();
+                dto.setId_bodega(Integer.valueOf(request.getParameter("txt_idBodega")));
+                dto.setNombre_bodega(request.getParameter("txt_nombreBodega"));
+                dto.setComuna(request.getParameter("txt_comunaBodega"));
+                dto.setDireccion(request.getParameter("txt_direccionBodega"));
+                dto.setEncargado(request.getParameter("opt_encargadoBodega"));
+                dao.Update(dto);
+                response.sendRedirect("editarBodega.jsp?cambios="+"ok");
+            }
         }
     }
 

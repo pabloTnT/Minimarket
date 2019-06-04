@@ -22,11 +22,11 @@ import java.util.logging.Logger;
  */
 public class PrivilegiosDao implements DaoInterface<PrivilegiosDto>{
 
-    private static final String SQL_INSERT = "INSERT INTO bodegas (id, nombre_privilegio) VALUES (?, ?)";
-    private static final String SQL_DELETE = "DELETE FROM bodegas WHERE id=?";
-    private static final String SQL_UPDATE = "UPDATE bodegas SET nombre_privilegio=? WHERE id=?";
-    private static final String SQL_SELECT = "SELECT * FROM bodegas WHERE id=?";
-    private static final String SQL_SELECTALL = "SELECT * FROM bodegas";
+    private static final String SQL_INSERT = "INSERT INTO privilegios (id, nombre_privilegio) VALUES (?, ?)";
+    private static final String SQL_DELETE = "DELETE FROM privilegios WHERE id=?";
+    private static final String SQL_UPDATE = "UPDATE privilegios SET nombre_privilegio=? WHERE id=?";
+    private static final String SQL_SELECT = "SELECT * FROM privilegios WHERE id=?";
+    private static final String SQL_SELECTALL = "SELECT * FROM privilegios";
 
     private static final Conexion con = Conexion.estadoConexion();
 
