@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author PabloTnT
  */
+/* clase java utilizada como controlador de los datos ingresado en los jsp relacionado con el CRUD de los productos */
 public class ProductosController extends HttpServlet {
 
     /**
@@ -34,6 +35,7 @@ public class ProductosController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             ProductoDao dao = new ProductoDao();
+            /*IF utilizado para crear un nuevo producto dentro de la base de datos */
             if(request.getParameter("btn_guardarProducto")!=null){
             ProductoDto dto = new ProductoDto();
                 dto.setNombre_producto(request.getParameter("txt_nombreProducto"));
@@ -43,11 +45,13 @@ public class ProductosController extends HttpServlet {
                 dao.Create(dto);
                 response.sendRedirect("crearProducto.jsp");
             }
+            /*IF utilizado para elimir un producto dentro de la base de datos */
             if(request.getParameter("btn_eliminarProducto")!=null){
                 String codProducto = request.getParameter("btn_eliminarProducto");
                 dao.Delete(codProducto);
                 response.sendRedirect("listarProductos.jsp");
             }
+            /*IF utilizado para editar un producto existente dentro de la base de datos*/
             if(request.getParameter("btn_guardarCambios")!=null){
             ProductoDto dto = new ProductoDto();
                 dto.setId_producto(Integer.valueOf(request.getParameter("txt_idProducto")));

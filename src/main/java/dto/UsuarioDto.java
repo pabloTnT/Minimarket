@@ -90,6 +90,14 @@ public class UsuarioDto {
         this.id = id;
     }
 
+    public int getPrivilegios() {
+        return privilegios;
+    }
+
+    public void setPrivilegios(int privilegios) {
+        this.privilegios = privilegios;
+    }
+
     
     public boolean validarRut(String rutUsuario) {
 
@@ -114,14 +122,6 @@ public class UsuarioDto {
         } catch (Exception e) {
         }
         return validacion;
-    }
-
-    public int getPrivilegios() {
-        return privilegios;
-    }
-
-    public void setPrivilegios(int privilegios) {
-        this.privilegios = privilegios;
     }
 
 }

@@ -9,6 +9,8 @@ package dto;
  *
  * @author PabloTnT
  */
+//Clase java, que contiene tributos, constructor, getters y setters
+
 public class Doc_HeadDto {
     private int id_doc;
     private int tipo_doc;

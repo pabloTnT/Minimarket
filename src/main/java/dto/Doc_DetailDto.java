@@ -13,7 +13,6 @@ import java.util.Date;
  */
 //Clase java, que contiene tributos, constructor, getters y setters
 
-
 public class Doc_DetailDto {
     private int id;
     private int id_doc;

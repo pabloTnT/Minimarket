@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package controlador;
 
 import dao.BodegasDao;
@@ -18,6 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author PabloTnT
  */
+/* clase java utilizada como controlador de los datos ingresado en los jsp relacionado con el CRUD de bodega */
+
 public class BodegasController extends HttpServlet {
 
     /**
@@ -34,6 +37,7 @@ public class BodegasController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
                 BodegasDao dao = new BodegasDao();
+            /*IF generado para poder crear una nueva bodega en la base de datos*/
             if (request.getParameter("btn_guardarBodega") != null) {
                 BodegasDto dto = new BodegasDto();
                 dto.setId_bodega(Integer.valueOf(request.getParameter("txt_idBodega")));
@@ -50,11 +54,13 @@ public class BodegasController extends HttpServlet {
                 }
                 response.sendRedirect("crearBodega.jsp?mensaje="+mensaje);
             }
+            /* IF generado para poder eliminar una bodega existente dentro de la base de datos */
             if (request.getParameter("btn_eliminarBodega") != null) {
                 String codBodega = request.getParameter("btn_eliminarBodega");
                 dao.Delete(codBodega);
                 response.sendRedirect("listarBodegas.jsp");
             }
+            /*IF generado para editar una bodega existente dentro de la base de datos */
             if(request.getParameter("btn_updateBodega")!= null){
                 BodegasDto dto = new BodegasDto();
                 dto.setId_bodega(Integer.valueOf(request.getParameter("txt_idBodega")));

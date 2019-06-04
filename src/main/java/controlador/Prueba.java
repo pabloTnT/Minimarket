@@ -20,9 +20,7 @@ public class Prueba {
 
     public static void main(String[] args) {
 
-        UsuarioDao dao = new UsuarioDao();
-        UsuarioDto dto = new UsuarioDto();
-        UsuarioDto us = dao.Select("1");
-        System.out.print(us.getApellidos());
+            
+            
     }
 }
