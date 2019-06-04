@@ -18,6 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author PabloTnT
  */
+
+/*Clase java utilizada como controlador del inicio de sesión y la validacion de este*/
 public class InicioSesion extends HttpServlet {
 
     /**
@@ -36,6 +38,8 @@ public class InicioSesion extends HttpServlet {
             if(request.getParameter("btn_nuevoUsuario")!=null){
                 response.sendRedirect("creacionUsuario.jsp");
             }
+            /* IF utilizado para asociar el usuario y contraseña creando un objeto y validar estos 
+            mismo existan dentro de la base de datos*/
            if (request.getParameter("btn_enviar") != null) {
                     UsuarioDao usDao = new UsuarioDao();
                     UsuarioDto usDto = new UsuarioDto();
