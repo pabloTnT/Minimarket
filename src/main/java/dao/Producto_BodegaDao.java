@@ -27,6 +27,9 @@ public class Producto_BodegaDao implements DaoInterface<Producto_BodegaDto> {
     private static final String SQL_UPDATE = "UPDATE producto_bodega SET cod_producto=?, cod_bodega=?, stock=? WHERE id=?";
     private static final String SQL_SELECT = "SELECT * FROM producto_bodega WHERE id=?";
     private static final String SQL_SELECTALL = "SELECT * FROM producto_bodega";
+    private static final String SQL_PROD_BOD = "SELECT * FROM producto_bodega WHERE cod_producto=? AND cod_bodega=?";
+    private static final String SQL_SELECT_PROD = "SELECT * FROM producto_bodega WHERE cod_producto=?";
+    private static final String SQL_SELECT_BOD = "SELECT * FROM producto_bodega WHERE cod_bodega=?";
 
     private static final Conexion con = Conexion.estadoConexion();
 
@@ -121,10 +124,67 @@ public class Producto_BodegaDao implements DaoInterface<Producto_BodegaDto> {
             }
         } catch (SQLException ex) {
             Logger.getLogger(Producto_BodegaDao.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
+        } finally {
             con.cerrarConexion();
         }
         return prod;
     }
 
+    public List<Producto_BodegaDto> SeleccionarPorProdBod(int codProducto, int codBodega) {
+        PreparedStatement ps;
+        ResultSet res;
+        ArrayList<Producto_BodegaDto> prod = new ArrayList();
+        try {
+            ps = con.getCnn().prepareStatement(SQL_PROD_BOD);
+            ps.setInt(1, codProducto);
+            ps.setInt(2, codBodega);
+            res = ps.executeQuery();
+            while (res.next()) {
+                prod.add(new Producto_BodegaDto(res.getInt(1), res.getInt(2), res.getInt(3), res.getInt(4)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Producto_BodegaDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            con.cerrarConexion();
+        }
+        return prod;
+    }
+
+    public List<Producto_BodegaDto> SeleccionarPorProducto(int codProducto) {
+        PreparedStatement ps;
+        ResultSet res;
+        ArrayList<Producto_BodegaDto> prod = new ArrayList();
+        try {
+            ps = con.getCnn().prepareStatement(SQL_SELECT_PROD);
+            ps.setInt(1, codProducto);
+            res = ps.executeQuery();
+            while (res.next()) {
+                prod.add(new Producto_BodegaDto(res.getInt(1), res.getInt(2), res.getInt(3), res.getInt(4)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Producto_BodegaDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            con.cerrarConexion();
+        }
+        return prod;
+    }
+
+    public List<Producto_BodegaDto> SeleccionarPorBodega(int codBodega) {
+        PreparedStatement ps;
+        ResultSet res;
+        ArrayList<Producto_BodegaDto> prod = new ArrayList();
+        try {
+            ps = con.getCnn().prepareStatement(SQL_SELECT_BOD);
+            ps.setInt(1, codBodega);
+            res = ps.executeQuery();
+            while (res.next()) {
+                prod.add(new Producto_BodegaDto(res.getInt(1), res.getInt(2), res.getInt(3), res.getInt(4)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Producto_BodegaDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            con.cerrarConexion();
+        }
+        return prod;
+    }
 }

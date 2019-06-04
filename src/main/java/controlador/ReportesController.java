@@ -5,21 +5,21 @@
  */
 package controlador;
 
-import dao.UsuarioDao;
-import dto.UsuarioDto;
+import dao.Producto_BodegaDao;
+import dto.ProductoDto;
+import dto.Producto_BodegaDto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author PabloTnT
  */
-public class InicioSesion extends HttpServlet {
+public class ReportesController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,26 +34,21 @@ public class InicioSesion extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            if (request.getParameter("btn_nuevoUsuario") != null) {
-                response.sendRedirect("creacionUsuario.jsp");
+            int codProducto = Integer.valueOf(request.getParameter("opt_producto"));
+            int codBodega = Integer.valueOf(request.getParameter("opt_bodega"));
+            if (codBodega != 0 && codProducto != 0) {
+                response.sendRedirect("reporteStock.jsp?codProd=" + codProducto + "&codBod=" + codBodega);
             }
-            if (request.getParameter("btn_enviar") != null) {
-                UsuarioDao dao = new UsuarioDao();
-                UsuarioDto dto = dao.SelectPorUsuario(request.getParameter("txt_usuario"));
-                HttpSession session = request.getSession();
-                session.setAttribute("sesionUsuario",dto);
-                UsuarioDto sesion = (UsuarioDto) request.getSession().getAttribute("sesionUsuario");
-                String nombreSesion = sesion.getNombre();
-                UsuarioDao usDao = new UsuarioDao();
-                UsuarioDto usDto = new UsuarioDto();
-                String id = request.getParameter("txt_usuario");
-                String clave = request.getParameter("txt_clave");
-                if (usDao.UsuarioContraseña(id, clave) && usDto.validarRut(id)) {
-                    response.sendRedirect("seleccionModulo.jsp");
-                } else {
-                    response.sendRedirect("errorLogin.jsp");
-                }
+            if (codBodega == 0 && codProducto == 0) {
+                response.sendRedirect("reporteStock.jsp?codProd=0&codBod=0");
             }
+            if (codBodega != 0 && codProducto == 0) {
+                response.sendRedirect("reporteStock.jsp?codProd=0&codBod="+codBodega);
+            }
+            if (codBodega == 0 && codProducto != 0) {
+                response.sendRedirect("reporteStock.jsp?codBod=0&codProd="+codProducto);
+            }
+            
         }
     }
 

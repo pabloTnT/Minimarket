@@ -28,6 +28,7 @@ public class UsuarioDao implements DaoInterface<UsuarioDto> {
     private static final String SQL_SELECT = "SELECT * FROM usuario WHERE id=?";
     private static final String SQL_SELECTALL = "SELECT * FROM usuario";
     private static final String SQL_USUARIO_CONTRASEÑA = "SELECT * FROM usuario WHERE rutUsuario=? AND clave=?";
+    private static final String SQL_SELECT_USUARIO = "SELECT * FROM usuario WHERE rutUsuario=?";
 
     private static final Conexion con = Conexion.estadoConexion();
 
@@ -145,6 +146,26 @@ public class UsuarioDao implements DaoInterface<UsuarioDto> {
             while (res.next()) {
                 user.add(new UsuarioDto(res.getInt(1), res.getString(2), res.getString(3), res.getInt(4), res.getString(5), res.getString(6), res.getInt(7)));
             }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            con.cerrarConexion();
+        }
+        return user;
+    }
+    
+        public UsuarioDto SelectPorUsuario(Object key) {
+        PreparedStatement ps;
+        ResultSet res;
+        UsuarioDto user = null;
+        try {
+            ps = con.getCnn().prepareStatement(SQL_SELECT_USUARIO);
+            ps.setString(1, key.toString());
+            res = ps.executeQuery();
+            while (res.next()) {
+                user = new UsuarioDto(res.getInt(1), res.getString(2), res.getString(3), res.getInt(4), res.getString(5), res.getString(6), res.getInt(7));
+            }
+            return user;
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {

@@ -44,6 +44,11 @@ Author     : PabloTnT
                     <li><a href="listarProveedores.jsp">Listar Proveedores</a></li>
                 </ul>
             </li>
+            <%
+            UsuarioDto sesion = (UsuarioDto) request.getSession().getAttribute("sesionUsuario");
+            int privilegio = sesion.getPrivilegios();
+            if(privilegio == 1){
+            %>
             <li>
                 <a href="#" class="dropdown-toggle">Usuarios</a>
                 <ul class="d-menu" data-role="dropdown">
@@ -51,6 +56,9 @@ Author     : PabloTnT
                     <li><a href="listarUsuarios.jsp">Listar Usuarios</a></li>
                 </ul>
             </li>
+            <%
+            }
+            %>
         </ul>  
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
