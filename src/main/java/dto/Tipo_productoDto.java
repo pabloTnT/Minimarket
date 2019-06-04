@@ -9,6 +9,7 @@ package dto;
  *
  * @author PabloTnT
  */
+
 // Clase java, que contiene tributos, constructor, getters y setters, de los tipos de productos.
 
 public class Tipo_productoDto {
