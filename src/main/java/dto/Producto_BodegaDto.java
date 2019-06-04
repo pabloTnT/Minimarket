@@ -9,6 +9,8 @@ package dto;
  *
  * @author PabloTnT
  */
+//Clase java, que contiene tributos, constructor, getters y setters, de los productos en bodega
+
 public class Producto_BodegaDto {
     private int id;
     private int cod_producto;

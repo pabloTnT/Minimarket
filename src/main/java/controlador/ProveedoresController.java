@@ -19,6 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author PabloTnT
  */
+/* clase java utilizada como controlador de los datos ingresado en los jsp relacionado con el CRUD de proveedores */
+
 public class ProveedoresController extends HttpServlet {
 
     /**
@@ -35,6 +37,7 @@ public class ProveedoresController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             ProveedorDao dao = new ProveedorDao();
+            /*IF utilizado para crear un nuevo proveedor en la base de datos */
             if (request.getParameter("btn_guardarProveedor") != null) {
                 ProveedorDto dto = new ProveedorDto();
                 UsuarioDto usDto = new UsuarioDto();
@@ -50,11 +53,13 @@ public class ProveedoresController extends HttpServlet {
 
                 response.sendRedirect("crearProveedor.jsp");
             }
+            /*IF utilizado para eliminar a un proveedor existente en la base de datos*/
             if (request.getParameter("btn_eliminarProveedor") != null) {
                 String codProveedor = request.getParameter("btn_eliminarProveedor");
                 dao.Delete(codProveedor);
                 response.sendRedirect("listarProveedores.jsp");
             }
+            /*IF utilizado para editar a un proveedor existente en la base de datos*/
             if (request.getParameter("btn_updateProveedor") != null) {
                 ProveedorDto dto = new ProveedorDto();
                 dto.setId(Integer.valueOf(request.getParameter("txt_codProveedor")));
