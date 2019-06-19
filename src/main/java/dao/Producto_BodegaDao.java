@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  */
 public class Producto_BodegaDao implements DaoInterface<Producto_BodegaDto> {
 
-    private static final String SQL_INSERT = "INSERT INTO producto_bodega (id, cod_producto, cod_bodega, stock) VALUES (?, ?, ?, ?)";
+    private static final String SQL_INSERT = "INSERT INTO producto_bodega (cod_producto, cod_bodega, stock) VALUES ( ?, ?, ?)";
     private static final String SQL_DELETE = "DELETE FROM producto_bodega WHERE id=?";
     private static final String SQL_UPDATE = "UPDATE producto_bodega SET cod_producto=?, cod_bodega=?, stock=? WHERE id=?";
     private static final String SQL_SELECT = "SELECT * FROM producto_bodega WHERE id=?";
@@ -38,10 +38,9 @@ public class Producto_BodegaDao implements DaoInterface<Producto_BodegaDto> {
         PreparedStatement ps;
         try {
             ps = con.getCnn().prepareStatement(SQL_INSERT);
-            ps.setInt(1, dto.getId());
-            ps.setInt(2, dto.getCod_producto());
-            ps.setInt(3, dto.getCod_bodega());
-            ps.setInt(4, dto.getStock());
+            ps.setInt(1, dto.getCod_producto());
+            ps.setInt(2, dto.getCod_bodega());
+            ps.setInt(3, dto.getStock());
             if (ps.executeUpdate() > 0) {
                 return true;
             }

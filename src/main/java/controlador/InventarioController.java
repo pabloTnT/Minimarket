@@ -5,6 +5,8 @@
  */
 package controlador;
 
+import dao.Producto_BodegaDao;
+import dto.Producto_BodegaDto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -16,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author PabloTnT
  */
-public class ReportesController extends HttpServlet {
+public class InventarioController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,21 +33,18 @@ public class ReportesController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            int codProducto = Integer.valueOf(request.getParameter("opt_producto"));
-            int codBodega = Integer.valueOf(request.getParameter("opt_bodega"));
-            if (codBodega != 0 && codProducto != 0) {
-                response.sendRedirect("reporteStock.jsp?codProd=" + codProducto + "&codBod=" + codBodega);
+            if(request.getParameter("btn_ingresoBodega")!=null){
+                response.sendRedirect("ingresoBodega.jsp");
             }
-            if (codBodega == 0 && codProducto == 0) {
-                response.sendRedirect("reporteStock.jsp?codProd=0&codBod=0");
+            if(request.getParameter("btn_generarIngreso")!=null){
+                Producto_BodegaDto dto = new Producto_BodegaDto();
+                dto.setCod_bodega(Integer.valueOf(request.getParameter("opt_bodega")));
+                dto.setCod_producto(Integer.valueOf(request.getParameter("opt_producto")));
+                dto.setStock(Integer.valueOf(request.getParameter("txt_cantidadProductos")));
+                Producto_BodegaDao dao = new Producto_BodegaDao();
+                dao.Create(dto);
+                response.sendRedirect("ingresoBodega.jsp");
             }
-            if (codBodega != 0 && codProducto == 0) {
-                response.sendRedirect("reporteStock.jsp?codProd=0&codBod="+codBodega);
-            }
-            if (codBodega == 0 && codProducto != 0) {
-                response.sendRedirect("reporteStock.jsp?codBod=0&codProd="+codProducto);
-            }
-            
         }
     }
 

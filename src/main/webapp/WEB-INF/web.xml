@@ -36,6 +36,10 @@
         <servlet-name>ReportesController</servlet-name>
         <servlet-class>controlador.ReportesController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InventarioController</servlet-name>
+        <servlet-class>controlador.InventarioController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InicioSesion</servlet-name>
         <url-pattern>/Inicio_sesion.do</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>ReportesController</servlet-name>
         <url-pattern>/Reportes_controller.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InventarioController</servlet-name>
+        <url-pattern>/Inventario_controller.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
