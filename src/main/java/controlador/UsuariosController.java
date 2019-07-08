@@ -41,7 +41,6 @@ public class UsuariosController extends HttpServlet {
                     dto.setNombre(request.getParameter("txt_nombreUsuario"));
                     dto.setApellidos(request.getParameter("txt_apellidosUsuario"));
                     dto.setCargo(Integer.valueOf(request.getParameter("opt_cargoUsuario")));
-                    dto.setPrivilegios(Integer.valueOf(request.getParameter("opt_privilegiousuario")));
                     dto.setClave(request.getParameter("txt_contraUsuario"));
                     dao.Create(dto);
                     response.sendRedirect("crearUsuario.jsp");
@@ -60,7 +59,6 @@ public class UsuariosController extends HttpServlet {
                 dto.setNombre(request.getParameter("txt_nombreUsuario"));
                 dto.setApellidos(request.getParameter("txt_apellidosUsuario"));
                 dto.setCargo(Integer.valueOf(request.getParameter("opt_cargoUsuario")));
-                dto.setPrivilegios(Integer.valueOf(request.getParameter("opt_privilegiousuario")));
                 dto.setClave(request.getParameter("txt_contraUsuario"));
                 dao.Update(dto);
                 response.sendRedirect("editarUsuarios.jsp?cambio="+"ok");

@@ -12,36 +12,44 @@ package dto;
 /* Clase java, que contiene tributos, constructor, getters y setters, de los cargos de los funcionarios. */
 
 public class CargosDto {
-    private int id_cargo;
-    private String nombre_cargo;
+    private int idCargo;
+    private String nombreCargo;
+    private int idPrivilegio;
 
     public CargosDto() {
     }
 
-    public CargosDto(int id_cargo) {
-        this.id_cargo = id_cargo;
+    public CargosDto(int idCargo, String nombreCargo, int idPrivilegio) {
+        this.idCargo = idCargo;
+        this.nombreCargo = nombreCargo;
+        this.idPrivilegio = idPrivilegio;
     }
 
-    public CargosDto(int id_cargo, String nombre_cargo) {
-        this.id_cargo = id_cargo;
-        this.nombre_cargo = nombre_cargo;
+    public int getIdCargo() {
+        return idCargo;
     }
 
-    public String getNombre_cargo() {
-        return nombre_cargo;
+    public void setIdCargo(int idCargo) {
+        this.idCargo = idCargo;
     }
 
-    public void setNombre_cargo(String nombre_cargo) {
-        this.nombre_cargo = nombre_cargo;
+    public String getNombreCargo() {
+        return nombreCargo;
     }
 
-    public int getId_cargo() {
-        return id_cargo;
+    public void setNombreCargo(String nombreCargo) {
+        this.nombreCargo = nombreCargo;
     }
 
-    public void setId_cargo(int id_cargo) {
-        this.id_cargo = id_cargo;
+    public int getIdPrivilegio() {
+        return idPrivilegio;
     }
+
+    public void setIdPrivilegio(int idPrivilegio) {
+        this.idPrivilegio = idPrivilegio;
+    }
+
+    
     
     
 }

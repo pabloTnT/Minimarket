@@ -25,13 +25,13 @@
         </ul> 
         <div style="margin-top: 100px" id="abastecimiento">
             <div class="botonesInventario">
-                <a href="crearOc.jsp"><button class="button primary large rounded" style="width: 400px">Generar Orden de Compra</button></a>
+                <button name="btn_oc" class="button primary large rounded" style="width: 400px">Generar Orden de Compra</button>
             </div>
             <div class="botonesInventario">
                 <button class="button primary large rounded" style="width: 400px">Modificar Ordenes de Compra</button>
             </div>
             <div class="botonesInventario">
-                <a href="crearOrdenIngreso.jsp"><button class="button primary large rounded" style="width: 400px">Generar Orden de Ingreso</button></a>
+                <button class="button primary large rounded" style="width: 400px">Generar Orden de Ingreso</button>
             </div>
             <div class="botonesInventario">
                 <button class="button primary large rounded" name="btn_ingresoBodega" style="width: 400px">Ingreso a Bodega</button>

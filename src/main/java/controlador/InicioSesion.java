@@ -42,8 +42,6 @@ public class InicioSesion extends HttpServlet {
                 UsuarioDto dto = dao.SelectPorUsuario(request.getParameter("txt_usuario"));
                 HttpSession session = request.getSession();
                 session.setAttribute("sesionUsuario",dto);
-                UsuarioDto sesion = (UsuarioDto) request.getSession().getAttribute("sesionUsuario");
-                String nombreSesion = sesion.getNombre();
                 UsuarioDao usDao = new UsuarioDao();
                 UsuarioDto usDto = new UsuarioDto();
                 String id = request.getParameter("txt_usuario");

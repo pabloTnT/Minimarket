@@ -129,17 +129,17 @@ public class Producto_BodegaDao implements DaoInterface<Producto_BodegaDto> {
         return prod;
     }
 
-    public List<Producto_BodegaDto> SeleccionarPorProdBod(int codProducto, int codBodega) {
+    public Producto_BodegaDto SeleccionarPorProdBod(int codProducto, int codBodega) {
         PreparedStatement ps;
         ResultSet res;
-        ArrayList<Producto_BodegaDto> prod = new ArrayList();
+        Producto_BodegaDto prod = null;
         try {
             ps = con.getCnn().prepareStatement(SQL_PROD_BOD);
             ps.setInt(1, codProducto);
             ps.setInt(2, codBodega);
             res = ps.executeQuery();
             while (res.next()) {
-                prod.add(new Producto_BodegaDto(res.getInt(1), res.getInt(2), res.getInt(3), res.getInt(4)));
+                prod = new Producto_BodegaDto(res.getInt(1), res.getInt(2), res.getInt(3), res.getInt(4));
             }
         } catch (SQLException ex) {
             Logger.getLogger(Producto_BodegaDao.class.getName()).log(Level.SEVERE, null, ex);

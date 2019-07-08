@@ -31,21 +31,25 @@ public class ReportesController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            int codProducto = Integer.valueOf(request.getParameter("opt_producto"));
-            int codBodega = Integer.valueOf(request.getParameter("opt_bodega"));
-            if (codBodega != 0 && codProducto != 0) {
-                response.sendRedirect("reporteStock.jsp?codProd=" + codProducto + "&codBod=" + codBodega);
+            if (request.getParameter("btn_generaReporte") != null) {
+                int codProducto = Integer.valueOf(request.getParameter("opt_producto"));
+                int codBodega = Integer.valueOf(request.getParameter("opt_bodega"));
+                if (codBodega != 0 && codProducto != 0) {
+                    response.sendRedirect("reporteStock.jsp?codProd=" + codProducto + "&codBod=" + codBodega);
+                }
+                if (codBodega == 0 && codProducto == 0) {
+                    response.sendRedirect("reporteStock.jsp?codProd=0&codBod=0");
+                }
+                if (codBodega != 0 && codProducto == 0) {
+                    response.sendRedirect("reporteStock.jsp?codProd=0&codBod=" + codBodega);
+                }
+                if (codBodega == 0 && codProducto != 0) {
+                    response.sendRedirect("reporteStock.jsp?codBod=0&codProd=" + codProducto);
+                }
             }
-            if (codBodega == 0 && codProducto == 0) {
-                response.sendRedirect("reporteStock.jsp?codProd=0&codBod=0");
+            if (request.getParameter("btn_volver") != null) {
+                response.sendRedirect("moduloReportes.jsp");
             }
-            if (codBodega != 0 && codProducto == 0) {
-                response.sendRedirect("reporteStock.jsp?codProd=0&codBod="+codBodega);
-            }
-            if (codBodega == 0 && codProducto != 0) {
-                response.sendRedirect("reporteStock.jsp?codBod=0&codProd="+codProducto);
-            }
-            
         }
     }
 

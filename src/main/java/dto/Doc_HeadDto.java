@@ -5,6 +5,8 @@
  */
 package dto;
 
+import dao.Doc_HeadDao;
+
 /**
  *
  * @author PabloTnT
@@ -12,66 +14,96 @@ package dto;
 //Clase java, que contiene tributos, constructor, getters y setters
 
 public class Doc_HeadDto {
-    private int id_doc;
-    private int tipo_doc;
-    private int num_doc;
-    private int bod_origen;
-    private int bod_destino;
+    private int idDoc;
+    private int idUsuario;
+    private int tipoDoc;
+    private int numDoc;
+    private int idProveedor;
+    private int bodOrigen;
+    private int bodDestino;
 
     public Doc_HeadDto() {
     }
 
     public Doc_HeadDto(int id_doc) {
-        this.id_doc = id_doc;
+        this.idDoc = idDoc;
     }
 
-    public Doc_HeadDto(int id_doc, int tipo_doc, int num_doc, int bod_origen, int bod_destino) {
-        this.id_doc = id_doc;
-        this.tipo_doc = tipo_doc;
-        this.num_doc = num_doc;
-        this.bod_origen = bod_origen;
-        this.bod_destino = bod_destino;
+    public Doc_HeadDto(int idDoc, int idUsuario, int tipoDoc, int numDoc, int idProveedor, int bodOrigen, int bodDestino) {
+        this.idDoc = idDoc;
+        this.idUsuario = idUsuario;
+        this.tipoDoc = tipoDoc;
+        this.numDoc = numDoc;
+        this.idProveedor = idProveedor;
+        this.bodOrigen = bodOrigen;
+        this.bodDestino = bodDestino;
     }
 
-    public int getBod_destino() {
-        return bod_destino;
+    public int getIdDoc() {
+        return idDoc;
     }
 
-    public void setBod_destino(int bod_destino) {
-        this.bod_destino = bod_destino;
+    public void setIdDoc(int idDoc) {
+        this.idDoc = idDoc;
     }
 
-    public int getId_doc() {
-        return id_doc;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setId_doc(int id_doc) {
-        this.id_doc = id_doc;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
-    public int getTipo_doc() {
-        return tipo_doc;
+    public int getTipoDoc() {
+        return tipoDoc;
     }
 
-    public void setTipo_doc(int tipo_doc) {
-        this.tipo_doc = tipo_doc;
+    public void setTipoDoc(int tipoDoc) {
+        this.tipoDoc = tipoDoc;
     }
 
-    public int getNum_doc() {
-        return num_doc;
+    public int getNumDoc() {
+        return numDoc;
     }
 
-    public void setNum_doc(int num_doc) {
-        this.num_doc = num_doc;
+    public void setNumDoc(int numDoc) {
+        this.numDoc = numDoc;
     }
 
-    public int getBod_origen() {
-        return bod_origen;
+    public int getIdProveedor() {
+        return idProveedor;
     }
 
-    public void setBod_origen(int bod_origen) {
-        this.bod_origen = bod_origen;
+    public void setIdProveedor(int idProveedor) {
+        this.idProveedor = idProveedor;
     }
+
+    public int getBodOrigen() {
+        return bodOrigen;
+    }
+
+    public void setBodOrigen(int bodOrigen) {
+        this.bodOrigen = bodOrigen;
+    }
+
+    public int getBodDestino() {
+        return bodDestino;
+    }
+
+    public void setBodDestino(int bodDestino) {
+        this.bodDestino = bodDestino;
+    }
+
     
+    
+    public boolean validaFolioEnUso(int idDoc){
+        Doc_HeadDao dao = new Doc_HeadDao();
+        if(dao.Select(idDoc)!=null){
+            return true;
+        }else{
+            return false;
+        }
+    }
     
 }

@@ -16,7 +16,6 @@ public class UsuarioDto {
     private int id;
     private String rutUsuario;
     private String clave;
-    private int privilegios;
     private String nombre;
     private String apellidos;
     private int cargo;
@@ -28,38 +27,30 @@ public class UsuarioDto {
         this.id = id;
     }
 
-    public UsuarioDto(int id, String rutUsuario, String clave, int privilegios, String nombre, String apellidos, int cargo) {
+    public UsuarioDto(int id, String rutUsuario, String clave, String nombre, String apellidos, int cargo) {
         this.id = id;
         this.rutUsuario = rutUsuario;
         this.clave = clave;
-        this.privilegios = privilegios;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.cargo = cargo;
-    }
-
-    public int getCargo() {
-        return cargo;
     }
 
     public void setCargo(int cargo) {
         this.cargo = cargo;
     }
 
-    public String getNombre() {
-        return nombre;
+     
+    public int getCargo() {
+        return cargo;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public int getId() {
+        return id;
     }
 
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getRutUsuario() {
@@ -78,25 +69,23 @@ public class UsuarioDto {
         this.clave = clave;
     }
 
-    public void intPrivilegios(int privilegios) {
-        this.privilegios = privilegios;
+    public String getNombre() {
+        return nombre;
     }
 
-    public int getId() {
-        return id;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getApellidos() {
+        return apellidos;
     }
 
-    public int getPrivilegios() {
-        return privilegios;
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
-    public void setPrivilegios(int privilegios) {
-        this.privilegios = privilegios;
-    }
+    
 
     
     public boolean validarRut(String rutUsuario) {

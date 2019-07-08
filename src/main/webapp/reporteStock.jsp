@@ -167,7 +167,10 @@
                 %>
             </table>
         </div>
+        <form action="Reportes_controller.do" method="post">
+        <button class="button success rounded" name="btn_volver" style="margin-left: 25px; margin-top: 25px;width: 100px">Atras</button>
+        </form>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>s
+        <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
     </body>
 </html>
