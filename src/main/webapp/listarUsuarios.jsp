@@ -76,12 +76,14 @@
                                 String apellidos = usDto.getApellidos();
                                 CargosDao cargDao = new CargosDao();
                                 for (CargosDto cargDto : cargDao.SeleccionarTodo()) {
-                                    String nombreCargo = cargDto.getNombre_cargo();
-                                    int codigoCargo = cargDto.getId_cargo();
-                                    PrivilegiosDao privDao = new PrivilegiosDao();
-                                    for (PrivilegiosDto privDto : privDao.SeleccionarTodo()) {
-                                        String nombrePrivilegio = privDto.getNombre_privilegio();
-                                        int codigoPrivilegio = privDto.getId();
+                                    if (usDto.getCargo() == cargDto.getId_cargo()) {
+                                        String nombreCargo = cargDto.getNombre_cargo();
+                                        int codigoCargo = cargDto.getId_cargo();
+                                        PrivilegiosDao privDao = new PrivilegiosDao();
+                                        for (PrivilegiosDto privDto : privDao.SeleccionarTodo()) {
+                                            if (usDto.getPrivilegios() == privDto.getId()) {
+                                                String nombrePrivilegio = privDto.getNombre_privilegio();
+                                                int codigoPrivilegio = privDto.getId();
 
                         %>
                         <tr>
@@ -101,6 +103,8 @@
                             </td>
                         </tr>
                         <%
+                                            }
+                                        }
                                     }
                                 }
                             }

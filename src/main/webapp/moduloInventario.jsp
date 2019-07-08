@@ -17,6 +17,7 @@
 
     </head>
     <body background="imagenes/fondo.png">
+        <form action="Inventario_controller.do" method="post">
         <ul data-role="tabs" data-tabs-type="pills" data-expand="true">
             <li><a href="seleccionModulo.jsp"<i style="margin-left: 40px;margin-top: 10px;margin-right: 30px; cursor: pointer" class="fas fa-home"></i></a> </li>
             <li class="active"><a href="#abastecimiento">Abastecimiento</a></li>
@@ -24,13 +25,16 @@
         </ul> 
         <div style="margin-top: 100px" id="abastecimiento">
             <div class="botonesInventario">
-                <a href="crearOc.jsp"><button class="button primary large rounded" style="width: 400px">Generar Orden de Compra</button></a>
+                <button name="btn_oc" class="button primary large rounded" style="width: 400px">Generar Orden de Compra</button>
             </div>
             <div class="botonesInventario">
                 <button class="button primary large rounded" style="width: 400px">Modificar Ordenes de Compra</button>
             </div>
             <div class="botonesInventario">
-                <a href="crearOrdenIngreso.jsp"><button class="button primary large rounded" style="width: 400px">Generar Orden de Ingreso</button></a>
+                <button class="button primary large rounded" style="width: 400px">Generar Orden de Ingreso</button>
+            </div>
+            <div class="botonesInventario">
+                <button class="button primary large rounded" name="btn_ingresoBodega" style="width: 400px">Ingreso a Bodega</button>
             </div>
         </div>
         <div style="margin-top: 100px" id="trasladoMercaderia">
@@ -43,6 +47,7 @@
         </div>
 
     </div>
+    </form>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
 </body>

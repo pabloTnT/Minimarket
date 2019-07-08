@@ -5,8 +5,8 @@
  */
 package controlador;
 
-import dao.UsuarioDao;
-import dto.UsuarioDto;
+import dao.Producto_BodegaDao;
+import dto.Producto_BodegaDto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author PabloTnT
  */
-public class UsuariosController extends HttpServlet {
+public class InventarioController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,38 +33,34 @@ public class UsuariosController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            UsuarioDao dao = new UsuarioDao();
-            if (request.getParameter("btn_guardarUsuario") != null) {
-                UsuarioDto dto = new UsuarioDto();
-                if (dto.validarRut(request.getParameter("txt_rutUsuario"))) {
-                    dto.setRutUsuario(request.getParameter("txt_rutUsuario"));
-                    dto.setNombre(request.getParameter("txt_nombreUsuario"));
-                    dto.setApellidos(request.getParameter("txt_apellidosUsuario"));
-                    dto.setCargo(Integer.valueOf(request.getParameter("opt_cargoUsuario")));
-                    dto.setClave(request.getParameter("txt_contraUsuario"));
+            if(request.getParameter("btn_oc")!=null){
+                response.sendRedirect("ordenCompra.jsp");
+            }
+            if(request.getParameter("btn_ingresoBodega")!=null){
+                response.sendRedirect("ingresoBodega.jsp");
+            }
+            if(request.getParameter("btn_generarIngreso")!=null){
+                Producto_BodegaDto dto = new Producto_BodegaDto();
+                Producto_BodegaDao dao = new Producto_BodegaDao();
+                int codProducto = Integer.valueOf(request.getParameter("opt_producto"));
+                int codBodega = Integer.valueOf(request.getParameter("opt_bodega"));
+                int cantidad = Integer.valueOf(request.getParameter("txt_cantidadProductos"));
+                dto.setCod_producto(codProducto);
+                dto.setCod_bodega(codBodega);
+                Producto_BodegaDto dtoStock = dao.SeleccionarPorProdBod(codProducto, codBodega);
+                if(dtoStock != null){
+                    int stockAntiguo = dtoStock.getStock();
+                    int idProdBodega = dtoStock.getId();
+                    int stockNuevo =  stockAntiguo + cantidad;
+                    dto.setStock(stockNuevo);
+                    dto.setId(idProdBodega);
+                    dao.Update(dto);
+                }else{
                     dao.Create(dto);
-                    response.sendRedirect("crearUsuario.jsp");
                 }
-
-            }
-            if (request.getParameter("btn_eliminarUsuario") != null) {
-                String codUsuario = request.getParameter("btn_eliminarUsuario");
-                dao.Delete(codUsuario);
-                response.sendRedirect("listarUsuarios.jsp");
-            }
-            if (request.getParameter("btn_updateUsuario") != null) {
-                UsuarioDto dto = new UsuarioDto();
-                dto.setId(Integer.valueOf(request.getParameter("txt_idUsuario")));
-                dto.setRutUsuario(request.getParameter("txt_rutUsuario"));
-                dto.setNombre(request.getParameter("txt_nombreUsuario"));
-                dto.setApellidos(request.getParameter("txt_apellidosUsuario"));
-                dto.setCargo(Integer.valueOf(request.getParameter("opt_cargoUsuario")));
-                dto.setClave(request.getParameter("txt_contraUsuario"));
-                dao.Update(dto);
-                response.sendRedirect("editarUsuarios.jsp?cambio="+"ok");
+                response.sendRedirect("ingresoBodega.jsp");
             }
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

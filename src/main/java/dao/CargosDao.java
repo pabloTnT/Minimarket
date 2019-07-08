@@ -22,9 +22,9 @@ import java.util.logging.Logger;
  */
 public class CargosDao implements DaoInterface<CargosDto>{
 
-    private static final String SQL_INSERT = "INSERT INTO cargos (id_cargo, nombre_cargo) VALUES (?, ?)";
+    private static final String SQL_INSERT = "INSERT INTO cargos (id_cargo, nombre_cargo, id_privilegio) VALUES (?, ?, ?)";
     private static final String SQL_DELETE = "DELETE FROM cargos WHERE id_cargo=?";
-    private static final String SQL_UPDATE = "UPDATE cargos SET nombre_cargo=? WHERE id_cargo=?";
+    private static final String SQL_UPDATE = "UPDATE cargos SET nombre_cargo=?, id_privilegio=? WHERE id_cargo=?";
     private static final String SQL_SELECT = "SELECT * FROM cargos WHERE id_cargo=?";
     private static final String SQL_SELECTALL = "SELECT * FROM cargos";
 
@@ -35,8 +35,9 @@ public class CargosDao implements DaoInterface<CargosDto>{
         PreparedStatement ps;
         try {
             ps = con.getCnn().prepareStatement(SQL_INSERT);
-            ps.setInt(1, dto.getId_cargo());
-            ps.setString(2, dto.getNombre_cargo());
+            ps.setInt(1, dto.getIdCargo());
+            ps.setString(2, dto.getNombreCargo());
+            ps.setInt(3, dto.getIdPrivilegio());
 
             if (ps.executeUpdate() > 0) {
                 return true;
@@ -72,8 +73,9 @@ public class CargosDao implements DaoInterface<CargosDto>{
         PreparedStatement ps;
         try {
             ps = con.getCnn().prepareStatement(SQL_UPDATE);
-            ps.setString(1, dto.getNombre_cargo());
-            ps.setInt(2, dto.getId_cargo());
+            ps.setString(1, dto.getNombreCargo());
+            ps.setInt(2, dto.getIdPrivilegio());
+            ps.setInt(3, dto.getIdCargo());
 
             if (ps.executeUpdate() > 0) {
                 return true;
@@ -98,7 +100,7 @@ public class CargosDao implements DaoInterface<CargosDto>{
             res = ps.executeQuery();
 
             while (res.next()) {
-                car = new CargosDto(res.getInt(1), res.getString(2));
+                car = new CargosDto(res.getInt(1), res.getString(2), res.getInt(3));
             }
             return car;
         } catch (SQLException ex) {
@@ -119,7 +121,7 @@ public class CargosDao implements DaoInterface<CargosDto>{
             res = ps.executeQuery();
 
             while (res.next()) {
-                cargos.add(new CargosDto(res.getInt(1), res.getString(2)));
+                cargos.add(new CargosDto(res.getInt(1), res.getString(2), res.getInt(3)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(CargosDao.class.getName()).log(Level.SEVERE, null, ex);

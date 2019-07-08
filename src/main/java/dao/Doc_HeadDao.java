@@ -22,9 +22,9 @@ import java.util.logging.Logger;
  */
 public class Doc_HeadDao implements DaoInterface<Doc_HeadDto>{
 
-    private static final String SQL_INSERT = "INSERT INTO bodegas (id_doc, tipo_doc, num_doc, bod_origen, bod_destino) VALUES (?, ?, ?, ?, ?)";
+    private static final String SQL_INSERT = "INSERT INTO bodegas (id_doc, id_usuario, tipo_doc, num_doc, id_proveedor, bod_origen, bod_destino) VALUES (?, ?, ?, ?, ?, ?, ?)";
     private static final String SQL_DELETE = "DELETE FROM bodegas WHERE id_doc=?";
-    private static final String SQL_UPDATE = "UPDATE bodegas SET tipo_doc=?, num_doc=?, bod_origen=?, bod_destino=? WHERE id_doc=?";
+    private static final String SQL_UPDATE = "UPDATE bodegas SET id_usuario=?, tipo_doc=?, num_doc=?, id_proveedor, bod_origen=?, bod_destino=? WHERE id_doc=?";
     private static final String SQL_SELECT = "SELECT * FROM bodegas WHERE id_doc=?";
     private static final String SQL_SELECTALL = "SELECT * FROM bodegas";
 
@@ -35,11 +35,13 @@ public class Doc_HeadDao implements DaoInterface<Doc_HeadDto>{
         PreparedStatement ps;
         try {
             ps = con.getCnn().prepareStatement(SQL_INSERT);
-            ps.setInt(1, dto.getId_doc());
-            ps.setInt(2, dto.getTipo_doc());
-            ps.setInt(3,dto.getNum_doc());
-            ps.setInt(4, dto.getBod_origen());
-            ps.setInt(5, dto.getBod_destino());
+            ps.setInt(1, dto.getIdDoc());
+            ps.setInt(2, dto.getIdUsuario());
+            ps.setInt(3, dto.getTipoDoc());
+            ps.setInt(4,dto.getNumDoc());
+            ps.setInt(5, dto.getIdProveedor());
+            ps.setInt(6, dto.getBodOrigen());
+            ps.setInt(7, dto.getBodDestino());
 
             if (ps.executeUpdate() > 0) {
                 return true;
@@ -75,11 +77,13 @@ public class Doc_HeadDao implements DaoInterface<Doc_HeadDto>{
         PreparedStatement ps;
         try {
             ps = con.getCnn().prepareStatement(SQL_UPDATE);
-            ps.setInt(1, dto.getTipo_doc());
-            ps.setInt(2, dto.getNum_doc());
-            ps.setInt(3, dto.getBod_origen());
-            ps.setInt(4, dto.getBod_destino());
-            ps.setInt(5, dto.getId_doc());
+            ps.setInt(1, dto.getIdUsuario());
+            ps.setInt(2, dto.getTipoDoc());
+            ps.setInt(3, dto.getNumDoc());
+            ps.setInt(4, dto.getIdProveedor());
+            ps.setInt(5, dto.getBodOrigen());
+            ps.setInt(6, dto.getBodDestino());
+            ps.setInt(7, dto.getIdDoc());
             if (ps.executeUpdate() > 0) {
                 return true;
             }
@@ -103,7 +107,7 @@ public class Doc_HeadDao implements DaoInterface<Doc_HeadDto>{
             res = ps.executeQuery();
 
             while (res.next()) {
-                docHead = new Doc_HeadDto(res.getInt(1), res.getInt(2), res.getInt(3), res.getInt(4), res.getInt(5));
+                docHead = new Doc_HeadDto(res.getInt(1), res.getInt(2), res.getInt(3), res.getInt(4), res.getInt(5), res.getInt(6), res.getInt(7));
             }
             return docHead;
         } catch (SQLException ex) {
@@ -124,7 +128,7 @@ public class Doc_HeadDao implements DaoInterface<Doc_HeadDto>{
             res = ps.executeQuery();
 
             while (res.next()) {
-                docHead.add(new Doc_HeadDto(res.getInt(1), res.getInt(2), res.getInt(3), res.getInt(4), res.getInt(5)));
+                docHead.add(new Doc_HeadDto(res.getInt(1), res.getInt(2), res.getInt(3), res.getInt(4), res.getInt(5), res.getInt(6), res.getInt(7)));
             }
             
         } catch (SQLException ex) {
