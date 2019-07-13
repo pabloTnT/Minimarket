@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package modelo.dao;
 
 import conexion.Conexion;
-import dto.Doc_HeadDto;
+import modelo.dto.Doc_HeadDto;
 import interfaces.DaoInterface;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

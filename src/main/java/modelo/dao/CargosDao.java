@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package modelo.dao;
 
 import conexion.Conexion;
-import dto.PrivilegiosDto;
+import modelo.dto.CargosDto;
 import interfaces.DaoInterface;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,29 +20,30 @@ import java.util.logging.Logger;
  *
  * @author PabloTnT
  */
-public class PrivilegiosDao implements DaoInterface<PrivilegiosDto>{
+public class CargosDao implements DaoInterface<CargosDto>{
 
-    private static final String SQL_INSERT = "INSERT INTO privilegios (id, nombre_privilegio) VALUES (?, ?)";
-    private static final String SQL_DELETE = "DELETE FROM privilegios WHERE id=?";
-    private static final String SQL_UPDATE = "UPDATE privilegios SET nombre_privilegio=? WHERE id=?";
-    private static final String SQL_SELECT = "SELECT * FROM privilegios WHERE id=?";
-    private static final String SQL_SELECTALL = "SELECT * FROM privilegios";
+    private static final String SQL_INSERT = "INSERT INTO cargos (id_cargo, nombre_cargo, id_privilegio) VALUES (?, ?, ?)";
+    private static final String SQL_DELETE = "DELETE FROM cargos WHERE id_cargo=?";
+    private static final String SQL_UPDATE = "UPDATE cargos SET nombre_cargo=?, id_privilegio=? WHERE id_cargo=?";
+    private static final String SQL_SELECT = "SELECT * FROM cargos WHERE id_cargo=?";
+    private static final String SQL_SELECTALL = "SELECT * FROM cargos";
 
     private static final Conexion con = Conexion.estadoConexion();
-
+    
     @Override
-    public boolean Create(PrivilegiosDto dto) {
+    public boolean Create(CargosDto dto) {
         PreparedStatement ps;
         try {
             ps = con.getCnn().prepareStatement(SQL_INSERT);
-            ps.setInt(1, dto.getId());
-            ps.setString(2, dto.getNombre_privilegio());
+            ps.setInt(1, dto.getIdCargo());
+            ps.setString(2, dto.getNombreCargo());
+            ps.setInt(3, dto.getIdPrivilegio());
 
             if (ps.executeUpdate() > 0) {
                 return true;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(PrivilegiosDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CargosDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             con.cerrarConexion();
         }
@@ -60,7 +61,7 @@ public class PrivilegiosDao implements DaoInterface<PrivilegiosDto>{
                 return true;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(PrivilegiosDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CargosDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             con.cerrarConexion();
         }
@@ -68,17 +69,19 @@ public class PrivilegiosDao implements DaoInterface<PrivilegiosDto>{
     }
 
     @Override
-    public boolean Update(PrivilegiosDto dto) {
+    public boolean Update(CargosDto dto) {
         PreparedStatement ps;
         try {
             ps = con.getCnn().prepareStatement(SQL_UPDATE);
-            ps.setString(1, dto.getNombre_privilegio());
-            ps.setInt(2, dto.getId());
+            ps.setString(1, dto.getNombreCargo());
+            ps.setInt(2, dto.getIdPrivilegio());
+            ps.setInt(3, dto.getIdCargo());
+
             if (ps.executeUpdate() > 0) {
                 return true;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(PrivilegiosDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CargosDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             con.cerrarConexion();
         }
@@ -86,10 +89,10 @@ public class PrivilegiosDao implements DaoInterface<PrivilegiosDto>{
     }
 
     @Override
-    public PrivilegiosDto Select(Object key) {
+    public CargosDto Select(Object key) {
         PreparedStatement ps;
         ResultSet res;
-        PrivilegiosDto privilegios = null;
+        CargosDto car = null;
         try {
             ps = con.getCnn().prepareStatement(SQL_SELECT);
             ps.setString(1, key.toString());
@@ -97,36 +100,35 @@ public class PrivilegiosDao implements DaoInterface<PrivilegiosDto>{
             res = ps.executeQuery();
 
             while (res.next()) {
-                privilegios = new PrivilegiosDto(res.getInt(1), res.getString(2));
+                car = new CargosDto(res.getInt(1), res.getString(2), res.getInt(3));
             }
-            return privilegios;
+            return car;
         } catch (SQLException ex) {
-            Logger.getLogger(PrivilegiosDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CargosDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             con.cerrarConexion();
         }
-        return privilegios;
+        return car;
     }
 
     @Override
-    public List<PrivilegiosDto> SeleccionarTodo() {
+    public List<CargosDto> SeleccionarTodo() {
         PreparedStatement ps;
         ResultSet res;
-        ArrayList<PrivilegiosDto> privilegios = new ArrayList();
+        ArrayList<CargosDto> cargos = new ArrayList();
         try {
             ps = con.getCnn().prepareStatement(SQL_SELECTALL);
             res = ps.executeQuery();
 
             while (res.next()) {
-                privilegios.add(new PrivilegiosDto(res.getInt(1), res.getString(2)));
+                cargos.add(new CargosDto(res.getInt(1), res.getString(2), res.getInt(3)));
             }
-            
         } catch (SQLException ex) {
-            Logger.getLogger(PrivilegiosDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CargosDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             con.cerrarConexion();
         }
-        return privilegios;
+        return cargos;
     }
     
 }

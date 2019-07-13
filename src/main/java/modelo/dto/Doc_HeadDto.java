@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dto;
+package modelo.dto;
 
-import dao.Doc_HeadDao;
+import modelo.dao.Doc_HeadDao;
 
 /**
  *

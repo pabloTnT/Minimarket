@@ -5,12 +5,12 @@
  */
 package controlador;
 
-import dao.ProductoDao;
-import dao.ProveedorDao;
-import dao.UsuarioDao;
-import dto.ProductoDto;
-import dto.ProveedorDto;
-import dto.UsuarioDto;
+import modelo.dao.ProductoDao;
+import modelo.dao.ProveedorDao;
+import modelo.dao.UsuarioDao;
+import modelo.dto.ProductoDto;
+import modelo.dto.ProveedorDto;
+import modelo.dto.UsuarioDto;
 
 /**
  *

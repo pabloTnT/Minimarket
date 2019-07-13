@@ -5,8 +5,8 @@
  */
 package controlador;
 
-import dao.ProductoDao;
-import dto.ProductoDto;
+import modelo.dao.ProductoDao;
+import modelo.dto.ProductoDto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
