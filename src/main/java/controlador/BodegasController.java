@@ -6,8 +6,8 @@
 
 package controlador;
 
-import dao.BodegasDao;
-import dto.BodegasDto;
+import modelo.dao.BodegasDao;
+import modelo.dto.BodegasDto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;

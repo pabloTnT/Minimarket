@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package modelo.dao;
 
 import conexion.Conexion;
-import dto.Tipo_docDto;
+import modelo.dto.ProductoDto;
 import interfaces.DaoInterface;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,27 +20,29 @@ import java.util.logging.Logger;
  *
  * @author PabloTnT
  */
-public class Tipo_docDao implements DaoInterface<Tipo_docDto>{
+public class ProductoDao implements DaoInterface<ProductoDto>{
 
-    private static final String SQL_INSERT="INSERT INTO productos (id_doc, doc_nombre) VALUES (?, ?";
-    private static final String SQL_DELETE = "DELETE FROM productos WHERE id_doc=?";
-    private static final String SQL_UPDATE = "UPDATE productos SET  doc_nombre=? WHERE id_doc=?";
-    private static final String SQL_SELECT = "SELECT * FROM productos WHERE id_doc=?";
-    private static final String SQL_SELECTALL = "SELECT * FROM productos";
+    private static final String SQL_INSERT="INSERT INTO producto (id_producto, nombre_producto, tipo_producto, precio_producto) VALUES (?, ?, ?, ?)";
+    private static final String SQL_DELETE = "DELETE FROM producto WHERE id_producto=?";
+    private static final String SQL_UPDATE = "UPDATE producto SET nombre_producto=?, tipo_producto=?, precio_producto=? WHERE id_producto=?";
+    private static final String SQL_SELECT = "SELECT * FROM producto WHERE id_producto=?";
+    private static final String SQL_SELECTALL = "SELECT * FROM producto";
     private static final Conexion con = Conexion.estadoConexion();
     
     @Override
-    public boolean Create(Tipo_docDto dto) {
+    public boolean Create(ProductoDto dto) {
         try {
             PreparedStatement ps;
             ps=con.getCnn().prepareStatement(SQL_INSERT);
-            ps.setInt(1, dto.getId_doc());
-            ps.setString(2, dto.getDoc_nombre());
+            ps.setInt(1, dto.getId_producto());
+            ps.setString(2, dto.getNombre_producto());
+            ps.setInt(3, dto.getTipo_producto());
+            ps.setInt(4, dto.getPrecio_producto());
             if(ps.executeUpdate()>0){
                 return true;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Tipo_docDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductoDao.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
             con.cerrarConexion();
         }
@@ -57,7 +59,7 @@ public class Tipo_docDao implements DaoInterface<Tipo_docDto>{
                 return true;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Tipo_docDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductoDao.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
             con.cerrarConexion();
         }
@@ -65,17 +67,19 @@ public class Tipo_docDao implements DaoInterface<Tipo_docDto>{
     }
 
     @Override
-    public boolean Update(Tipo_docDto dto) {
+    public boolean Update(ProductoDto dto) {
         PreparedStatement ps;
         try {
             ps=con.getCnn().prepareStatement(SQL_UPDATE);
-            ps.setString(1, dto.getDoc_nombre());
-            ps.setInt(2, dto.getId_doc());
+            ps.setString(1, dto.getNombre_producto());
+            ps.setInt(2, dto.getTipo_producto());
+            ps.setInt(3, dto.getPrecio_producto());
+            ps.setInt(4, dto.getId_producto());
             if(ps.executeUpdate()>0){
                 return true;
             } 
         } catch (SQLException ex) {
-            Logger.getLogger(Tipo_docDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductoDao.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
             con.cerrarConexion();
         }
@@ -83,42 +87,42 @@ public class Tipo_docDao implements DaoInterface<Tipo_docDto>{
     }
 
     @Override
-    public Tipo_docDto Select(Object key) {
+    public ProductoDto Select(Object key) {
         PreparedStatement ps;
             ResultSet res;
-            Tipo_docDto tipoDoc = null;
+            ProductoDto prod = null;
         try {
             ps=con.getCnn().prepareStatement(SQL_SELECT);
             ps.setString(1, key.toString());
             res =ps.executeQuery();
             while(res.next()){
-                tipoDoc = new Tipo_docDto(res.getInt(1), res.getString(2));
+                prod = new ProductoDto(res.getInt(1), res.getString(2), res.getInt(3), res.getInt(4));
             }
-            return tipoDoc;
+            return prod;
         } catch (SQLException ex) {
-            Logger.getLogger(Tipo_docDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductoDao.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
             con.cerrarConexion();
         }
-        return tipoDoc;
+        return prod;
     }
 
     @Override
-    public List<Tipo_docDto> SeleccionarTodo() {
+    public List<ProductoDto> SeleccionarTodo() {
         PreparedStatement ps;
             ResultSet res;
-            ArrayList<Tipo_docDto> tipoDoc = new ArrayList();
+            ArrayList<ProductoDto> prod = new ArrayList();
         try {
             ps=con.getCnn().prepareStatement(SQL_SELECTALL);
             res=ps.executeQuery();
             while(res.next()){
-                tipoDoc.add(new Tipo_docDto(res.getInt(1), res.getString(2)));
+                prod.add(new ProductoDto(res.getInt(1), res.getString(2), res.getInt(3), res.getInt(4)));
             }   } catch (SQLException ex) {
-            Logger.getLogger(Tipo_docDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductoDao.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
             con.cerrarConexion();
         }
-        return tipoDoc;
+        return prod;
     }
     
 }

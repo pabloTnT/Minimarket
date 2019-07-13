@@ -5,9 +5,9 @@
  */
 package controlador;
 
-import dao.ProveedorDao;
-import dto.ProveedorDto;
-import dto.UsuarioDto;
+import modelo.dao.ProveedorDao;
+import modelo.dto.ProveedorDto;
+import modelo.dto.UsuarioDto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
