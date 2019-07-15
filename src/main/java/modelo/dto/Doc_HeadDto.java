@@ -17,7 +17,6 @@ public class Doc_HeadDto {
     private int idDoc;
     private int idUsuario;
     private int tipoDoc;
-    private int numDoc;
     private int idProveedor;
     private int bodOrigen;
     private int bodDestino;
@@ -29,11 +28,10 @@ public class Doc_HeadDto {
         this.idDoc = idDoc;
     }
 
-    public Doc_HeadDto(int idDoc, int idUsuario, int tipoDoc, int numDoc, int idProveedor, int bodOrigen, int bodDestino) {
+    public Doc_HeadDto(int idDoc, int idUsuario, int tipoDoc, int idProveedor, int bodOrigen, int bodDestino) {
         this.idDoc = idDoc;
         this.idUsuario = idUsuario;
         this.tipoDoc = tipoDoc;
-        this.numDoc = numDoc;
         this.idProveedor = idProveedor;
         this.bodOrigen = bodOrigen;
         this.bodDestino = bodDestino;
@@ -61,14 +59,6 @@ public class Doc_HeadDto {
 
     public void setTipoDoc(int tipoDoc) {
         this.tipoDoc = tipoDoc;
-    }
-
-    public int getNumDoc() {
-        return numDoc;
-    }
-
-    public void setNumDoc(int numDoc) {
-        this.numDoc = numDoc;
     }
 
     public int getIdProveedor() {

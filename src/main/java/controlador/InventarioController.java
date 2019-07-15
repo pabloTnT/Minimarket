@@ -9,10 +9,20 @@ import modelo.dao.Producto_BodegaDao;
 import modelo.dto.Producto_BodegaDto;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.dao.Doc_DetailDao;
+import modelo.dto.Doc_DetailDto;
+import modelo.dto.Doc_HeadDto;
+import modelo.dto.UsuarioDto;
+import java.util.Date;
+import java.util.List;
+import modelo.dto.RegistroDocumento;
 
 /**
  *
@@ -33,13 +43,37 @@ public class InventarioController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            if(request.getParameter("btn_oc")!=null){
+            if (request.getParameter("btn_oc") != null) {
                 response.sendRedirect("ordenCompra.jsp");
             }
-            if(request.getParameter("btn_ingresoBodega")!=null){
+            if (request.getParameter("btn_ingresoBodega") != null) {
                 response.sendRedirect("ingresoBodega.jsp");
             }
-            if(request.getParameter("btn_generarIngreso")!=null){
+            if (request.getParameter("btn_generarGuia") != null) {
+                response.sendRedirect("guiaDespacho.jsp");
+            }
+
+            if (request.getParameter("btn_generarGuiaDespacho") != null) {
+                Doc_HeadDto head = new Doc_HeadDto();
+                Doc_DetailDto det = new Doc_DetailDto();
+                ArrayList<Doc_DetailDto> detail = new ArrayList<Doc_DetailDto>();
+                UsuarioDto usuario = (UsuarioDto) request.getSession().getAttribute("sesionUsuario");
+                int idUsuario = usuario.getId();
+                head.setIdUsuario(idUsuario);
+                head.setTipoDoc(3);
+                head.setBodOrigen(Integer.valueOf(request.getParameter("opt_bodegaOrigen")));
+                head.setBodDestino(Integer.valueOf(request.getParameter("opt_bodegaDestino")));
+                det.setId_doc(head.getIdDoc());
+                LocalDate date = LocalDate.now();
+                det.setFecha_doc(java.sql.Date.valueOf(date));
+                det.setCantidad(Integer.valueOf(request.getParameter("txt_cantidadDespacho")));
+                detail.add(det);
+                RegistroDocumento registro = new RegistroDocumento();
+                registro.generaRegistro(head, detail);
+                response.sendRedirect("guiaDespacho.jsp");
+            }
+            
+            if (request.getParameter("btn_generarIngreso") != null) {
                 Producto_BodegaDto dto = new Producto_BodegaDto();
                 Producto_BodegaDao dao = new Producto_BodegaDao();
                 int codProducto = Integer.valueOf(request.getParameter("opt_producto"));
@@ -48,14 +82,14 @@ public class InventarioController extends HttpServlet {
                 dto.setCod_producto(codProducto);
                 dto.setCod_bodega(codBodega);
                 Producto_BodegaDto dtoStock = dao.SeleccionarPorProdBod(codProducto, codBodega);
-                if(dtoStock != null){
+                if (dtoStock != null) {
                     int stockAntiguo = dtoStock.getStock();
                     int idProdBodega = dtoStock.getId();
-                    int stockNuevo =  stockAntiguo + cantidad;
+                    int stockNuevo = stockAntiguo + cantidad;
                     dto.setStock(stockNuevo);
                     dto.setId(idProdBodega);
                     dao.Update(dto);
-                }else{
+                } else {
                     dao.Create(dto);
                 }
                 response.sendRedirect("ingresoBodega.jsp");
