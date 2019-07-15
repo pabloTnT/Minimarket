@@ -39,7 +39,7 @@
         </div>
         <div style="margin-top: 100px" id="trasladoMercaderia">
             <div class="botonesInventario">
-                <button class="button primary large rounded" style="width: 400px">Generar Guia de Despacho</button>
+                <button class="button primary large rounded" name="btn_generarGuia" style="width: 400px">Generar Guia de Despacho</button>
             </div>
             <div class="botonesInventario">
                 <button class="button primary large rounded" style="width: 400px">Ingresar Productos a Local</button>

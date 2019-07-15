@@ -23,7 +23,7 @@ import java.util.logging.Logger;
  */
 public class Doc_DetailDao implements DaoInterface<Doc_DetailDto>{
 
-    private static final String SQL_INSERT = "INSERT INTO bodegas (id, id_doc, fecha_doc, cod_producto, cantidad) VALUES (?, ?, ?, ?, ?)";
+    private static final String SQL_INSERT = "INSERT INTO bodegas ( id_doc, fecha_doc, cod_producto, cantidad) VALUES ( ?, ?, ?, ?)";
     private static final String SQL_DELETE = "DELETE FROM bodegas WHERE id=?";
     private static final String SQL_UPDATE = "UPDATE bodegas SET id_doc=?, cod_producto=?, cantidad=? WHERE id=?";
     private static final String SQL_SELECT = "SELECT * FROM bodegas WHERE id=?";
@@ -37,11 +37,10 @@ public class Doc_DetailDao implements DaoInterface<Doc_DetailDto>{
         PreparedStatement ps;
         try {
             ps = con.getCnn().prepareStatement(SQL_INSERT);
-            ps.setInt(1, dto.getId());
-            ps.setInt(2, dto.getId_doc());
-            ps.setDate(3, (Date) dto.getFecha_doc());
-            ps.setInt(4, dto.getCod_producto());
-            ps.setInt(5, dto.getCantidad());
+            ps.setInt(1, dto.getId_doc());
+            ps.setDate(2, (Date) dto.getFecha_doc());
+            ps.setInt(3, dto.getCod_producto());
+            ps.setInt(4, dto.getCantidad());
 
             if (ps.executeUpdate() > 0) {
                 return true;

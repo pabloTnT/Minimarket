@@ -30,9 +30,25 @@ public class Producto_BodegaDao implements DaoInterface<Producto_BodegaDto> {
     private static final String SQL_PROD_BOD = "SELECT * FROM producto_bodega WHERE cod_producto=? AND cod_bodega=?";
     private static final String SQL_SELECT_PROD = "SELECT * FROM producto_bodega WHERE cod_producto=?";
     private static final String SQL_SELECT_BOD = "SELECT * FROM producto_bodega WHERE cod_bodega=?";
+    private static final String SQL_TRASLADO = "UPDATE producto_bodega SET cod_bodega=?";
 
     private static final Conexion con = Conexion.estadoConexion();
 
+    public boolean CambioBodega(Producto_BodegaDto dto) {
+        PreparedStatement ps;
+        try {
+            ps = con.getCnn().prepareStatement(SQL_TRASLADO);
+            ps.setInt(1, dto.getCod_bodega());
+            if (ps.executeUpdate() > 0) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Producto_BodegaDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            con.cerrarConexion();
+        }
+        return false;
+    }
     @Override
     public boolean Create(Producto_BodegaDto dto) {
         PreparedStatement ps;
