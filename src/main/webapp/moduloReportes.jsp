@@ -4,12 +4,12 @@
     Author     : PabloTnT
 --%>
 
-<%@page import="dto.ProductoDto"%>
-<%@page import="dao.ProductoDao"%>
-<%@page import="dto.ProveedorDto"%>
-<%@page import="dao.ProveedorDao"%>
-<%@page import="dto.BodegasDto"%>
-<%@page import="dao.BodegasDao"%>
+<%@page import="modelo.dto.ProductoDto"%>
+<%@page import="modelo.dao.ProductoDao"%>
+<%@page import="modelo.dto.ProveedorDto"%>
+<%@page import="modelo.dao.ProveedorDao"%>
+<%@page import="modelo.dto.BodegasDto"%>
+<%@page import="modelo.dao.BodegasDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

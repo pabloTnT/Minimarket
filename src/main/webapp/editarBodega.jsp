@@ -4,10 +4,10 @@ Created on : 26-05-2019, 17:29:55
 Author     : PabloTnT
 --%>
 
-<%@page import="dao.BodegasDao"%>
-<%@page import="dto.BodegasDto"%>
-<%@page import="dto.UsuarioDto"%>
-<%@page import="dao.UsuarioDao"%>
+<%@page import="modelo.dao.BodegasDao"%>
+<%@page import="modelo.dto.BodegasDto"%>
+<%@page import="modelo.dto.UsuarioDto"%>
+<%@page import="modelo.dao.UsuarioDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
