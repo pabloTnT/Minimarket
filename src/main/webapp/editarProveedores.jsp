@@ -4,8 +4,8 @@ Created on : 26-05-2019, 17:29:55
 Author     : PabloTnT
 --%>
 
-<%@page import="dto.ProveedorDto"%>
-<%@page import="dao.ProveedorDao"%>
+<%@page import="modelo.dto.ProveedorDto"%>
+<%@page import="modelo.dao.ProveedorDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

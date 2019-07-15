@@ -4,12 +4,12 @@ Created on : 26-05-2019, 17:29:55
 Author     : PabloTnT
 --%>
 
-<%@page import="dto.Tipo_productoDto"%>
-<%@page import="dao.Tipo_productoDao"%>
-<%@page import="dto.UsuarioDto"%>
-<%@page import="dao.UsuarioDao"%>
-<%@page import="dto.CargosDto"%>
-<%@page import="dao.CargosDao"%>
+<%@page import="modelo.dto.Tipo_productoDto"%>
+<%@page import="modelo.dao.Tipo_productoDao"%>
+<%@page import="modelo.dto.UsuarioDto"%>
+<%@page import="modelo.dao.UsuarioDao"%>
+<%@page import="modelo.dto.CargosDto"%>
+<%@page import="modelo.dao.CargosDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

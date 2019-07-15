@@ -4,10 +4,10 @@
     Author     : PabloTnT
 --%>
 
-<%@page import="dto.UsuarioDto"%>
-<%@page import="dao.UsuarioDao"%>
-<%@page import="dto.BodegasDto"%>
-<%@page import="dao.BodegasDao"%>
+<%@page import="modelo.dto.UsuarioDto"%>
+<%@page import="modelo.dao.UsuarioDao"%>
+<%@page import="modelo.dto.BodegasDto"%>
+<%@page import="modelo.dao.BodegasDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
