@@ -22,11 +22,11 @@ import java.util.logging.Logger;
  */
 public class Doc_HeadDao implements DaoInterface<Doc_HeadDto>{
 
-    private static final String SQL_INSERT = "INSERT INTO bodegas ( id_usuario, tipo_doc, id_proveedor, bod_origen, bod_destino) VALUES ( ?, ?, ?, ?, ?, ?)";
-    private static final String SQL_DELETE = "DELETE FROM bodegas WHERE id_doc=?";
-    private static final String SQL_UPDATE = "UPDATE bodegas SET id_usuario=?, tipo_doc=?, id_proveedor, bod_origen=?, bod_destino=? WHERE id_doc=?";
-    private static final String SQL_SELECT = "SELECT * FROM bodegas WHERE id_doc=?";
-    private static final String SQL_SELECTALL = "SELECT * FROM bodegas";
+    private static final String SQL_INSERT = "INSERT INTO doc_head (id_doc, id_usuario, tipo_doc, id_proveedor, bod_origen, bod_destino) VALUES ( ?, ?, ?, ?, ?, ?)";
+    private static final String SQL_DELETE = "DELETE FROM doc_head WHERE id_doc=?";
+    private static final String SQL_UPDATE = "UPDATE doc_head SET id_usuario=?, tipo_doc=?, id_proveedor, bod_origen=?, bod_destino=? WHERE id_doc=?";
+    private static final String SQL_SELECT = "SELECT * FROM doc_head WHERE id_doc=?";
+    private static final String SQL_SELECTALL = "SELECT * FROM doc_head";
 
     private static final Conexion con = Conexion.estadoConexion();
 
@@ -35,11 +35,12 @@ public class Doc_HeadDao implements DaoInterface<Doc_HeadDto>{
         PreparedStatement ps;
         try {
             ps = con.getCnn().prepareStatement(SQL_INSERT);
-            ps.setInt(1, dto.getIdUsuario());
-            ps.setInt(2, dto.getTipoDoc());
-            ps.setInt(3, dto.getIdProveedor());
-            ps.setInt(4, dto.getBodOrigen());
-            ps.setInt(5, dto.getBodDestino());
+            ps.setInt(1, dto.getIdDoc());
+            ps.setInt(2, dto.getIdUsuario());
+            ps.setInt(3, dto.getTipoDoc());
+            ps.setInt(4, dto.getIdProveedor());
+            ps.setInt(5, dto.getBodOrigen());
+            ps.setInt(6, dto.getBodDestino());
 
             if (ps.executeUpdate() > 0) {
                 return true;

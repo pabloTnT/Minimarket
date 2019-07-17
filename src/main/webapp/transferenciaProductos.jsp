@@ -16,14 +16,24 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet"  href="estilos/estiloPrincipal.css">
         <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css" rel="stylesheet"/>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
         <title>JSP Page</title>
     </head>
     <body background="imagenes/fondo.png">
         <form action="Inventario_controller.do" method="post">
+            <%
+                if (request.getParameter("mensaje") != null) {
+            %>
+            <script type="text/javascript"> alert(<%=request.getSession().getAttribute("mensaje")%>);</script>
+            <%
+                }
+            %>
             <div align="center" style="margin-top: 100px"> 
                 <table>
+                    <tr>
+                        <td>Folio:</td>
+                        <td><input style="margin-left: 20px" type="text" name="txt_numeroFolio"</td>
+                    </tr>
                     <tr>
                         <td>Bod. Origen:</td>
                         <td>
@@ -64,16 +74,14 @@
                     <table id="tableAgregaProductos" class="table" data-role="table" data-show-search="false" data-rows="10" data-show-rows-steps="false" >
                         <thead>
                             <tr>
-                                <th data-sortable="true" data-sort-dir="asc">Nombre Proucto</th>
-                                <th data-sortable="true">Cod. Proucto</th>
+                                <th data-sortable="true" data-sort-dir="asc">Nombre Producto</th>
                                 <th data-sortable="true">Cantidad</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-
                                 <td>
-                                    <select name="opt_prod">
+                                    <select name="opt_prod" style="width: 250px; margin-left: 0px">
                                         <option><--Elija Producto--></option>
                                         <%
                                             ProductoDao prodDao = new ProductoDao();
@@ -87,13 +95,13 @@
                                         %>
                                     </select>
                                 </td>
-                                <td></td>
-                                <td><input type="number" name="txt_cantidadDespacho"></td>
+                                <td><input style="width: 250px" type="number" name="txt_cantidadDespacho"></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-            <button align="center" style="margin-top: 70px; width: 200px" class="button success rounded" name="btn_generarGuiaDespacho">Generar Documento</button>
+                <button align="center" style="margin-top: 70px; width: 200px" class="button success rounded" name="btn_generarGuiaDespacho">Generar Documento</button>
+
             </div>
         </form>
     </body>

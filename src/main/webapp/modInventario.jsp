@@ -4,6 +4,7 @@
     Author     : PabloTnT
 --%>
 
+<%@page import="java.util.List"%>
 <%@page import="modelo.dto.BodegasDto"%>
 <%@page import="modelo.dao.BodegasDao"%>
 <%@page import="modelo.dto.ProductoDto"%>
@@ -26,7 +27,6 @@
             int codigoProducto = 0;
             int id = 0;
             int stock = 0;
-            int codProducto = Integer.valueOf(request.getParameter("codProd"));
             int codBodega = Integer.valueOf(request.getParameter("codBod"));
             Producto_BodegaDao dao = new Producto_BodegaDao();
         %>
@@ -42,7 +42,7 @@
                 </thead>
                 <tbody>
                     <%
-                        if (codProducto == 0 && codBodega == 0) {
+                        if (codBodega == 0) {
                             for (Producto_BodegaDto dto : dao.SeleccionarTodo()) {
                                 codigoBodega = dto.getCod_bodega();
                                 codigoProducto = dto.getCod_producto();
@@ -73,68 +73,7 @@
                         }%>
 
                     <%
-                        if (codProducto != 0 && codBodega != 0) {
-                            Producto_BodegaDto dto = dao.SeleccionarPorProdBod(codProducto, codBodega); 
-                                codigoBodega = dto.getCod_bodega();
-                                codigoProducto = dto.getCod_producto();
-                                id = dto.getId();
-                                stock = dto.getStock();
-                                ProductoDao prodDao = new ProductoDao();
-                                for (ProductoDto prodDto : prodDao.SeleccionarTodo()) {
-                                    if (codigoProducto == prodDto.getId_producto()) {
-                                        String nombreProducto = prodDto.getNombre_producto();
-                                        BodegasDao bodDao = new BodegasDao();
-                                        for (BodegasDto bodDto : bodDao.SeleccionarTodo()) {
-                                            if (codigoBodega == bodDto.getId_bodega()) {
-                                                String nombreBodega = bodDto.getNombre_bodega();
-
-
-                    %>
-                    <tr>
-                        <td> <%=id%></td>
-                        <td value="<%=codigoProducto%>"><%=nombreProducto%></td>
-                        <td value="<%=codigoBodega%>"><%=nombreBodega%></td>
-                        <td><%=stock%></td>
-                    </tr>
-                    <%}
-                                        }
-                                    }
-                                }
-                            
-                        }
-                    %>
-                    <%
-                        if (codProducto != 0 && codBodega == 0) {
-                            for (Producto_BodegaDto dto : dao.SeleccionarPorProducto(codProducto)) {
-                                codigoBodega = dto.getCod_bodega();
-                                codigoProducto = dto.getCod_producto();
-                                id = dto.getId();
-                                stock = dto.getStock();
-                                ProductoDao prodDao = new ProductoDao();
-                                for (ProductoDto prodDto : prodDao.SeleccionarTodo()) {
-                                    if (codigoProducto == prodDto.getId_producto()) {
-                                        String nombreProducto = prodDto.getNombre_producto();
-                                        BodegasDao bodDao = new BodegasDao();
-                                        for (BodegasDto bodDto : bodDao.SeleccionarTodo()) {
-                                            if (codigoBodega == bodDto.getId_bodega()) {
-                                                String nombreBodega = bodDto.getNombre_bodega();
-
-
-                    %>
-                    <tr>
-                        <td> <%=id%></td>
-                        <td value="<%=codigoProducto%>"><%=nombreProducto%></td>
-                        <td value="<%=codigoBodega%>"><%=nombreBodega%></td>
-                        <td><%=stock%></td>
-                    </tr>
-                    <%}
-                                        }
-                                    }
-                                }
-                            }
-                        }%>
-                    <%
-                        if (codProducto == 0 && codBodega != 0) {
+                        if (codBodega != 0) {
                             for (Producto_BodegaDto dto : dao.SeleccionarPorBodega(codBodega)) {
                                 codigoBodega = dto.getCod_bodega();
                                 codigoProducto = dto.getCod_producto();
@@ -157,18 +96,19 @@
                         <td value="<%=codigoBodega%>"><%=nombreBodega%></td>
                         <td><%=stock%></td>
                     </tr>
-                </tbody>
-                <%}
+                    <%}
+                                        }
                                     }
                                 }
                             }
                         }
-                    }
-                %>
+                    %>
+                    
+                </tbody>
             </table>
         </div>
         <form action="Reportes_controller.do" method="post">
-        <button class="button success rounded" name="btn_volver" style="margin-left: 25px; margin-top: 25px;width: 100px">Atras</button>
+            <button class="button success rounded" name="btn_volver" style="margin-left: 25px; margin-top: 25px;width: 100px">Atras</button>
         </form>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>

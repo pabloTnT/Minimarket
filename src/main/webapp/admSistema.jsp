@@ -46,8 +46,8 @@ Author     : PabloTnT
             </li>
             <%
             UsuarioDto sesion = (UsuarioDto) request.getSession().getAttribute("sesionUsuario");
-            int privilegio = sesion.getPrivilegios();
-            if(privilegio == 1){
+            int cargo = sesion.getCargo();
+            if(cargo == 1){
             %>
             <li>
                 <a href="#" class="dropdown-toggle">Usuarios</a>

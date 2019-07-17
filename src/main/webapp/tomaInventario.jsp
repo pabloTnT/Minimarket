@@ -21,15 +21,7 @@
         <title>Reportería</title>
     </head>
     <body background="imagenes/fondo.png">
-        <ul data-role="tabs" data-tabs-type="pills" data-expand="true">
-            <li><a href="seleccionModulo.jsp"<i style="margin-left: 40px;margin-top: 10px;margin-right: 30px; cursor: pointer" class="fas fa-home"></i></a> </li>
-
-            <li class="active"><a href="#reporteStock">Reporte Stock</a></li>
-        </ul>  
-        <div style="margin-top: 100px" id="reporteStock">
-        </ul> 
-    </ul>  
-    <form action="Reportes_controller.do" method="post">
+    <form action="Inventario_controller.do" method="post">
         <div style="margin-top: 100px">
             <div align="center">
                 <table>
@@ -52,29 +44,11 @@
                         </td>
 
                     </tr>
-                    <tr>
-                        <td>Producto: </td>
-                        <td>
-                            <select name="opt_producto">
-                                <option value="0"><--Seleccionar Todo--></option>
-                                <%
-                                    ProductoDao prodDao = new ProductoDao();
-                                    for (ProductoDto prodDto : prodDao.SeleccionarTodo()) {
-                                        int codigoProducto = prodDto.getId_producto();
-                                        String nombreProducto = prodDto.getNombre_producto();
-                                %>
-                                <option value="<%=codigoProducto%>"><%=nombreProducto%></option>
-                                <%
-                                    }
-                                %>
-                            </select>
-                        </td>
-                    </tr>
                 </table>
             </div>
         </div>
         <div align="center">
-            <button style="margin-top: 70px; width: 200px" class="button success outline rounded" name="btn_generaReporte">Generar Reporte</button>
+            <button style="margin-top: 70px; width: 200px" class="button success outline rounded" name="btn_inventario">Continuar</button>
         </div>
     </form>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
