@@ -8,6 +8,7 @@ package modelo.dto;
 import java.util.ArrayList;
 import modelo.dao.Doc_DetailDao;
 import modelo.dao.Doc_HeadDao;
+import modelo.dao.Producto_BodegaDao;
 
 /**
  *
@@ -42,6 +43,20 @@ public class RegistroDocumento {
         Doc_DetailDao detailDao = new Doc_DetailDao();
         headDao.Create(docHeadDto);
         for(Doc_DetailDto detalle : listadoDetalle){
+            Producto_BodegaDao listado = new Producto_BodegaDao();
+                int stockActualDestino = listado.SeleccionarPorProdBod(detalle.getCod_producto(), docHeadDto.getBodDestino()).getStock();
+                int stockActualOrigen = listado.SeleccionarPorProdBod(detalle.getCod_producto(), docHeadDto.getBodOrigen()).getStock();
+            if(listado.SeleccionarPorProdBod(detalle.getCod_producto(), docHeadDto.getBodDestino())!=null){
+                listado.modificaStock(detalle.getCantidad()+stockActualDestino, detalle.getCod_producto(), docHeadDto.getBodDestino());
+                listado.modificaStock(stockActualOrigen - detalle.getCantidad(), detalle.getCod_producto(), docHeadDto.getBodOrigen());
+            }else{
+                Producto_BodegaDto prodBodDto = new Producto_BodegaDto();
+                prodBodDto.setCod_bodega(docHeadDto.getBodDestino());
+                prodBodDto.setCod_producto(detalle.getCod_producto());
+                prodBodDto.setStock(detalle.getCantidad());
+                listado.modificaStock(stockActualOrigen - detalle.getCantidad(), detalle.getCod_producto(), docHeadDto.getBodOrigen());
+                listado.Create(prodBodDto);
+            }
             detailDao.Create(detalle);
         }
         }catch(Exception ex){

@@ -9,19 +9,16 @@ import modelo.dao.Producto_BodegaDao;
 import modelo.dto.Producto_BodegaDto;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.dao.Doc_DetailDao;
 import modelo.dto.Doc_DetailDto;
 import modelo.dto.Doc_HeadDto;
 import modelo.dto.UsuarioDto;
-import java.util.Date;
-import java.util.List;
+import modelo.dao.Doc_HeadDao;
 import modelo.dto.RegistroDocumento;
 
 /**
@@ -50,29 +47,65 @@ public class InventarioController extends HttpServlet {
                 response.sendRedirect("ingresoBodega.jsp");
             }
             if (request.getParameter("btn_generarGuia") != null) {
-                response.sendRedirect("guiaDespacho.jsp");
+                response.sendRedirect("transferenciaProductos.jsp");
+            }
+            if (request.getParameter("btn_tomaInventario") != null) {
+                response.sendRedirect("tomaInventario.jsp");
+            }
+            if (request.getParameter("btn_inventario") != null) {
+                response.sendRedirect("modInventario.jsp");
             }
 
             if (request.getParameter("btn_generarGuiaDespacho") != null) {
+                String mensaje = null;
+                int codProucto = Integer.valueOf(request.getParameter("opt_prod"));
+                int codBodegaOrigen = Integer.valueOf(request.getParameter("opt_bodegaOrigen"));
+                int codBodegaDestino = Integer.valueOf(request.getParameter("opt_bodegaDestino"));
+                int idDoc = Integer.valueOf(request.getParameter("txt_numeroFolio"));
+                int cantidadProductos = Integer.valueOf(request.getParameter("txt_cantidadDespacho"));
                 Doc_HeadDto head = new Doc_HeadDto();
                 Doc_DetailDto det = new Doc_DetailDto();
                 ArrayList<Doc_DetailDto> detail = new ArrayList<Doc_DetailDto>();
                 UsuarioDto usuario = (UsuarioDto) request.getSession().getAttribute("sesionUsuario");
                 int idUsuario = usuario.getId();
-                head.setIdUsuario(idUsuario);
-                head.setTipoDoc(3);
-                head.setBodOrigen(Integer.valueOf(request.getParameter("opt_bodegaOrigen")));
-                head.setBodDestino(Integer.valueOf(request.getParameter("opt_bodegaDestino")));
-                det.setId_doc(head.getIdDoc());
-                LocalDate date = LocalDate.now();
-                det.setFecha_doc(java.sql.Date.valueOf(date));
-                det.setCantidad(Integer.valueOf(request.getParameter("txt_cantidadDespacho")));
-                detail.add(det);
-                RegistroDocumento registro = new RegistroDocumento();
-                registro.generaRegistro(head, detail);
-                response.sendRedirect("guiaDespacho.jsp");
+                Producto_BodegaDao prodBod = new Producto_BodegaDao();
+                for (Producto_BodegaDto inv : prodBod.SeleccionarTodo()) {
+                    if (inv.getCod_producto() == codProucto && inv.getCod_bodega() == codBodegaOrigen) {
+                        if (inv.getStock() >= cantidadProductos) {
+                            /*completa cabecera documento*/
+                            head.setIdUsuario(idUsuario);
+                            head.setTipoDoc(3);
+                            head.setBodOrigen(codBodegaOrigen);
+                            head.setBodDestino(codBodegaDestino);
+                            Doc_HeadDao docDao = new Doc_HeadDao();
+                            for (Doc_HeadDto docDto : docDao.SeleccionarTodo()) {
+                                if (idDoc != docDto.getIdDoc()) {
+                                    head.setIdDoc(idDoc);
+                                } else {
+                                    /*Folio en uso*/
+                                }
+                            }
+                            /*completa detalle documento*/
+                            det.setId_doc(head.getIdDoc());
+                            LocalDate date = LocalDate.now();
+                            det.setId_doc(idDoc);
+                            det.setFecha_doc(java.sql.Date.valueOf(date));
+                            det.setCantidad(cantidadProductos);
+                            det.setCod_producto(codProucto);
+                            detail.add(det);
+                            RegistroDocumento registro = new RegistroDocumento();
+                            registro.generaRegistro(head, detail);
+                            response.sendRedirect("transferenciaProductos.jsp");
+                        } else {
+                            /*mensaje de error, cantidad no disponible*/
+                        }
+                    } else {
+                        /*mensaje de error, producto no disponible*/
+                    }
+                }
+
             }
-            
+
             if (request.getParameter("btn_generarIngreso") != null) {
                 Producto_BodegaDto dto = new Producto_BodegaDto();
                 Producto_BodegaDao dao = new Producto_BodegaDao();

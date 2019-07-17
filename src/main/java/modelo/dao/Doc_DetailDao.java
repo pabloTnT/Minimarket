@@ -23,12 +23,12 @@ import java.util.logging.Logger;
  */
 public class Doc_DetailDao implements DaoInterface<Doc_DetailDto>{
 
-    private static final String SQL_INSERT = "INSERT INTO bodegas ( id_doc, fecha_doc, cod_producto, cantidad) VALUES ( ?, ?, ?, ?)";
-    private static final String SQL_DELETE = "DELETE FROM bodegas WHERE id=?";
-    private static final String SQL_UPDATE = "UPDATE bodegas SET id_doc=?, cod_producto=?, cantidad=? WHERE id=?";
-    private static final String SQL_SELECT = "SELECT * FROM bodegas WHERE id=?";
-    private static final String SQL_SELECTPORFOLIO = "SELECT * FROM bodegas WHERE id_doc=?";
-    private static final String SQL_SELECTALL = "SELECT * FROM bodegas";
+    private static final String SQL_INSERT = "INSERT INTO doc_detail ( id_doc, fecha_doc, cod_producto, cantidad) VALUES ( ?, ?, ?, ?)";
+    private static final String SQL_DELETE = "DELETE FROM doc_detail WHERE id=?";
+    private static final String SQL_UPDATE = "UPDATE doc_detail SET id_doc=?, cod_producto=?, cantidad=? WHERE id=?";
+    private static final String SQL_SELECT = "SELECT * FROM doc_detail WHERE id=?";
+    private static final String SQL_SELECTPORFOLIO = "SELECT * FROM doc_detail WHERE id_doc=?";
+    private static final String SQL_SELECTALL = "SELECT * FROM doc_detail";
 
     private static final Conexion con = Conexion.estadoConexion();
 

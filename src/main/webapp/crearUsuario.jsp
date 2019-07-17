@@ -74,8 +74,8 @@
                                     <%
                                         CargosDao cargDao = new CargosDao();
                                         for (CargosDto cargDto : cargDao.SeleccionarTodo()) {
-                                            String nombreCargo = cargDto.getNombre_cargo();
-                                            int idCargo = cargDto.getId_cargo();
+                                            String nombreCargo = cargDto.getNombreCargo();
+                                            int idCargo = cargDto.getIdCargo();
                                     %>
                                     <option value="<%=idCargo%>"><%=nombreCargo%></option>
                                     <%
